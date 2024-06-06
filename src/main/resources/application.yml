@@ -25,6 +25,6 @@ info:
 server:
   port: 8080
   servlet:
-    context-path:
+    context-path: /edu-api
   error:
     include-message: always
