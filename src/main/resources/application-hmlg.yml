@@ -1,0 +1,38 @@
+keycloak:
+  auth-server-url: link
+  realm: nome
+  ssl-required: external
+  resource: nome
+  public-client: true
+  confidential-port: 0
+  bearer-only: true
+  enabled: true
+
+## OAUTH2 + SSO ##
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: nome
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: link
+            user-name-attribute: preferred_username
+
+      resourceserver:
+        jwt:
+          issuer-uri: link
+
+
+logging:
+  level:
+    root: info
+    org.springframework.web: debug
+    org.springframework.security: debug
+    org.springframework.boot.autoconfigure: debug
+    org.springframework.web.reactive.function.client.ExchangeFunctions: debug

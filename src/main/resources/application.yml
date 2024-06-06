@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: '@project.artifactId@'
+  profiles:
+    active: '@spring.profiles.active@'
+  datasource:
+    url: jdbc:mysql://144.22.188.2:3306/mirante_educacao
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MariaDBDialect
+
+info:
+  app:
+    description: '@project.description@'
+    encoding: '@project.build.sourceEncoding@'
+  build:
+    artifact: '@project.artifactId@'
+    group: '@project.groupId@'
+    name: '@project.name@'
+    description: '@project.description@'
+    version: '@project.version@'
+server:
+  port: 8080
+  servlet:
+    context-path:
+  error:
+    include-message: always
