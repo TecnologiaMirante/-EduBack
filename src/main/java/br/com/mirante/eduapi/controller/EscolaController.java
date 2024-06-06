@@ -26,11 +26,11 @@ public class EscolaController {
     @Autowired
     private EscolaService escolaService;
 
-    @GetMapping("/findAllEscolas")
+    @GetMapping("/findAll")
     @Operation(summary = "Consultar Escolas.", description = "Endpoint para consultar Escolas.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<Page<EscolaDTO>> findAllEscolas(SpecTemplate.EscolaSpec spec, Pageable page) {
-        Page<Escola> consultaPage = escolaService.findAllEscolas(spec, page);
+    public ResponseEntity<Page<EscolaDTO>> findAll(SpecTemplate.EscolaSpec spec, Pageable page) {
+        Page<Escola> consultaPage = escolaService.findAll(spec, page);
         if (consultaPage.isEmpty()) {
             return new ResponseEntity<>(consultaPage.map(EscolaMapper.INSTANCE::escolaToEscolaDTO), HttpStatus.NOT_FOUND);
         } else {
@@ -64,7 +64,14 @@ public class EscolaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
-
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Remoção de Escola.", description = "Endpoint para remover uma escola.",
+            security = {@SecurityRequirement(name = "bearer-key")})
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (escolaService.deleteById(id)) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.noContent().build();
+    }
 
 }

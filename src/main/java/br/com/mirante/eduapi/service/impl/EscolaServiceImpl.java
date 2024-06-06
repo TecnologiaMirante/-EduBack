@@ -20,7 +20,7 @@ public class EscolaServiceImpl implements EscolaService {
     private EscolaRepository escolaRepository;
 
     @Override
-    public Page<Escola> findAllEscolas(Specification<Escola> spec, Pageable page) {
+    public Page<Escola> findAll(Specification<Escola> spec, Pageable page) {
         return escolaRepository.findAll(spec, page);
     }
 
@@ -46,5 +46,14 @@ public class EscolaServiceImpl implements EscolaService {
             return Optional.of(EscolaMapper.INSTANCE.escolaToEscolaDTO(escola));
         }
         return Optional.empty();
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        if (escolaRepository.existsById(id)) {
+            escolaRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
