@@ -36,4 +36,15 @@ public class EscolaServiceImpl implements EscolaService {
         return escolaRepository.findById(id)
                 .map(EscolaMapper.INSTANCE::escolaToEscolaDTO);
     }
+
+    @Override
+    public Optional<EscolaDTO> update(Long id, EscolaDTO escolaDTO) {
+        if (escolaRepository.existsById(id)) {
+            Escola escola = EscolaMapper.INSTANCE.escolaDTOToEscola(escolaDTO);
+            escola.setId(id);
+            escola = escolaRepository.save(escola);
+            return Optional.of(EscolaMapper.INSTANCE.escolaToEscolaDTO(escola));
+        }
+        return Optional.empty();
+    }
 }

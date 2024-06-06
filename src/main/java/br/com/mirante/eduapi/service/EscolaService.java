@@ -15,4 +15,6 @@ public interface EscolaService {
     EscolaDTO save(EscolaDTO escolaDTO);
 
     Optional<EscolaDTO> findById(Long id);
+
+    Optional<EscolaDTO> update(Long id, EscolaDTO escolaDTO);
 }

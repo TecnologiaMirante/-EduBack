@@ -55,6 +55,14 @@ public class EscolaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PutMapping("/{id}")
+    @Operation(summary = "Atualização de Escola.", description = "Endpoint para atualizar os dados das escolas.",
+            security = {@SecurityRequirement(name = "bearer-key")})
+    public ResponseEntity<EscolaDTO> update(@PathVariable Long id, @RequestBody EscolaDTO escolaDTO) {
+        return escolaService.update(id, escolaDTO)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 
 
 
