@@ -39,7 +39,7 @@ public class EscolaController {
     }
 
     @PostMapping()
-    @Operation(summary = "Cadastrar Escolas.", description = "Endpoint para cadastrar Escolas.",
+    @Operation(summary = "Cadastro de Escola.", description = "Endpoint para cadastrar Escolas.",
             security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<EscolaDTO> create(@RequestBody EscolaDTO escolaDTO) {
         EscolaDTO savedEscola = escolaService.save(escolaDTO);
@@ -47,7 +47,7 @@ public class EscolaController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Buscar Escola.", description = "Endpoint para buscar a escolas pelo id.",
+    @Operation(summary = "Buscar Escola por ID.", description = "Endpoint para buscar a escolas pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<EscolaDTO> getById(@PathVariable Long id) {
         return escolaService.findById(id)
