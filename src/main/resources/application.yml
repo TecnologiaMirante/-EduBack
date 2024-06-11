@@ -4,9 +4,9 @@ spring:
   profiles:
     active: '@spring.profiles.active@'
   datasource:
-    url: jdbc:mysql://144.22.188.2:3306/mirante_educacao
+    url: jdbc:mysql://10.67.64.3:3306/mirante-educacao
     username: root
-    password: 123456
+    password: q%JaJ|Jbr{Ezf\TZ
   jpa:
     hibernate:
       ddl-auto: update

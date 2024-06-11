@@ -99,7 +99,6 @@
     </profiles>
 
     <build>
-        <finalName>edu-api</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
