@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  edu-api:
+    container_name: edu-api
+    build:
+      context: .
+    ports:
+      - 8095:8095/tcp
+
