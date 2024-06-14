@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edu-api-teste
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: edu-api-teste
+  template:
+    metadata:
+      labels:
+        app: edu-api-teste
+    spec:
+      containers:
+        - name: edu-api-teste
+          image: localhost:5000/edu-api-teste:1.0
+          ports:
+            - containerPort: 8095
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edu-api-teste
+spec:
+  selector:
+    app: edu-api-teste
+  type: LoadBalancer
+  ports:
+    - port: 8095
+      targetPort: 8095
+      nodePort: 32104

@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.controller;
 
 import br.com.mirante.eduapi.dto.EscolaDTO;
+import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.EscolaMapper;
 import br.com.mirante.eduapi.models.Escola;
 import br.com.mirante.eduapi.service.EscolaService;
@@ -15,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -41,7 +44,7 @@ public class EscolaController {
     @PostMapping()
     @Operation(summary = "Cadastro de Escola.", description = "Endpoint para cadastrar Escolas.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<EscolaDTO> create(@RequestBody EscolaDTO escolaDTO) {
+    public ResponseEntity<EscolaDTO> create(@RequestBody EscolaDTO escolaDTO) throws BusinessException {
         EscolaDTO savedEscola = escolaService.save(escolaDTO);
         return ResponseEntity.ok(savedEscola);
     }
@@ -49,7 +52,7 @@ public class EscolaController {
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Escola por ID.", description = "Endpoint para buscar a escolas pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<EscolaDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<EscolaDTO> getById(@PathVariable UUID id) {
         return escolaService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -58,7 +61,7 @@ public class EscolaController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Escola.", description = "Endpoint para atualizar os dados das escolas.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<EscolaDTO> update(@PathVariable Long id, @RequestBody EscolaDTO escolaDTO) {
+    public ResponseEntity<EscolaDTO> update(@PathVariable UUID id, @RequestBody EscolaDTO escolaDTO) {
         return escolaService.update(id, escolaDTO)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -67,7 +70,7 @@ public class EscolaController {
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Escola.", description = "Endpoint para remover uma escola.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
         if (escolaService.deleteById(id)) {
             return ResponseEntity.ok().build();
         }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -14,9 +15,8 @@ import java.time.LocalDateTime;
 public class Escola {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name = "nome", nullable = false, length = 150)
     private String nome;
@@ -50,5 +50,16 @@ public class Escola {
 
     @Column(name = "referencia", nullable = false, length = 150)
     private String referencia;
+
+    @Column(name = "cpfCnpj", nullable = false, length = 15)
+    private String cpfCnpj;
+
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }
