@@ -6,6 +6,6 @@ COPY src /workspace/src
 RUN mvn -f pom.xml clean package -Dspring.profiles.active=prod -DskipTests=True
 
 FROM openjdk:17
-COPY --from=build /workspace/target/*.jar app.jar
+COPY --from=build /workspace/target/*.jar app.jar 
 EXPOSE 8080
 ENTRYPOINT ["java","-Xms512M","-Xmx3g","-jar","app.jar"]
