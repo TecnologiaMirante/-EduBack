@@ -28,5 +28,3 @@ server:
     context-path: /edu-api
   error:
     include-message: always
-
-    
