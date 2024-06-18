@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -53,6 +55,11 @@ public class Escola {
 
     @Column(name = "cpfCnpj", nullable = false, length = 15)
     private String cpfCnpj;
+
+
+    @OneToMany(mappedBy = "escola", cascade = CascadeType.ALL)
+    private List<Usuario> usuarioList = new ArrayList<>();
+
 
 
     @PrePersist
