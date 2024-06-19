@@ -2,6 +2,8 @@ package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Conteudo {
@@ -30,6 +32,10 @@ public class Conteudo {
     @ManyToOne
     @JoinColumn(name = "id_bimestre", nullable = false)
     private Bimestre bimestre;
+
+    //RELACIONAMENTO MAT_COMPLEMENTAR CONTEUDO
+    @OneToMany(mappedBy = "Conteudo", cascade = CascadeType.ALL)
+    private List<MatComplementar> conteudoMatComplementarList = new ArrayList<>();
 
 
 }
