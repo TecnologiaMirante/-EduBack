@@ -2,6 +2,8 @@ package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Conteudo {
@@ -31,5 +33,13 @@ public class Conteudo {
     @JoinColumn(name = "id_bimestre", nullable = false)
     private Bimestre bimestre;
 
+    //RELACIONAMENTO AVALIACAO CONTEUDO
+    @ManyToOne
+    @JoinColumn(name = "id_avaliacao", nullable = false)
+    private Avaliacao avaliacao;
+
+    //RELACIONAMENTO CONTEUDO QUESTOES
+    @OneToMany(mappedBy = "conteudo", cascade = CascadeType.ALL)
+    private List<Questoes> questoesConteudoList = new ArrayList<>();
 
 }

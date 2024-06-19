@@ -48,4 +48,11 @@ public class Disciplina {
     @OneToOne(mappedBy = "Disciplina", cascade = CascadeType.ALL)
     private Media media;
 
+    //RELACIONAMENTO DISCIPLINA NOTA
+    @OneToMany(mappedBy = "Disciplina", cascade = CascadeType.ALL)
+    private List<Nota_final> notaDisciplinaList = new ArrayList<>();
+
+    //RELACIONAMENTO DISCIPLINA QUESTOES
+    @OneToMany(mappedBy = "Disciplina", cascade = CascadeType.ALL)
+    private List<Questoes> questoesDisciplinaList = new ArrayList<>();
 }
