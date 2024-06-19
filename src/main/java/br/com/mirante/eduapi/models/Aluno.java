@@ -21,6 +21,10 @@ public class Aluno {
     @JoinColumn(name = "id_Responsavel")
     private UsuarioResponsavel responsavel;
 
-    @OneToMany(mappedBy = "titulo",cascade = CascadeType.ALL)
-    private List<Aluno> professorList = new ArrayList<>();
+    @OneToMany(mappedBy = "Aula",cascade = CascadeType.ALL)
+    private List<Aula> Aulalist = new ArrayList<>();
+
+    @OneToMany(mappedBy = "aluno",cascade = CascadeType.ALL)
+    private List<AlunoInteracao> alunoInteracaoList = new ArrayList<>();
+
 }

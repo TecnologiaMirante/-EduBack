@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Generated;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -48,4 +50,10 @@ public class Aula {
     @ManyToOne
     @JoinColumn(name = "id_aluno")
     private Aluno aluno;
+
+    @ManyToMany
+    @JoinTable(name = "Aula_Interacao",
+            joinColumns = @JoinColumn(name = "id_aula"),
+            inverseJoinColumns = @JoinColumn(name = "id_interacao"))
+    private List<AlunoInteracao> alunoInteracaos = new ArrayList<>();
 }
