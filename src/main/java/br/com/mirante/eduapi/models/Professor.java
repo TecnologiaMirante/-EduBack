@@ -2,16 +2,18 @@ package br.com.mirante.eduapi.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+    @EqualsAndHashCode(callSuper = true)
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     @Entity
-    public class Professor {
+    public class Professor extends Usuario {
         @Id
         @GeneratedValue(strategy = GenerationType.SEQUENCE)
         @Column(name = "id", nullable = false)
