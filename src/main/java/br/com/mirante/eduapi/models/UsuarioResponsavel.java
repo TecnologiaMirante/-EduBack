@@ -24,13 +24,16 @@ public class UsuarioResponsavel {
     @Column(name = "email", nullable = false, length = 100)
     private String email;
 
-    private String senha;
-
+    @Column(name = "cpf", nullable = false, length = 15)
     private String Cpf;
 
+    @Column(name = "telefone", nullable = false, length = 15)
     private String telefone;
 
+    @Column(name= "Data_De_Nascimentos", nullable = false , length = 8)
     private String DataDeNascimento;
+
+
     @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
     private List<Aluno> responsavel = new ArrayList<>();
 }
