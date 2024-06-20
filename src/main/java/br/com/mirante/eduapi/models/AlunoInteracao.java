@@ -1,12 +1,15 @@
 package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class AlunoInteracao {
     @Id
