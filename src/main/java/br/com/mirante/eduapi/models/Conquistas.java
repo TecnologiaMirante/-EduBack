@@ -23,7 +23,7 @@ public class Conquistas {
     @Column(nullable = false, length = 100, name = "descricao_conquista")
     private String descricao;
 
-    @Column(nullable = false, length = 70)
+    @Column(nullable = false, length = 70, name = "meta")
     private String meta;
 
     @ManyToMany(mappedBy = "conquistas", cascade = CascadeType.ALL)

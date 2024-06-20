@@ -18,10 +18,10 @@ public class Elo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false, length = 100, name = "nome_aluno")
+    @Column(nullable = false, length = 100, name = "nome_elo")
     private String nome;
 
-    @Column(nullable = false, length = 100, name = "pontuacao_aluno")
+    @Column(nullable = false, length = 100, name = "pontuacao_elo")
     private double pontuação;
 
     @OneToMany
