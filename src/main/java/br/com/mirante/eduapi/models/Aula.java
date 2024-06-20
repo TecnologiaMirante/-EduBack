@@ -2,9 +2,10 @@ package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Generated;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,6 +51,17 @@ public class Aula {
     @ManyToOne
     @JoinColumn(name = "id_aluno")
     private Aluno aluno;
+
+    @ManyToOne
+    @JoinColumn(name = "id_Progresso")
+    private Progresso progresso;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Aula_Conteudo",
+            joinColumns = @JoinColumn(name = "id_aula"),
+            inverseJoinColumns = @JoinColumn(name = "id_conteudo"))
+    private List<Conteudo> conteudos = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "Aula_Interacao",

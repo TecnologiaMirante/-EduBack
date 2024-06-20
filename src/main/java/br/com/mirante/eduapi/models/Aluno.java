@@ -28,6 +28,10 @@ public class Aluno {
     @OneToMany(mappedBy = "Aula",cascade = CascadeType.ALL)
     private List<Aula> Aulalist = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "id_Progresso")
+    private Progresso progresso;
+
     @OneToMany(mappedBy = "aluno",cascade = CascadeType.ALL)
     private List<AlunoInteracao> alunoInteracaoList = new ArrayList<>();
 
