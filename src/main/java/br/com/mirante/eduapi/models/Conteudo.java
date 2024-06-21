@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -37,6 +38,9 @@ public class Conteudo {
     @ManyToOne
     @JoinColumn(name = "id_bimestre", nullable = false)
     private Bimestre bimestre;
+
+    @ManyToMany(mappedBy = "conteudos")
+    private List<Aula> aulas ;
 
 
 }
