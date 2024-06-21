@@ -2,23 +2,25 @@ package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Admin extends Usuario {
+public class Progresso {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    //Pendente
+    @Column(name = "progresso")
+    private String progresso;
+
+    @OneToMany(mappedBy = "Aula",cascade = CascadeType.ALL)
+    private List<Aula> Aulalist = new ArrayList<>();
+
 }
