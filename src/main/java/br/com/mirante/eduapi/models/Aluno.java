@@ -27,6 +27,10 @@ public class Aluno extends Usuario {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
+    @ManyToOne
+    @JoinColumn(name = "id_RankAluno")
+    private RankAluno rankAluno ;
+
     @ManyToMany
     @JoinTable(
             name = "aluno_conquista",
