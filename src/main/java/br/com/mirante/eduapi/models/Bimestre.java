@@ -16,7 +16,7 @@ import java.util.UUID;
 @Entity
 public class Bimestre {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -24,10 +24,18 @@ public class Bimestre {
     private String data;
 
     //RELACIONAMENTO BIMESTRE CONTEUDO
-    @OneToMany(mappedBy = "Bimestre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bimestre", cascade = CascadeType.ALL)
     private List<Conteudo> bimestreConteudoList = new ArrayList<>();
 
     //RELACIONAMENTO MEDIA BIMESTRE
-    @OneToMany(mappedBy = "Bimestre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bimestre", cascade = CascadeType.ALL)
     private List<Media> bimestreMediaList = new ArrayList<>();
+
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

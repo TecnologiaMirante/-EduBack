@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
@@ -12,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -21,7 +23,7 @@ public class Aula {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "titulo", nullable = false)
+    @Column(name = "titulo", nullable = false, insertable = false, updatable = false)
     private String titulo;
 
     @Column(name = "descricao", nullable = false)
@@ -68,6 +70,14 @@ public class Aula {
             joinColumns = @JoinColumn(name = "id_aula"),
             inverseJoinColumns = @JoinColumn(name = "id_interacao"))
     private List<AlunoInteracao> alunoInteracaos = new ArrayList<>();
+
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 
 }

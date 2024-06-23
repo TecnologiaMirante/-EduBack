@@ -16,7 +16,7 @@ import java.util.UUID;
 @Entity
 public class Professor extends Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -33,11 +33,25 @@ public class Professor extends Usuario {
     private String experiencia;
 
     //RELACIONAMENTO PROFESSOR DISCIPLINA
-    @ManyToMany(mappedBy = "Professor")
+    @ManyToMany(mappedBy = "professorDisciplinaList")
     private List<Disciplina> disciplinaProfessorList = new ArrayList<>();
 
     //RELACIONAMENTO PROFESSOR CONTEUDO
-    @OneToMany(mappedBy = "Professor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
     private List<Conteudo> professorConteudoList = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "Id_usuario")
+    private Usuario professor;
+
+    @ManyToMany(mappedBy = "professorTurma")
+    private List<Turma>turmasProfessor = new ArrayList<>();
+
+
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }

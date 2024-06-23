@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity
 public class Turma {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -32,11 +32,27 @@ public class Turma {
     private Boolean status;
 
     //RELACIONAMENTO TURMA DISCIPLINA
-    @ManyToMany(mappedBy = "Turma")
+    @ManyToMany(mappedBy = "turmaDisciplinaList")
     private List<Disciplina> turmaDisciplinaList = new ArrayList<>();
+
 
     //RELACIONAMENTO TURMA SERIE
     @ManyToOne
     @JoinColumn(name = "id_serie", nullable = false)
     private Serie serie;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+            @JoinTable(
+                    name = "Turma_Professor",
+                    joinColumns = @JoinColumn(name = "id_turma"),
+                    inverseJoinColumns = @JoinColumn(name = "id_professor")
+            )
+    private List<Professor> professorTurma = new ArrayList<>();
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

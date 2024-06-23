@@ -1,4 +1,3 @@
-
 package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
@@ -12,26 +11,19 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class RankGeral {
+public class MaterialComplementar {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "Primeiro_Lugar")
-    private String primeiro;
+    private String titulo;
 
-    @Column(name = "Segundo_Lugar")
-    private String segundo;
+    private String material; //url de links, arquivos
 
-    @Column(name = "Terceiro_Lugar")
-    private String terceiro;
+    @ManyToOne
+    @JoinColumn(name = "Id_conteudo")
+    private Conteudo conteudosComplementares;
 
-
-
- /*   @Column(name = "ranks_gerais")
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_aluno")
-    private Aluno aluno;*/
 
 
     @PrePersist

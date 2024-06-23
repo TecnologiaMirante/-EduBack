@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Questoes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -44,4 +44,12 @@ public class Questoes {
     //RELACIONAMENTO QUESTOES OPCOES
     @OneToMany(mappedBy = "questoes", cascade = CascadeType.ALL)
     private List<Opcoes> questoesOpcoesList = new ArrayList<>();
+
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

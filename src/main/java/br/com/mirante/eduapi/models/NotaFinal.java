@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class NotaFinal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -29,4 +29,11 @@ public class NotaFinal {
     @ManyToOne
     @JoinColumn(name = "id_disciplina", nullable = false)
     private Disciplina disciplina;
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

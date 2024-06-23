@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Entity
 public class Conteudo {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -40,7 +41,19 @@ public class Conteudo {
     private Bimestre bimestre;
 
     @ManyToMany(mappedBy = "conteudos")
-    private List<Aula> aulas ;
+    private List<Aula> aulasDisponiveis ;
 
+    @ManyToOne
+    @JoinColumn(name = "Id_conteudo", nullable = false)
+    private Avaliacao avaliacao;
 
+    @OneToMany(mappedBy = "conteudosComplementares")
+    private List<MaterialComplementar> materialComplementar;
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity
 public class Media {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -37,4 +37,11 @@ public class Media {
 //    @JoinColumn(name = "id_aluno", nullable = false)
 //    private Aluno aluno;
 
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

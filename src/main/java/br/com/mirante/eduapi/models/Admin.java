@@ -19,6 +19,12 @@ public class Admin extends Usuario {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    @JoinColumn(name = "Id_usuario")
+    private Usuario admin;
+
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

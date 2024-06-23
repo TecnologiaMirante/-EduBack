@@ -34,6 +34,14 @@ public class UsuarioResponsavel {
     private String DataDeNascimento;
 
 
-    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL)
     private List<Aluno> responsavel = new ArrayList<>();
+
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

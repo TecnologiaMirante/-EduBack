@@ -24,12 +24,16 @@ public class Aluno extends Usuario {
     private String turma;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    @JoinColumn(name = "Id_usuario")
+    private Usuario aluno;
 
     @ManyToOne
     @JoinColumn(name = "id_RankAluno")
     private RankAluno rankAluno ;
+
+    @ManyToOne
+    @JoinColumn(name = "Id_responsavel")
+    private UsuarioResponsavel responsavel;
 
     @ManyToMany
     @JoinTable(
@@ -42,5 +46,23 @@ public class Aluno extends Usuario {
     @OneToMany(mappedBy = "aluno")
     private List<AlunosElo> alunosElo = new ArrayList<>();
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "alunoDisciplina")
+    private List<Disciplina> disciplinas = new ArrayList<>();
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Serie serie;
+
+
+
+ /*   @OneToMany(mappedBy = "aluno")
+    private List<RankGeral> ranksGeral;*/
+
+
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }

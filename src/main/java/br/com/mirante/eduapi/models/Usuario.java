@@ -14,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -83,14 +84,20 @@ public class Usuario {
     @JoinColumn(name = "id_escola")
     private Escola escola;
 
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "professor",cascade = CascadeType.ALL)
     private List<Professor> professorList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "aluno",cascade = CascadeType.ALL)
     private List<Aluno> alunoList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
     private List<Admin> adminList = new ArrayList<>();
 
 
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

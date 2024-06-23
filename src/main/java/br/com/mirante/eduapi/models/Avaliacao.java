@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Avaliacao {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -47,6 +47,14 @@ public class Avaliacao {
     //RELACIONAMENTO AVALIACAO QUESTOES
     @OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL)
     private List<Questoes> questoesAvaliacaoList = new ArrayList<>();
+
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }
 

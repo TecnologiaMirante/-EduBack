@@ -29,4 +29,11 @@ public class Conquistas {
     @ManyToMany(mappedBy = "conquistas", cascade = CascadeType.ALL)
     private List<Aluno> alunos = new ArrayList<>();
 
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
+
 }

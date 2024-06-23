@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity
 public class Serie {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -26,6 +26,18 @@ public class Serie {
     private String turno;
 
     //RELACIONAMENTO TURMA SERIE
-    @OneToMany(mappedBy = "Serie", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
     private List<Turma> turmaSerieList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "serie")
+    @JoinColumn(name = "Id_aluno")
+    private List<Aluno> alunoSerie = new ArrayList<>();
+
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

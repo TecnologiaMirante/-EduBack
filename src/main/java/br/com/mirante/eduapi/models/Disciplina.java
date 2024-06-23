@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity
 public class Disciplina {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -30,22 +30,42 @@ public class Disciplina {
 
     //RELACIONAMENTO PROFESSOR DISCIPLINA
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "professor_disciplina", joinColumns = @JoinColumn(name = "id_professor"),
+    @JoinTable(
+            name = "Disciplina_Professor",
+            joinColumns = @JoinColumn(name = "id_professor"),
             inverseJoinColumns = @JoinColumn(name = "id_disciplina"))
     private List<Professor> professorDisciplinaList;
 
     //RELACIONAMENTO TURMA DISCIPLINA
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "turma_disciplina", joinColumns = @JoinColumn(name = "id_turma"),
+    @JoinTable(
+            name = "Turma_Disciplina",
+            joinColumns = @JoinColumn(name = "id_turma"),
             inverseJoinColumns = @JoinColumn(name = "id_disciplina"))
-    private List<Turma> turmaDisciplinaList;
+    private List<Turma> turmaDisciplinaList = new ArrayList<>();
 
     //RELACIONAMENTO CONTEUDO DISCIPLINA
-    @OneToMany(mappedBy = "Disciplina", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
     private List<Conteudo> conteudoDisciplinaList = new ArrayList<>();
 
     //RELACIONAMENTO MEDIA DISCIPLINA
-    @OneToOne(mappedBy = "Disciplina", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "disciplina", cascade = CascadeType.ALL)
     private Media media;
+
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "disciplina_Aluno",
+            joinColumns = @JoinColumn(name = "id_aluno"),
+            inverseJoinColumns = @JoinColumn(name = "id_disciplina")
+    )
+    private List<Aluno> alunoDisciplina = new ArrayList<>();
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }

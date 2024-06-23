@@ -24,8 +24,15 @@ public class Elo {
     @Column(nullable = false, length = 100, name = "pontuacao_elo")
     private double pontuação;
 
-    @OneToMany
+    @Column(name = "elos_dos_alunos")
+    @OneToMany(mappedBy = "elo")
     private List<AlunosElo> eloDosAlunos = new ArrayList<>();
 
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }

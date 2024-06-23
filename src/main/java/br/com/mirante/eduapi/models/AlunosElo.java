@@ -20,12 +20,20 @@ public class AlunosElo {
     private double pontuacaoDoAluno;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_elo")
     private Elo elo;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_aluno")
     private Aluno aluno;
+
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }

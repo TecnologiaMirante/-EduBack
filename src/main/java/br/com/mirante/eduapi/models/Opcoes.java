@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Opcoes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -30,4 +30,11 @@ public class Opcoes {
     @ManyToOne
     @JoinColumn(name = "id_questoes", nullable = false)
     private Questoes questoes;
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 }

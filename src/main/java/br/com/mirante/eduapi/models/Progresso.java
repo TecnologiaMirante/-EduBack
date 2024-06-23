@@ -20,7 +20,7 @@ public class Progresso {
     @Column(name = "progresso")
     private String progresso;
 
-    @OneToMany(mappedBy = "Aula",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "progresso",cascade = CascadeType.ALL)
     private List<Aula> Aulalist = new ArrayList<>();
 
 }
