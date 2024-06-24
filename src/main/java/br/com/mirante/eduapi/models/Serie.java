@@ -29,9 +29,8 @@ public class Serie {
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
     private List<Turma> turmaSerieList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "serie")
-    @JoinColumn(name = "Id_aluno")
-    private List<Aluno> alunoSerie = new ArrayList<>();
+    @OneToMany(mappedBy = "alunoSerie")
+    private List<Aluno> serieAluno = new ArrayList<>();
 
 
     @PrePersist

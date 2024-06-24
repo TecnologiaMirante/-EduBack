@@ -51,7 +51,8 @@ public class Aluno extends Usuario {
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Serie serie;
+    @JoinColumn(name = "Id_serie")
+    private Serie alunoSerie;
 
 
 
