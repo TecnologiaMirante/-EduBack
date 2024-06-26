@@ -14,3 +14,4 @@ public class Admin {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 }
+
