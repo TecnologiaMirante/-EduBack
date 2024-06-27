@@ -54,7 +54,7 @@ public class Usuario {
     private String facebook;
 
     @Column(name = "whatssapp_url", nullable = false, length = 100)
-    private String whatssapp;
+    private String whatsApp;
 
     @Column(name = "twitter_url", nullable = false, length = 100)
     private String twitter;
