@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class Usuario {
     @Column(name = "telefone", nullable = false, length = 15)
     private String telefone;
 
-    @Column(name = "sexo", nullable = false, length = 9)
+    @Column(name = "sexo", nullable = false, length = 10)
     private String sexo;
 
     @Column(name = "cpf", nullable = false, length = 15)
@@ -41,8 +42,9 @@ public class Usuario {
     @Column(name = "avatarUrl", nullable = false, length = 100)
     private String avatar;
 
-    @Column(name = "data_de_nascimento", nullable = false, length = 100)
-    private LocalDateTime dateDeNascimento;
+    @Column(name = "data_de_nascimento", nullable = false)
+    @CreationTimestamp
+    private LocalDateTime dataDeNascimento;
 
     @Column(name = "status", nullable = false, length = 10)
     private String status;
@@ -68,14 +70,14 @@ public class Usuario {
     @Column(name = "bairro", nullable = false, length = 100)
     private String bairro;
 
-    @Column(name = "numero_endereco", nullable = false, length = 100)
-    private Integer numeroEndereco;
+    @Column(name = "numero_endereco", nullable = false, length = 10)
+    private String numeroEndereco;
 
     @Column(name = "complemento", nullable = false, length = 100)
     private String complemento;
 
-    @Column(name = "cep", nullable = false, length = 100)
-    private Integer cep;
+    @Column(name = "cep", nullable = false, length = 15)
+    private String cep;
 
     @Column(name = "referencia", nullable = false, length = 100)
     private String referencia;

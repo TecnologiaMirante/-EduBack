@@ -19,6 +19,7 @@ public class UsuarioDTO {
     private String matricula;
     private String avatar;
     private LocalDateTime dataDeNascimento;
+    private String status;
     private String instagram;
     private String facebook;
     private String twitter;

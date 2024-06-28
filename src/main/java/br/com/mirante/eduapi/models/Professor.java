@@ -20,8 +20,9 @@ public class Professor extends Usuario {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "turmas", nullable = false, length = 150)
-    private String turmas;
+  /*  @Column(name = "turmas", nullable = false, length = 150)
+    //lista de turmas
+    private Integer turmas;*/
 
     @Column(name = "materias", nullable = false, length = 100)
     private String materias;
