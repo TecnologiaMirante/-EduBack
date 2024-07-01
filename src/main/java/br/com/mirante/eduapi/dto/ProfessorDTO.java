@@ -17,4 +17,6 @@ public class ProfessorDTO {
     private String formacao;
     private String experiencia;
     private List<Turma> turmas;
+
+    //role do keyclock
 }

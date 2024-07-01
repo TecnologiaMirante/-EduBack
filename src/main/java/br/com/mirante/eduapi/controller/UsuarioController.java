@@ -25,6 +25,7 @@ import java.util.UUID;
 @Tag(description = "Retorna Dados dos Usuarios", name = "Usuario")
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
+    //fazer rota para pegar os usuarios com dto ou colocar em uma rota existente
 
     @Autowired
     private UsuarioService usuarioService;
@@ -81,5 +82,4 @@ public class UsuarioController {
         }
         return ResponseEntity.notFound().build();
     }
-
 }

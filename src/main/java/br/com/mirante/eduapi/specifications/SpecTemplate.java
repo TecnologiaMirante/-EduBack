@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.specifications;
 
+import br.com.mirante.eduapi.models.Aluno;
 import br.com.mirante.eduapi.models.Escola;
 import br.com.mirante.eduapi.models.Professor;
 import br.com.mirante.eduapi.models.Usuario;
@@ -21,6 +22,8 @@ public class SpecTemplate {
 
     public interface UsuarioSpec extends Specification<Usuario> {}
 
-    public interface ProfessorSepc extends Specification<Professor> {}
+    public interface ProfessorSpec extends Specification<Professor> {}
+
+    public interface AlunoSpec extends Specification<Aluno> {}
 
 }

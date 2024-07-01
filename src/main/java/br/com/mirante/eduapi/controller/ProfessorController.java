@@ -33,7 +33,7 @@ public class ProfessorController {
     @GetMapping("/findAll")
     @Operation(summary = "Consultar todos os professores", description = "Endpoint para consultar professores. ",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<Page<ProfessorDTO>> findAll(SpecTemplate.ProfessorSepc spec, Pageable pageable) {
+    public ResponseEntity<Page<ProfessorDTO>> findAll(SpecTemplate.ProfessorSpec spec, Pageable pageable) {
         Page<Professor> consultaPage = professorService.findAll(spec, pageable);
 
         if (consultaPage.isEmpty()){
@@ -63,7 +63,7 @@ public class ProfessorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     @Operation(summary = "Atualizar os Professores por ID.", description = "Endpoint para atualizar os professores pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<ProfessorDTO> update(@RequestBody ProfessorDTO professorDTO, @PathVariable UUID id){
