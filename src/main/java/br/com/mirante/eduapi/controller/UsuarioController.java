@@ -30,7 +30,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-
     @GetMapping("/findAll")
     @Operation(summary = "Consultar todos os usuarios", description = "Endpoint para consultar usuarios. ",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -52,7 +51,6 @@ public class UsuarioController {
         UsuarioDTO usuarioSaved = usuarioService.save(usuarioDTO);
 
         return ResponseEntity.ok(usuarioSaved);
-
     }
 
     @GetMapping("/{id}")

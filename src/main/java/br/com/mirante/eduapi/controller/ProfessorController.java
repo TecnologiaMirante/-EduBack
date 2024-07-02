@@ -24,7 +24,7 @@ import java.util.UUID;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Tag(description = "Retorna Dados dos Professores", name = "Professor")
-@RequestMapping(value = "/Professor")
+@RequestMapping(value = "/professor")
 public class ProfessorController {
 
     @Autowired

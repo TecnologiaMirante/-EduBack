@@ -20,6 +20,13 @@ public class SpecTemplate {
     })
     public interface EscolaSpec extends Specification<Escola> {}
 
+    @And({
+            @Spec(path = "nome", spec = Like.class),
+            @Spec(path = "email", spec = Equal.class),
+            @Spec(path = "telefone", spec = Equal.class),
+            @Spec(path = "cpf", spec = Equal.class),
+            @Spec(path = "matricula", spec = Equal.class)
+    })
     public interface UsuarioSpec extends Specification<Usuario> {}
 
     public interface ProfessorSpec extends Specification<Professor> {}

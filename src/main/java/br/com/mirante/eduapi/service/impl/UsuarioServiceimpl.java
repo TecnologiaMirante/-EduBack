@@ -2,7 +2,6 @@ package br.com.mirante.eduapi.service.impl;
 
 import br.com.mirante.eduapi.dto.UsuarioDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
-import br.com.mirante.eduapi.mappers.EscolaMapper;
 import br.com.mirante.eduapi.mappers.UsuarioMapper;
 import br.com.mirante.eduapi.models.Usuario;
 import br.com.mirante.eduapi.repository.UsuarioRepository;
