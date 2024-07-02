@@ -63,7 +63,7 @@ public class ProfessorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     @Operation(summary = "Atualizar os Professores por ID.", description = "Endpoint para atualizar os professores pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<ProfessorDTO> update(@RequestBody ProfessorDTO professorDTO, @PathVariable UUID id){
