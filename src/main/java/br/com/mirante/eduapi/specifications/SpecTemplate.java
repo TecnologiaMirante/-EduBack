@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.specifications;
 
+import br.com.mirante.eduapi.models.Aula;
 import br.com.mirante.eduapi.models.Escola;
 import br.com.mirante.eduapi.models.Usuario;
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
@@ -20,4 +21,5 @@ public class SpecTemplate {
 
     public interface UsuarioSpec extends Specification<Usuario> {}
 
+    public interface AulaSpec extends Specification<Aula> {}
 }
