@@ -29,29 +29,29 @@ public class SerieServiceImpl implements SerieService{
     @Override
     public SerieDTO save(SerieDTO serieDTO) throws BusinessException {
 
-        Serie serie = SerieMapper.INSTANCE.serieToserieDTO(serieDTO);
+        Serie serie = SerieMapper.INSTANCE.Toserie(serieDTO);
 
         if (serieRepository.findByNome(serie.getNome()) != null && serieRepository.findByTurno(serie.getTurno()) != null){
             throw new BusinessException("Série já existe com esse nome e turno");
         }
         serie = serieRepository.save(serie);
 
-        return SerieMapper.INSTANCE.serieToserieDTO(serie);
+        return SerieMapper.INSTANCE.ToserieDTO(serie);
     }
 
     @Override
     public Optional<SerieDTO> findById(UUID id) {
         return serieRepository.findById(id)
-                .map(SerieMapper.INSTANCE::serieToserieDTO);
+                .map(SerieMapper.INSTANCE::ToserieDTO);
     }
 
     @Override
     public Optional<SerieDTO> update(UUID id, SerieDTO serieDTO) {
         if (serieRepository.existsById(id)) {
-            Serie serie = SerieMapper.INSTANCE.serieToserieDTO(serieDTO);
+            Serie serie = SerieMapper.INSTANCE.Toserie(serieDTO);
             serie.setId(id);
             serie = serieRepository.save(serie);
-            return Optional.of(SerieMapper.INSTANCE.serieToserieDTO(serie));
+            return Optional.of(SerieMapper.INSTANCE.ToserieDTO(serie));
         }
         return Optional.empty();
     }

@@ -1,9 +1,6 @@
 package br.com.mirante.eduapi.specifications;
 
-import br.com.mirante.eduapi.models.Escola;
-import br.com.mirante.eduapi.models.Professor;
-import br.com.mirante.eduapi.models.Serie;
-import br.com.mirante.eduapi.models.Usuario;
+import br.com.mirante.eduapi.models.*;
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
 import net.kaczmarzyk.spring.data.jpa.domain.Like;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
@@ -26,5 +23,7 @@ public class SpecTemplate {
     public interface ProfessorSepc extends Specification<Professor> {}
 
     public interface SerieSpec extends Specification<Serie>{}
+
+    public interface DisciplinaSpec extends Specification<Disciplina>{}
 
 }

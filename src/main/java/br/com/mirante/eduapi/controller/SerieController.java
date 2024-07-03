@@ -35,10 +35,10 @@ public class SerieController {
         Page<Serie> consultaPage = serieService.findAll(spec, pageable);
 
         if (consultaPage.isEmpty()){
-            return  new ResponseEntity<>(consultaPage.map(SerieMapper.INSTANCE::serieToserieDTO), HttpStatus.NOT_FOUND);
+            return  new ResponseEntity<>(consultaPage.map(SerieMapper.INSTANCE::ToserieDTO), HttpStatus.NOT_FOUND);
         }
         else{
-            return new ResponseEntity<>(consultaPage.map(SerieMapper.INSTANCE::serieToserieDTO), HttpStatus.OK);
+            return new ResponseEntity<>(consultaPage.map(SerieMapper.INSTANCE::ToserieDTO), HttpStatus.OK);
         }
     }
 
