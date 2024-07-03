@@ -25,5 +25,6 @@ public class SpecTemplate {
     public interface SerieSpec extends Specification<Serie>{}
 
     public interface DisciplinaSpec extends Specification<Disciplina>{}
+    public interface TurmaSpec extends Specification<Turma>{}
 
 }
