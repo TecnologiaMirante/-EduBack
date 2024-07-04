@@ -2,6 +2,7 @@ package br.com.mirante.eduapi.controller;
 
 
 import br.com.mirante.eduapi.dto.AulaDTO;
+import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.AulaMapper;
 import br.com.mirante.eduapi.models.Aula;
 import br.com.mirante.eduapi.service.AulaService;
@@ -48,6 +49,31 @@ public class AulaController {
         return  aulaService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    @Operation(summary = "Cadastro de Aula.", description = "Endpoint para Cadastra Aulas.",
+            security = {@SecurityRequirement(name = "bearer-key")})
+    public ResponseEntity<AulaDTO> create(@RequestBody AulaDTO aulaDTO) throws BusinessException {
+        AulaDTO savedAula = aulaService.save(aulaDTO);
+        return ResponseEntity.ok(savedAula);
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Atualização de Aula.", description = "Endpoint para atualizar os dados das Aulas",
+            security = {@SecurityRequirement(name = "bearer-key")})
+    public ResponseEntity<AulaDTO> update(@PathVariable  UUID id, @RequestBody AulaDTO aulaDTO){
+        return aulaService.update(id,aulaDTO).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Remoção de Aula", description = "Endpoint para a remover uma Aula",
+            security = {@SecurityRequirement(name = "bearer-key")})
+    public ResponseEntity<AulaDTO> delete(@PathVariable UUID id){
+        if (aulaService.deleteById(id)){
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.noContent().build();
     }
 
 }
