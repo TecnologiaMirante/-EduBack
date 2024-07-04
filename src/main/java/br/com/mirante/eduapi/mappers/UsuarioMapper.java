@@ -1,6 +1,6 @@
 package br.com.mirante.eduapi.mappers;
-import br.com.mirante.eduapi.dto.UsuarioDTO;
 
+import br.com.mirante.eduapi.dto.UsuarioDTO;
 import br.com.mirante.eduapi.models.Usuario;
 import org.mapstruct.factory.Mappers;
 import org.mapstruct.Mapper;

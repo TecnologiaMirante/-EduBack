@@ -15,6 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@DiscriminatorColumn(name = "tipo_de_usuario", discriminatorType = DiscriminatorType.STRING)
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
     @Id
@@ -43,7 +44,6 @@ public class Usuario {
     private String avatar;
 
     @Column(name = "data_de_nascimento", nullable = false)
-    @CreationTimestamp
     private LocalDateTime dataDeNascimento;
 
     @Column(name = "status", nullable = false, length = 10)

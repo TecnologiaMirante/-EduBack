@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -33,6 +34,14 @@ public class UsuarioDTO {
     private String cep;
     private String referencia;
 
+    //role keycloack
+
     //fazer depois para colocar um id no usuario_prof, ususario_admin e usuario_aluno
     //private UUID escola;
+
+    private List<ProfessorDTOGet> professores;
+
+    private List<AlunoDTO> alunos;
+
+
 }

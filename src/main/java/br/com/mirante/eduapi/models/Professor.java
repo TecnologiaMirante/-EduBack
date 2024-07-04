@@ -14,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@DiscriminatorValue("PROFESSOR")
 public class Professor extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

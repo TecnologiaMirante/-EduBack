@@ -15,13 +15,15 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@DiscriminatorValue("ALUNO")
 public class Aluno extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false, length = 7, name = "turma_aluno")
-    private String turma;
+    @ManyToOne
+    @JoinColumn(name = "id_turma")
+    private Turma turma;
 
     @ManyToOne
     @JoinColumn(name = "Id_usuario")

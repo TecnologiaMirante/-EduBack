@@ -17,7 +17,9 @@ public class ProfessorDTO {
     private String materiais;
     private String formacao;
     private String experiencia;
-    private List<Turma> turmas;
+
+    //dto de turma
+    //private List<Turma> turmas;
 
     //role do keyclock
 }

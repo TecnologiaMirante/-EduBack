@@ -35,6 +35,9 @@ public class Turma {
     @ManyToMany(mappedBy = "turmaDisciplinaList")
     private List<Disciplina> turmaDisciplinaList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "turma")
+    private List<Aluno> alunos = new ArrayList<>();
+
 
     //RELACIONAMENTO TURMA SERIE
     @ManyToOne
