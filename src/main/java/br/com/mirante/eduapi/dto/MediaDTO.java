@@ -9,12 +9,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TurmaDTO {
+public class MediaDTO {
     private UUID id;
-    private String nome;
-    private String turno;
-    private String codigo;
-    private Boolean status;
-    //Relacionamento Serie
-
+    private String nota;
+    //Relacionamento Disciplina e Aluno
 }

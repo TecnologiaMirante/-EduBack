@@ -14,4 +14,5 @@ public class SerieDTO {
     private String nome;
     private UUID id;
     private String turno;
+    //Relacionamento Aluno
 }

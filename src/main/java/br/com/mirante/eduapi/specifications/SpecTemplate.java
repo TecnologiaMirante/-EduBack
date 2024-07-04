@@ -30,4 +30,6 @@ public class SpecTemplate {
 
     public interface BimestreSpec extends Specification<Bimestre>{}
 
+    public interface MediaSpec extends Specification<Media>{}
+
 }
