@@ -32,4 +32,6 @@ public class SpecTemplate {
 
     public interface MediaSpec extends Specification<Media>{}
 
+    public interface ConteudoSpec extends Specification<Conteudo>{}
+
 }
