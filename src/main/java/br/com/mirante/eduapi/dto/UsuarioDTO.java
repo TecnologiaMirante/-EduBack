@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.Permissoes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class UsuarioDTO {
     private String complemento;
     private String cep;
     private String referencia;
+    private Permissoes permissoes;
 
     //role keycloack
 

@@ -17,9 +17,12 @@ import java.util.UUID;
 @Entity
 @DiscriminatorValue("ALUNO")
 public class Aluno extends Usuario {
-    @Id
+ /*   @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID id;*/
+
+    @Enumerated(EnumType.STRING)
+    private Permissoes permissoes;
 
     @ManyToOne
     @JoinColumn(name = "id_turma")
@@ -62,10 +65,10 @@ public class Aluno extends Usuario {
     private List<RankGeral> ranksGeral;*/
 
 
-    public void generateUUID() {
+ /*   public void generateUUID() {
         if (id == null) {
             id = UUID.randomUUID();
         }
-    }
+    }*/
 
 }

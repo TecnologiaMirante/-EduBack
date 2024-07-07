@@ -16,10 +16,10 @@ import java.util.UUID;
 @Entity
 @DiscriminatorValue("PROFESSOR")
 public class Professor extends Usuario {
-    @Id
+  /*  @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private UUID id;
+    private UUID id;*/
 
   /*  @Column(name = "turmas", nullable = false, length = 150)
     //lista de turmas
@@ -33,6 +33,10 @@ public class Professor extends Usuario {
 
     @Column(name = "experiencia", nullable = false, length = 2)
     private String experiencia;
+
+
+    @Enumerated(EnumType.STRING)
+    private Permissoes permissoes;
 
     //RELACIONAMENTO PROFESSOR DISCIPLINA
     @ManyToMany(mappedBy = "professorDisciplinaList")
@@ -49,11 +53,10 @@ public class Professor extends Usuario {
     @ManyToMany(mappedBy = "professorTurma")
     private List<Turma>turmasProfessor = new ArrayList<>();
 
-
-    public void generateUUID() {
+ /*   public void generateUUID() {
         if (id == null) {
             id = UUID.randomUUID();
         }
-    }
+    }*/
 
 }

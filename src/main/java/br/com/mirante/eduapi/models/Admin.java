@@ -15,17 +15,20 @@ import java.util.UUID;
 @Entity
 @DiscriminatorValue("ADMIN")
 public class Admin extends Usuario {
-    @Id
+   /* @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID id;*/
+
+    @Enumerated(EnumType.STRING)
+    private Permissoes permissoes;
 
     @ManyToOne
     @JoinColumn(name = "Id_usuario")
     private Usuario admin;
 
-    public void generateUUID() {
+    /*public void generateUUID() {
         if (id == null) {
             id = UUID.randomUUID();
         }
-    }
+    }*/
 }

@@ -18,8 +18,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("br.com.mirante")
 @SpringBootApplication
 public class EduApiApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(EduApiApplication.class, args);
-    }
+    public static void main(String[] args) {SpringApplication.run(EduApiApplication.class, args);}
 
 }

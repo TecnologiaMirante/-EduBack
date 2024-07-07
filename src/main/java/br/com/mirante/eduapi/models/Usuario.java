@@ -82,6 +82,8 @@ public class Usuario {
     @Column(name = "referencia", nullable = false, length = 100)
     private String referencia;
 
+    private Permissoes permissoes;
+
     @ManyToOne
     @JoinColumn(name = "id_escola")
     private Escola escola;

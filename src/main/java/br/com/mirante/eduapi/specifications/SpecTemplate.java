@@ -32,4 +32,8 @@ public class SpecTemplate {
 
     public interface UsuarioResponsavelSpec extends Specification<UsuarioResponsavel> {}
 
+    public interface ConquistaSpec extends Specification<Conquistas> {}
+
+    public interface EloSpec extends Specification<Elo> {}
+
 }
