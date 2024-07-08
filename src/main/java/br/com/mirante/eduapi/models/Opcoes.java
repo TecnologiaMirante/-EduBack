@@ -21,7 +21,7 @@ public class Opcoes {
     private UUID id;
 
     @Column(name = "descricao", nullable = false, length = 150)
-    private String nota;
+    private String descricao;
 
     @Column(name = "correto", nullable = false, length = 150)
     private Boolean correto;

@@ -29,6 +29,7 @@ public class SpecTemplate {
             @Spec(path = "matricula", spec = Equal.class)
     })
     public interface UsuarioSpec extends Specification<Usuario> {}
+
     @And({
            @Spec(path = "titulo", spec = Like.class),
            @Spec(path = "decricao", spec = Equal.class),
@@ -45,6 +46,7 @@ public class SpecTemplate {
     })
     public interface QuestoesSpac extends Specification<Questoes>{}
 
+    public interface  OpcoesSpec extends Specification<Opcoes> {}
 
     public interface ProfessorSpec extends Specification<Professor> {}
 

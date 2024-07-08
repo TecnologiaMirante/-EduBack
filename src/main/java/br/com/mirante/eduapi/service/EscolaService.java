@@ -5,7 +5,6 @@ import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.models.Escola;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Range;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Optional;
