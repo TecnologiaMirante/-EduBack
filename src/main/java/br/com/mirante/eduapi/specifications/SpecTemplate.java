@@ -36,4 +36,5 @@ public class SpecTemplate {
 
     public interface AvaliacaoSpec extends Specification<Avaliacao>{}
 
+    public interface MaterialComplementarSpec extends Specification<MaterialComplementar>{}
 }

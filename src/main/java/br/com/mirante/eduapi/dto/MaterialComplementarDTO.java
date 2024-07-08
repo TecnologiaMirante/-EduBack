@@ -9,15 +9,9 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TurmaDTO {
+public class MaterialComplementarDTO {
     private UUID id;
-    private String nome;
-    private String turno;
-    private String codigo;
-    private Boolean status;
-    private UUID id_serie;
-
-
-    //Relacionamento Serie
-
+    private String titulo;
+    private String material; // MUDAR ARQUIVO
+    //RELACIONAMENTO CONTEUDO
 }
