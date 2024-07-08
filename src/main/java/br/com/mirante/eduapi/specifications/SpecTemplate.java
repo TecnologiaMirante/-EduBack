@@ -2,6 +2,7 @@ package br.com.mirante.eduapi.specifications;
 
 import br.com.mirante.eduapi.models.Aula;
 import br.com.mirante.eduapi.models.Escola;
+import br.com.mirante.eduapi.models.Questoes;
 import br.com.mirante.eduapi.models.Usuario;
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
 import net.kaczmarzyk.spring.data.jpa.domain.Like;
@@ -31,6 +32,12 @@ public class SpecTemplate {
            @Spec(path = "img", spec = Like.class),
     })
     public interface AulaSpec extends Specification<Aula> {}
+
+
+    @And({
+            @Spec(path = "titulo",spec = Like.class)
+    })
+    public interface QuestoesSpac extends Specification<Questoes>{}
 
     public interface UsuarioSpec extends Specification<Usuario> {}
 
