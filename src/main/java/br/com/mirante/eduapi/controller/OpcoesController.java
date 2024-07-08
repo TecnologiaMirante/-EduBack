@@ -68,14 +68,14 @@ public class OpcoesController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Remoção de Escola.", description = "Endpoint para remover uma escola.",
+    @Operation(summary = "Remoção da questão.", description = "Endpoint para remover uma Questão.",
             security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Void> delete(@PathVariable UUID id){
         if (opcoesService.deleteById(id)) {
             return ResponseEntity.ok().build();
-        }else{
-            return ResponseEntity.noContent().build();
         }
+        return ResponseEntity.noContent().build();
+
     }
 
 }

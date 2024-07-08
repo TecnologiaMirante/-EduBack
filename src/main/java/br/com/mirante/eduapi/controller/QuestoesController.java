@@ -69,8 +69,8 @@ public class QuestoesController {
     public ResponseEntity<Void> delete(@PathVariable UUID id){
         if (questoesService.deleteById(id)){
             return ResponseEntity.ok().build();
-        }else{
-            return ResponseEntity.noContent().build();
         }
+        return ResponseEntity.noContent().build();
+
     }
 }
