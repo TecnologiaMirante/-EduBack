@@ -35,9 +35,9 @@ public class EloController {
         Page<Elo> consultaPage = eloService.findAll(spec, page);
         if (consultaPage.isEmpty()) {
             return new ResponseEntity<>(consultaPage.map(EloMapper.INSTANCE::eloToDTO), HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(consultaPage.map(EloMapper.INSTANCE::eloToDTO), HttpStatus.OK);
         }
+        return new ResponseEntity<>(consultaPage.map(EloMapper.INSTANCE::eloToDTO), HttpStatus.OK);
+
     }
 
     @PostMapping("/")
