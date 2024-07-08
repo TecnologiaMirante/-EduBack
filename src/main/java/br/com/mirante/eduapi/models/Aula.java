@@ -50,13 +50,14 @@ public class Aula {
     @Column(name = "conteudo_realizado", nullable = false)
     private Boolean conteudoRealizado;
 
+    @Column(name = "progresso")
+    private boolean progresso;
+
     @ManyToOne
     @JoinColumn(name = "id_aluno")
     private Aluno aluno;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Progresso")
-    private Progresso progresso;
+
 
     @ManyToMany
     @JoinTable(

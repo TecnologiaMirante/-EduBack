@@ -18,7 +18,7 @@ public class Progresso {
 
     //Pendente
     @Column(name = "progresso")
-    private String progresso;
+    private boolean progresso;
 
     @OneToMany(mappedBy = "progresso",cascade = CascadeType.ALL)
     private List<Aula> Aulalist = new ArrayList<>();

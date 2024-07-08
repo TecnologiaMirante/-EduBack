@@ -21,4 +21,5 @@ public class AulaDTO {
     private Date data;
     private Boolean favoritar;
     private Boolean conteudoRealizado;
+    private boolean progresso;
 }
