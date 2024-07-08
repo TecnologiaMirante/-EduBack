@@ -62,4 +62,6 @@ public class SpecTemplate {
 
     public interface AdminSpec extends Specification<Admin> {}
 
+    public interface AlunoEloSpec extends Specification<AlunosElo>{}
+
 }
