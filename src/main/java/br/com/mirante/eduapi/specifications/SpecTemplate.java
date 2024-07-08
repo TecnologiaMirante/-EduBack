@@ -34,4 +34,6 @@ public class SpecTemplate {
 
     public interface ConteudoSpec extends Specification<Conteudo>{}
 
+    public interface AvaliacaoSpec extends Specification<Avaliacao>{}
+
 }
