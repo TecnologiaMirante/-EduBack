@@ -65,6 +65,7 @@ public class EscolaController {
         return escolaService.update(id, escolaDTO)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+
     }
 
     @DeleteMapping("/{id}")

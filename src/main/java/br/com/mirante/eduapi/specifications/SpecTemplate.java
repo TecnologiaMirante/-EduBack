@@ -36,4 +36,8 @@ public class SpecTemplate {
 
     public interface EloSpec extends Specification<Elo> {}
 
+    public interface AlunoInterecaoSpec extends Specification<AlunoInteracao>{}
+
+    public interface AdminSpec extends Specification<Admin> {}
+
 }
