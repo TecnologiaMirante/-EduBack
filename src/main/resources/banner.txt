@@ -13,4 +13,4 @@ ${Ansi.GREEN} info.build.name         : ${info.build.name}
 ${Ansi.GREEN} info.build.description  : ${info.build.description}
 ${Ansi.GREEN} spring-boot.version     : ${spring-boot.version}
 
-${Ansi.YELLOW}**********************************************************************************************************
+${Ansi.YELLOW}***********************************************************************************************************
