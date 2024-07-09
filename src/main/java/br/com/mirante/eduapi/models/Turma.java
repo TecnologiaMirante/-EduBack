@@ -35,6 +35,9 @@ public class Turma {
     @ManyToMany(mappedBy = "turmaDisciplinaList")
     private List<Disciplina> turmaDisciplinaList = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "RankTurmaList")
+    private  List<RankTurma> RankTurmaList = new ArrayList<>();
+
     @OneToMany(mappedBy = "turma")
     private List<Aluno> alunos = new ArrayList<>();
 

@@ -29,7 +29,7 @@ public class RankGeral {
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_aluno", nullable = false)
+    @JoinColumn(name = "Id_escola", nullable = false)
     private Escola escola;
 
 

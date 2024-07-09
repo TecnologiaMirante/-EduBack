@@ -13,8 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class RankSerie {
-
+public class RankTurma {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -27,10 +26,9 @@ public class RankSerie {
 
     @Column(name = "Terceiro_Lugar")
     private String terceiro;
-    private  List<RankSerie>  RankList = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "RankSerieList")
-    private  List<Serie> SerieList = new ArrayList<>();
+    @ManyToMany(mappedBy = "TurmaList")
+    private List<Turma> TurmaList = new ArrayList<>();
 
     @PrePersist
     public void generateUUID() {
