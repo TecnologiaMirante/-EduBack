@@ -11,8 +11,8 @@ import java.util.UUID;
 @AllArgsConstructor
 public class SerieDTO {
 
-    private String nome;
     private UUID id;
+    private String nome;
     private String turno;
-    //Relacionamento Aluno
+    private String turma;
 }

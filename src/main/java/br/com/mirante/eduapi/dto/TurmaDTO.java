@@ -17,6 +17,7 @@ public class TurmaDTO {
     private Boolean status;
     private UUID id_serie;
 
+    //mudar turma para ser um atributo de serie
 
     //Relacionamento Serie
 

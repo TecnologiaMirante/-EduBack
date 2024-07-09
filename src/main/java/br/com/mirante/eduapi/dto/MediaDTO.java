@@ -1,5 +1,7 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.Aluno;
+import br.com.mirante.eduapi.models.Disciplina;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,5 +14,6 @@ import java.util.UUID;
 public class MediaDTO {
     private UUID id;
     private String nota;
-    //Relacionamento Disciplina e Aluno
+    private Disciplina disciplina;
+    private Aluno aluno;
 }

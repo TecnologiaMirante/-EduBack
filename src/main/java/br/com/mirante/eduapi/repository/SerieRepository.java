@@ -12,4 +12,5 @@ public interface SerieRepository  extends JpaRepository<Serie, UUID>, JpaSpecifi
 
     Serie findByNome(String nome);
     Serie findByTurno(String turno);
+    Serie findByTurma(String turma);
 }

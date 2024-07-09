@@ -9,7 +9,6 @@ import org.mapstruct.factory.Mappers;
 public interface SerieMapper {
 
     SerieMapper INSTANCE = Mappers.getMapper(SerieMapper.class);
-    //arrumar mapeamento
     SerieDTO ToserieDTO(Serie serie);
     Serie Toserie(SerieDTO serieDTO);
 }

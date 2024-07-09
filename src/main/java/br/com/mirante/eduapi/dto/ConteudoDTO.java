@@ -1,5 +1,8 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.Bimestre;
+import br.com.mirante.eduapi.models.Disciplina;
+import br.com.mirante.eduapi.models.Professor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +16,7 @@ public class ConteudoDTO {
     private UUID id;
     private String titulo;
     private String descricao;
-    //RELACIONAMENTO DISCIPLINA BIMESTRE E PROFESSOR
+    private Disciplina disciplina;
+    private Professor professor;
+    private Bimestre bimestre;
 }

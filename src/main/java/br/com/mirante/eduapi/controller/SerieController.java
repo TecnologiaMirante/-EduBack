@@ -27,7 +27,6 @@ public class SerieController {
     @Autowired
     private SerieService serieService;
 
-    // PROBLEMA NO FIND ALL
     @GetMapping("/findAll")
     @Operation(summary = "Consultar todas as series", description = "Endpoint para consultar series. ",
             security = {@SecurityRequirement(name = "bearer-key")})

@@ -12,5 +12,4 @@ import java.util.UUID;
 public class BimestreDTO {
     private UUID id;
     private String data;
-    //Relacionamento media
 }

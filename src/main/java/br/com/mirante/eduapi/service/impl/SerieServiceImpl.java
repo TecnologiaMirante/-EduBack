@@ -31,8 +31,8 @@ public class SerieServiceImpl implements SerieService{
 
         Serie serie = SerieMapper.INSTANCE.Toserie(serieDTO);
 
-        if (serieRepository.findByNome(serie.getNome()) != null && serieRepository.findByTurno(serie.getTurno()) != null){
-            throw new BusinessException("Série já existe com esse nome e turno");
+        if (serieRepository.findByNome(serie.getNome()) != null && serieRepository.findByTurno(serie.getTurno()) != null && serieRepository.findByTurma(serie.getTurma())!= null){
+            throw new BusinessException("Série já existe com esse nome, turno e turma");
         }
         serie = serieRepository.save(serie);
 

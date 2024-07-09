@@ -14,6 +14,4 @@ public class DisciplinaDTO {
     private String nome;
     private String codigo;
     private Boolean status;
-
-
 }
