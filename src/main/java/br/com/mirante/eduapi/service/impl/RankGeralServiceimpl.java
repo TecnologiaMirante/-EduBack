@@ -18,16 +18,16 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class RankGeralServiceimpl implements RankGeralService {
+public class RankGeralServiceimpl {
 
     @Autowired
     private RankGeralRepository rankGeralRepository;
 
-    @Override
+
     public Page<RankGeral> findAll(Specification<RankGeral> spec, Pageable page) {
         return rankGeralRepository.findAll(spec, page);
     }
-    @Override
+
     public Optional<RankGeralDTO> findById(UUID id) {
         return rankGeralRepository.findById(id).map(RankGeralMapper.INSTANCE::rankGeralToRankGeralDTO);
     }
