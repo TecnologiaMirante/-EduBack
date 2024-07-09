@@ -1,4 +1,4 @@
-package br.com.mirante.eduapi.dto;
+package br.com.mirante.eduapi.controller;
 
 import br.com.mirante.eduapi.models.Permissoes;
 import lombok.AllArgsConstructor;
@@ -6,13 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioDTO {
+public class UsuarioDTOPost {
+
     private UUID id;
     private String nome;
     private String email;
@@ -35,10 +35,5 @@ public class UsuarioDTO {
     private String cep;
     private String referencia;
     private Permissoes permissoes;
-
-    private List<ProfessorDTOGet> professores;
-
-    private List<AlunoDTO> alunos;
-
 
 }

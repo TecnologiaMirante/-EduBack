@@ -16,22 +16,14 @@ import java.util.UUID;
 @Entity
 @DiscriminatorValue("PROFESSOR")
 public class Professor extends Usuario {
-  /*  @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private UUID id;*/
-
-  /*  @Column(name = "turmas", nullable = false, length = 150)
-    //lista de turmas
-    private Integer turmas;*/
 
     @Column(name = "materias", nullable = false, length = 100)
     private String materias;
 
-    @Column(name = "formacao", nullable = false, length = 15)
+    @Column(name = "formacao", nullable = false, length = 100)
     private String formacao;
 
-    @Column(name = "experiencia", nullable = false, length = 2)
+    @Column(name = "experiencia", nullable = false, length = 10)
     private String experiencia;
 
 
@@ -50,6 +42,7 @@ public class Professor extends Usuario {
     @JoinColumn(name = "Id_usuario")
     private Usuario professor;
 
+    @Column(nullable = true)
     @ManyToMany(mappedBy = "professorTurma")
     private List<Turma>turmasProfessor = new ArrayList<>();
 

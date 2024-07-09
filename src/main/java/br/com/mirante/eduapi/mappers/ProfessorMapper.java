@@ -10,4 +10,7 @@ public interface ProfessorMapper {
     ProfessorMapper INSTANCE = Mappers.getMapper(ProfessorMapper.class);
     ProfessorDTO professorToProfessorDTO(Professor professor);
     Professor professorDTOToProfessor(ProfessorDTO professorDTO);
+
+/*    ProfessorDTOGet professortoProfessorGetDTO(Professor professor);
+    Professor professorDTOGetToProfessor(ProfessorDTOGet professorDTO);*/
 }

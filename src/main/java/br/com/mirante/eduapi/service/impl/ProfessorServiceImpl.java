@@ -19,6 +19,7 @@ import java.util.UUID;
 @Service
 public class ProfessorServiceImpl implements ProfessorService {
 
+
     @Autowired
     private ProfessorRepository professorRepository;
 
@@ -32,7 +33,6 @@ public class ProfessorServiceImpl implements ProfessorService {
 
         Professor professor = ProfessorMapper.INSTANCE.professorDTOToProfessor(professorDTO);
 
-        System.out.println("Professor url :" + professor.getAvatar());
 
         if (professorRepository.findByCpf(professor.getCpf()) != null){
             throw new BusinessException("Usuario Ja existe com este cpf");
