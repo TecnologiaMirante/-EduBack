@@ -1,4 +1,4 @@
-package br.com.mirante.eduapi.controller;
+package br.com.mirante.eduapi.dto;
 
 import br.com.mirante.eduapi.models.Permissoes;
 import lombok.AllArgsConstructor;

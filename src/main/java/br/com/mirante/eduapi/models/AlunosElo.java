@@ -22,11 +22,11 @@ public class AlunosElo {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_elo")
-    private Elo elo;
+    private Elo eloAluno;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_aluno")
-    private Aluno aluno;
+    private Aluno alunoElo;
 
 
     @PrePersist

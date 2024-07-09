@@ -34,7 +34,7 @@ public class UsuarioResponsavel {
     @Column(name= "Data_De_Nascimentos", nullable = false , length = 15)
     private LocalDateTime DataDeNascimento;
 
-    @OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "responsavelAluno", cascade = CascadeType.ALL)
     private List<Aluno> responsavel = new ArrayList<>();
 
 

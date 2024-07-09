@@ -25,7 +25,7 @@ public class Elo {
     private double pontuação;
 
     @Column(name = "elos_dos_alunos")
-    @OneToMany(mappedBy = "elo")
+    @OneToMany(mappedBy = "eloAluno")
     private List<AlunosElo> eloDosAlunos = new ArrayList<>();
 
     @PrePersist

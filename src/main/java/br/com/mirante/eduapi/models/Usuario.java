@@ -22,79 +22,79 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "nome", nullable = false, length = 150)
+    @Column(name = "nome_usuario", nullable = false, length = 150)
     private String nome;
 
-    @Column(name = "email", nullable = false, length = 100)
+    @Column(name = "email_usuario", nullable = false, length = 100)
     private String email;
 
-    @Column(name = "telefone", nullable = false, length = 15)
+    @Column(name = "telefone_usuario", nullable = false, length = 15)
     private String telefone;
 
-    @Column(name = "sexo", nullable = false, length = 10)
+    @Column(name = "sexo_do_usuario", nullable = false, length = 10)
     private String sexo;
 
-    @Column(name = "cpf", nullable = false, length = 15)
+    @Column(name = "cpf_usuario", nullable = false, length = 15)
     private String cpf;
 
-    @Column(name = "matricula", nullable = false, length = 50)
+    @Column(name = "matricula_usuario", nullable = false, length = 50)
     private String matricula;
 
-    @Column(name = "avatarUrl", nullable = false, length = 100)
+    @Column(name = "avatarUrl_usuario", nullable = false, length = 100)
     private String avatar;
 
-    @Column(name = "data_de_nascimento", nullable = false)
+    @Column(name = "data_de_nascimento_usuario", nullable = false)
     private LocalDateTime dataDeNascimento;
 
-    @Column(name = "status", nullable = false, length = 10)
+    @Column(name = "status_do_usuario", nullable = false, length = 10)
     private String status;
 
-    @Column(name = "instagram_url", nullable = false, length = 100)
+    @Column(name = "instagram_url_usuario", nullable = false, length = 100)
     private String instagram;
 
-    @Column(name = "facebook_url", nullable = false, length = 100)
+    @Column(name = "facebook_url_usuario", nullable = false, length = 100)
     private String facebook;
 
-    @Column(name = "whatssapp_url", nullable = false, length = 100)
+    @Column(name = "whatssapp_url_usuario", nullable = false, length = 100)
     private String whatsApp;
 
     @Column(name = "twitter_url", nullable = false, length = 100)
     private String twitter;
 
-    @Column(name = "estado", nullable = false, length = 50)
+    @Column(name = "estado_usuario", nullable = false, length = 50)
     private String estado;
 
-    @Column(name = "cidade", nullable = false, length = 100)
+    @Column(name = "cidade_usuario", nullable = false, length = 100)
     private String cidade;
 
-    @Column(name = "bairro", nullable = false, length = 100)
+    @Column(name = "bairro_usuario", nullable = false, length = 100)
     private String bairro;
 
-    @Column(name = "numero_endereco", nullable = false, length = 10)
+    @Column(name = "numero_endereco_usuario", nullable = false, length = 10)
     private String numeroEndereco;
 
-    @Column(name = "complemento", nullable = false, length = 100)
+    @Column(name = "complemento_usuario", nullable = false, length = 100)
     private String complemento;
 
-    @Column(name = "cep", nullable = false, length = 15)
+    @Column(name = "cep_usuario", nullable = false, length = 15)
     private String cep;
 
-    @Column(name = "referencia", nullable = false, length = 100)
+    @Column(name = "referencia_usuario", nullable = false, length = 100)
     private String referencia;
 
     private Permissoes permissoes;
 
     @ManyToOne
     @JoinColumn(name = "id_escola")
-    private Escola escola;
+    private Escola usuarioEscola;
 
-    @OneToMany(mappedBy = "professor",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuarioProfessor",cascade = CascadeType.ALL)
     private List<Professor> professorList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "aluno",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuarioAluno",cascade = CascadeType.ALL)
     private List<Aluno> alunoList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuarioAdmin",cascade = CascadeType.ALL)
     private List<Admin> adminList = new ArrayList<>();
 
 

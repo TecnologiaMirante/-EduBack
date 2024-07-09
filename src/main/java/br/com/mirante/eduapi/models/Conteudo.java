@@ -28,12 +28,12 @@ public class Conteudo {
     //RELACIONAMENTO DISCIPLINA CONTEUDO
     @ManyToOne
     @JoinColumn(name = "id_disciplina", nullable = false)
-    private Disciplina disciplina;
+    private Disciplina disciplinaConteudo;
 
     //RELACIONAMENTO PROFESSOR CONTEUDO
     @ManyToOne
     @JoinColumn(name = "id_professor", nullable = false)
-    private Professor professor;
+    private Professor professorConteudo;
 
     //RELACIONAMENTO BIMESTRE CONTEUDO
     @ManyToOne

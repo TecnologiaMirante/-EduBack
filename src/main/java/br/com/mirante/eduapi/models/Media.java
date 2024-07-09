@@ -30,7 +30,7 @@ public class Media {
     //RELACIONAMENTO MEDIA DISCIPLINA
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "disciplina_id", referencedColumnName = "id")
-    private Disciplina disciplina;
+    private Disciplina disciplinaMedia;
 
     //RELACIONAMENTO MEDIA ALUNO
 //    @ManyToOne

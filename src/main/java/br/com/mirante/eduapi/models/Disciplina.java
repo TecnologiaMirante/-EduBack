@@ -45,11 +45,11 @@ public class Disciplina {
     private List<Turma> turmaDisciplinaList = new ArrayList<>();
 
     //RELACIONAMENTO CONTEUDO DISCIPLINA
-    @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "disciplinaConteudo", cascade = CascadeType.ALL)
     private List<Conteudo> conteudoDisciplinaList = new ArrayList<>();
 
     //RELACIONAMENTO MEDIA DISCIPLINA
-    @OneToOne(mappedBy = "disciplina", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "disciplinaMedia", cascade = CascadeType.ALL)
     private Media media;
 
 

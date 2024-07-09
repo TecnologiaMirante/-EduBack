@@ -35,21 +35,15 @@ public class Professor extends Usuario {
     private List<Disciplina> disciplinaProfessorList = new ArrayList<>();
 
     //RELACIONAMENTO PROFESSOR CONTEUDO
-    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "professorConteudo", cascade = CascadeType.ALL)
     private List<Conteudo> professorConteudoList = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "Id_usuario")
-    private Usuario professor;
+    private Usuario usuarioProfessor;
 
-    @Column(nullable = true)
+
     @ManyToMany(mappedBy = "professorTurma")
     private List<Turma>turmasProfessor = new ArrayList<>();
-
- /*   public void generateUUID() {
-        if (id == null) {
-            id = UUID.randomUUID();
-        }
-    }*/
 
 }

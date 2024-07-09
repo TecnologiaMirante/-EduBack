@@ -57,7 +57,7 @@ public class Escola {
     private String cpfCnpj;
 
 
-    @OneToMany(mappedBy = "escola", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuarioEscola", cascade = CascadeType.ALL)
     private List<Usuario> usuarioList = new ArrayList<>();
 
 

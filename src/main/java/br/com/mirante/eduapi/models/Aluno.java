@@ -17,20 +17,17 @@ import java.util.UUID;
 @Entity
 @DiscriminatorValue("ALUNO")
 public class Aluno extends Usuario {
- /*   @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;*/
 
     @Enumerated(EnumType.STRING)
     private Permissoes permissoes;
 
     @ManyToOne
     @JoinColumn(name = "id_turma")
-    private Turma turma;
+    private Turma turmaAluno;
 
     @ManyToOne
     @JoinColumn(name = "Id_usuario")
-    private Usuario aluno;
+    private Usuario usuarioAluno;
 
     @ManyToOne
     @JoinColumn(name = "id_RankAluno")
@@ -38,7 +35,7 @@ public class Aluno extends Usuario {
 
     @ManyToOne
     @JoinColumn(name = "Id_responsavel")
-    private UsuarioResponsavel responsavel;
+    private UsuarioResponsavel responsavelAluno;
 
     @ManyToMany
     @JoinTable(
@@ -48,11 +45,11 @@ public class Aluno extends Usuario {
     )
     private List<Conquistas> conquistas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "aluno")
+    @OneToMany(mappedBy = "alunoElo", cascade = CascadeType.ALL)
     private List<AlunosElo> alunosElo = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "alunoDisciplina")
-    private List<Disciplina> disciplinas = new ArrayList<>();
+    private List<Disciplina> disciplinasAlunos = new ArrayList<>();
 
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -64,11 +61,5 @@ public class Aluno extends Usuario {
  /*   @OneToMany(mappedBy = "aluno")
     private List<RankGeral> ranksGeral;*/
 
-
- /*   public void generateUUID() {
-        if (id == null) {
-            id = UUID.randomUUID();
-        }
-    }*/
 
 }
