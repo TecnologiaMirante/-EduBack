@@ -46,6 +46,9 @@ public class SpecTemplate {
     })
     public interface QuestoesSpac extends Specification<Questoes>{}
 
+    @And({
+            @Spec(path = "descricao",spec = Like.class)
+    })
     public interface  OpcoesSpec extends Specification<Opcoes> {}
 
     public interface ProfessorSpec extends Specification<Professor> {}
