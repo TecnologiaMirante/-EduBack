@@ -48,20 +48,48 @@ public class SpecTemplate {
 
     public interface  OpcoesSpec extends Specification<Opcoes> {}
 
+    @And({
+            @Spec(path = "formacao", spec = Like.class),
+            @Spec(path = "materias", spec = Equal.class),
+            @Spec(path = "experiencia", spec = Equal.class),
+    })
     public interface ProfessorSpec extends Specification<Professor> {}
 
     public interface AlunoSpec extends Specification<Aluno> {}
 
+    @And({
+            @Spec(path = "nome", spec = Like.class),
+            @Spec(path = "email", spec = Equal.class),
+            @Spec(path = "telefone", spec = Equal.class),
+            @Spec(path = "cpf", spec = Equal.class),
+    })
     public interface UsuarioResponsavelSpec extends Specification<UsuarioResponsavel> {}
 
+    @And({
+            @Spec(path = "nome_conquista", spec = Like.class),
+            @Spec(path = "descricao_conquista", spec = Like.class),
+            @Spec(path = "meta", spec = Like.class)
+    })
     public interface ConquistaSpec extends Specification<Conquistas> {}
 
+    @And({
+            @Spec(path = "nome_elo", spec = Like.class),
+            @Spec(path = "pontuacao_elo", spec = Equal.class)
+    })
     public interface EloSpec extends Specification<Elo> {}
 
+    @And({
+            @Spec(path = "anotar", spec = Like.class),
+            @Spec(path = "avaliar", spec = Equal.class),
+            @Spec(path = "comentario", spec = Like.class)
+    })
     public interface AlunoInterecaoSpec extends Specification<AlunoInteracao>{}
 
     public interface AdminSpec extends Specification<Admin> {}
 
+    @And({
+            @Spec(path = "pontuacao_aluno", spec = Equal.class)
+    })
     public interface AlunoEloSpec extends Specification<AlunosElo>{}
 
 }
