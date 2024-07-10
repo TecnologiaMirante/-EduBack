@@ -8,6 +8,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface RankGeralMapper {
     RankGeralMapper INSTANCE = Mappers.getMapper(RankGeralMapper.class);
-    RankGeral rankGeralDTOToRankGeral(RankGeralDTO rankGeralDTO);
     RankGeralDTO rankGeralToRankGeralDTO(RankGeral rankGeral);
+    RankGeral rankGeralDTOToRankGeral(RankGeralDTO rankGeralDTO);
 }

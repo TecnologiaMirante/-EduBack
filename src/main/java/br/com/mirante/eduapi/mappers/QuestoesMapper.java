@@ -8,7 +8,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface QuestoesMapper {
     QuestoesMapper INSTANCE = Mappers.getMapper(QuestoesMapper.class);
-    Questoes questoesDTOToQuestoes(QuestoesDTO questoesDTO);
     QuestoesDTO questoesToQuestoesDTO(Questoes questoes);
-
+    Questoes questoesDTOToQuestoes(QuestoesDTO questoesDTO);
 }

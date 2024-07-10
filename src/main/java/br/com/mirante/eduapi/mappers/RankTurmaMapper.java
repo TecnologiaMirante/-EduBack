@@ -9,6 +9,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface RankTurmaMapper {
     RankTurmaMapper INSTANCE = Mappers.getMapper(RankTurmaMapper.class);
-    RankTurma rankTurmaDTOToRankTurma(RankTurmaDTO rankTurmaDTO);
     RankTurmaDTO rankTurmaToRankTurmaDTO(RankTurma rankTurma);
+    RankTurma rankTurmaDTOToRankTurma(RankTurmaDTO rankTurmaDTO);
 }

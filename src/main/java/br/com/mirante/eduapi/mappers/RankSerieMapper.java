@@ -8,6 +8,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface RankSerieMapper {
     RankSerieMapper INSTANCE = Mappers.getMapper(RankSerieMapper.class);
-    RankSerie rankSerieDTOToRankSerie(RankSerieDTO rankSerieDTO);
     RankSerieDTO rankSerieToRankSerieDTO(RankSerie rankSerie);
+    RankSerie rankSerieDTOToRankSerie(RankSerieDTO rankSerieDTO);
 }

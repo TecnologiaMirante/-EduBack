@@ -9,6 +9,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface RankAlunoMapper {
     RankAlunoMapper INSTANCE = Mappers.getMapper(RankAlunoMapper.class);
-    RankAluno rankAlunoDTORankAluno(RankAlunoDTO rankAlunoDTO);
     RankAlunoDTO rankAlunoToRankAlunoDTO(RankAluno rankAluno);
+    RankAluno rankAlunoDTORankAluno(RankAlunoDTO rankAlunoDTO);
 }
