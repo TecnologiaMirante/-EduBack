@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -23,4 +24,5 @@ public class EscolaDTO {
     private String cep;
     private String referencia;
     private String cpfCnpj;
+    private List<RankGeralDTO> rankGeralDTOS;
 }

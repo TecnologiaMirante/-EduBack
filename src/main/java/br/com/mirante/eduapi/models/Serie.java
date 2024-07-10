@@ -33,6 +33,14 @@ public class Serie {
     private List<Aluno> serieAluno = new ArrayList<>();
 
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "Serie_RankSerie",
+            joinColumns = @JoinColumn(name = "id_Serie"),
+            inverseJoinColumns = @JoinColumn(name = "id_RankSerie"))
+    private List<RankSerie> RankSerieList;
+
+
     @PrePersist
     public void generateUUID() {
         if (id == null) {

@@ -46,6 +46,9 @@ public class SpecTemplate {
     })
     public interface QuestoesSpac extends Specification<Questoes>{}
 
+    @And({
+            @Spec(path = "descricao",spec = Like.class)
+    })
     public interface  OpcoesSpec extends Specification<Opcoes> {}
 
     @And({
@@ -53,6 +56,27 @@ public class SpecTemplate {
             @Spec(path = "materias", spec = Equal.class),
             @Spec(path = "experiencia", spec = Equal.class),
     })
+    public interface  RankAlunoSpec extends  Specification<RankAluno>{}
+    @And({
+            @Spec( path = "primeiro", spec = Like.class),
+            @Spec( path = "segundo", spec = Like.class),
+            @Spec( path = "terceiro", spec = Like.class),
+    })
+    public interface RankGeralSpec extends Specification<RankGeral>{}
+    @And({
+            @Spec( path = "primeiro", spec = Like.class),
+            @Spec( path = "segundo", spec = Like.class),
+            @Spec( path = "terceiro", spec = Like.class),
+    })
+    public interface RankTurmaSpec extends Specification<RankTurma>{}
+    @And({
+            @Spec( path = "primeiro", spec = Like.class),
+            @Spec( path = "segundo", spec = Like.class),
+            @Spec( path = "terceiro", spec = Like.class),
+    })
+    public interface RankSerieSpec extends Specification<RankSerie>{}
+
+
     public interface ProfessorSpec extends Specification<Professor> {}
 
     @And({
