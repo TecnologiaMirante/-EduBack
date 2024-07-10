@@ -3,7 +3,6 @@ package br.com.mirante.eduapi.service.impl;
 import br.com.mirante.eduapi.dto.AdminDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.AdminMapper;
-import br.com.mirante.eduapi.mappers.AlunoInteracaoMapper;
 import br.com.mirante.eduapi.models.Admin;
 
 import br.com.mirante.eduapi.repository.AdminRepository;

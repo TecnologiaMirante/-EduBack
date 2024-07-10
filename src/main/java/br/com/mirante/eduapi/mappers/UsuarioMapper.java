@@ -13,5 +13,4 @@ public interface UsuarioMapper {
     UsuarioDTO usuarioToUsuarioDTO(Usuario usuario);
     Usuario usuarioDTOToUsuario(UsuarioDTO usuarioDTO);
 
-
 }

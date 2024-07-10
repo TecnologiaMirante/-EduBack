@@ -3,9 +3,7 @@ package br.com.mirante.eduapi.service.impl;
 
 import br.com.mirante.eduapi.dto.AlunosEloDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
-import br.com.mirante.eduapi.mappers.AdminMapper;
 import br.com.mirante.eduapi.mappers.AlunosElosMapper;
-import br.com.mirante.eduapi.models.Admin;
 import br.com.mirante.eduapi.models.AlunosElo;
 import br.com.mirante.eduapi.repository.AlunoEloRepository;
 import br.com.mirante.eduapi.service.AlunoEloService;

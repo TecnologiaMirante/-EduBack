@@ -22,11 +22,11 @@ public class SpecTemplate {
     public interface EscolaSpec extends Specification<Escola> {}
 
     @And({
-            @Spec(path = "nome", spec = Like.class),
-            @Spec(path = "email", spec = Equal.class),
-            @Spec(path = "telefone", spec = Equal.class),
-            @Spec(path = "cpf", spec = Equal.class),
-            @Spec(path = "matricula", spec = Equal.class)
+            @Spec(path = "nome_usuario", spec = Like.class),
+            @Spec(path = "email_usuario", spec = Equal.class),
+            @Spec(path = "telefone_usuario", spec = Equal.class),
+            @Spec(path = "cpf_usuario", spec = Equal.class),
+            @Spec(path = "matricula_usuario", spec = Equal.class)
     })
     public interface UsuarioSpec extends Specification<Usuario> {}
 
@@ -55,6 +55,9 @@ public class SpecTemplate {
     })
     public interface ProfessorSpec extends Specification<Professor> {}
 
+    @And({
+            @Spec(path = "permissoes", spec = Equal.class)
+    })
     public interface AlunoSpec extends Specification<Aluno> {}
 
     @And({
