@@ -27,7 +27,7 @@ public class RankTurma {
     @Column(name = "Terceiro_Lugar")
     private String terceiro;
 
-    @ManyToMany(mappedBy = "TurmaList")
+    @ManyToMany(mappedBy = "RankTurmaList")
     private List<Turma> TurmaList = new ArrayList<>();
 
     @PrePersist

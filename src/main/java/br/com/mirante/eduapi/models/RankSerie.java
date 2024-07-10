@@ -27,7 +27,7 @@ public class RankSerie {
 
     @Column(name = "Terceiro_Lugar")
     private String terceiro;
-    private  List<RankSerie>  RankList = new ArrayList<>();
+
 
     @ManyToMany(mappedBy = "RankSerieList")
     private  List<Serie> SerieList = new ArrayList<>();

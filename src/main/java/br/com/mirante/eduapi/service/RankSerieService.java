@@ -16,9 +16,9 @@ import java.util.UUID;
 public interface RankSerieService {
     Page<RankSerie> findAll(Specification<RankSerie> spec, Pageable page);
 
-    RankSerieDTO save(RankSerieDTO rankSerieDTO) throws BusinessException;
+    Optional<RankSerieDTO> findById(UUID id);
 
-    Optional<RankSerie> findById(UUID id);
+    RankSerieDTO save(RankSerieDTO rankSerieDTO) throws BusinessException;
 
     Optional<RankSerieDTO> update(UUID id, RankSerieDTO rankSerieDTO);
 
