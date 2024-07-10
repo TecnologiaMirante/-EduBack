@@ -1,9 +1,11 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.RankSerie;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -14,4 +16,5 @@ public class RankSerieDTO {
     private String primeiro;
     private String segundo;
     private String terceiro;
+    //private List<SerieDTO> SerieDTOS;
 }

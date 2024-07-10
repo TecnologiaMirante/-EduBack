@@ -19,6 +19,7 @@ public class AlunoDTO {
 
 
     private List<AulaDTO> aulas;
+    private List<RankAlunoDTO> rankAlunoDTOS;
 
     //objeto turma
 

@@ -14,4 +14,5 @@ public class RankGeralDTO {
     private String primeiro;
     private String segundo;
     private String terceiro;
+    private UUID IdEscola;
 }
