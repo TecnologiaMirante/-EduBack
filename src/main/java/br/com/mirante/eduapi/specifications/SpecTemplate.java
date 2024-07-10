@@ -77,6 +77,9 @@ public class SpecTemplate {
     public interface RankSerieSpec extends Specification<RankSerie>{}
 
 
+    @And({
+
+    })
     public interface ProfessorSpec extends Specification<Professor> {}
 
     @And({
@@ -112,6 +115,9 @@ public class SpecTemplate {
     })
     public interface AlunoInterecaoSpec extends Specification<AlunoInteracao>{}
 
+    @And({
+
+    })
     public interface AdminSpec extends Specification<Admin> {}
 
     @And({
