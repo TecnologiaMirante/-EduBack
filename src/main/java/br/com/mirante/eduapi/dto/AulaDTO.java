@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -22,4 +23,6 @@ public class AulaDTO {
     private Boolean favoritar;
     private Boolean conteudoRealizado;
     private boolean progresso;
+    private UUID IdAluno;
+    private List<AlunoInteracaoDTO> alunointeracoe;
 }
