@@ -51,7 +51,7 @@ public class Aula {
     private Boolean conteudoRealizado;
 
     @Column(name = "progresso")
-    private boolean progresso;
+    private Boolean progresso;
 
     @ManyToOne
     @JoinColumn(name = "id_aluno")
