@@ -63,7 +63,9 @@ public class AulaController {
     @Operation(summary = "Atualização de Aula.", description = "Endpoint para atualizar os dados das Aulas",
             security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<AulaDTO> update(@PathVariable  UUID id, @RequestBody AulaDTO aulaDTO){
-        return aulaService.update(id,aulaDTO).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return aulaService.update(id,aulaDTO)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
