@@ -14,7 +14,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@DiscriminatorValue("PROFESSOR")
 public class Professor extends Usuario {
 
     @Column(name = "materias", nullable = false, length = 100)

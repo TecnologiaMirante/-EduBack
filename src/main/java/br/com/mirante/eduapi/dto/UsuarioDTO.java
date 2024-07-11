@@ -36,9 +36,10 @@ public class UsuarioDTO {
     private String referencia;
     private Permissoes permissoes;
 
-   /* private List<ProfessorDTOGet> professores;
 
-    private List<AlunoDTO> alunos;*/
+    private List<ProfessorDTOGet> professores;
+
+    private List<AlunoDTOGet> alunos;
 
 
 }

@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.mappers;
 
 import br.com.mirante.eduapi.dto.ProfessorDTO;
+import br.com.mirante.eduapi.dto.ProfessorDTOGet;
 import br.com.mirante.eduapi.models.Professor;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -11,6 +12,6 @@ public interface ProfessorMapper {
     ProfessorDTO professorToProfessorDTO(Professor professor);
     Professor professorDTOToProfessor(ProfessorDTO professorDTO);
 
-/*    ProfessorDTOGet professortoProfessorGetDTO(Professor professor);
-    Professor professorDTOGetToProfessor(ProfessorDTOGet professorDTO);*/
+    ProfessorDTOGet professortoProfessorGetDTO(Professor professor);
+    Professor professorDTOGetToProfessor(ProfessorDTOGet professorDTO);
 }

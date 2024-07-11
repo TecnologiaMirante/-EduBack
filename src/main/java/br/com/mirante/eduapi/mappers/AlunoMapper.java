@@ -1,9 +1,11 @@
 package br.com.mirante.eduapi.mappers;
 
 import br.com.mirante.eduapi.dto.AlunoDTO;
+import br.com.mirante.eduapi.dto.AlunoDTOGet;
 import br.com.mirante.eduapi.models.Aluno;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+
 
 @Mapper
 public interface AlunoMapper {
@@ -11,4 +13,6 @@ public interface AlunoMapper {
     AlunoDTO alunoToAlunoDTO(Aluno aluno);
     Aluno alunoDTOToAluno(AlunoDTO aluno);
 
+    AlunoDTOGet alunoToAlunoDTOGet(Aluno aluno);
+    Aluno alunoDTOGetToAluno(AlunoDTO aluno);
 }

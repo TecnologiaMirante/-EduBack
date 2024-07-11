@@ -15,7 +15,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@DiscriminatorValue("ALUNO")
 public class Aluno extends Usuario {
 
     @Enumerated(EnumType.STRING)

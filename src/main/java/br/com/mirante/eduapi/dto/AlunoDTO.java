@@ -1,5 +1,7 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.Aluno;
+import br.com.mirante.eduapi.models.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,11 +18,20 @@ import java.util.UUID;
 public class AlunoDTO extends UsuarioDTOPost {
     //a fazer
 
-    private UUID usuario;
+    private UUID usuarioId;
 
 
     private List<AulaDTO> aulas;
     private List<RankAlunoDTO> rankAlunoDTOS;
+
+    public AlunoDTO(Aluno entity) {
+        Usuario usuario = new Usuario();
+        usuarioId = entity.getId();
+        usuario.setNome(entity.getNome());
+
+
+    }
+
 
     //objeto turma
 

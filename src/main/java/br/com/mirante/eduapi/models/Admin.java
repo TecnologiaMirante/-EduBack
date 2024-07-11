@@ -13,7 +13,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@DiscriminatorValue("ADMIN")
 public class Admin extends Usuario {
 
 

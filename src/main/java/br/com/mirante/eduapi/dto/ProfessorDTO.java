@@ -16,7 +16,6 @@ public class ProfessorDTO extends UsuarioDTOPost {
     private String formacao;
     private String experiencia;
     private UUID usuarioId;
-
     private UUID turmaId;
 
     private UUID disciplinaId;

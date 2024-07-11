@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.service.impl;
 
+import br.com.mirante.eduapi.dto.AlunoDTOGet;
 import br.com.mirante.eduapi.dto.UsuarioDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.UsuarioMapper;
@@ -12,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,7 +26,14 @@ public class UsuarioServiceimpl implements UsuarioService {
 
     @Override
     public Page<Usuario> findAll(Specification<Usuario> spec, Pageable page) {
-        return usuarioRepository.findAll(spec, page);
+        Page<Usuario> usuarios = usuarioRepository.findAll(spec, page);
+        List<AlunoDTOGet> alunos =  new ArrayList<>();
+
+        usuarios.forEach(usuario -> alunos.add(new AlunoDTOGet()));
+
+
+
+        return usuarios;
     }
 
     @Override
