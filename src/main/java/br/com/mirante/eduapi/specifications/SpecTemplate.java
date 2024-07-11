@@ -26,7 +26,8 @@ public class SpecTemplate {
 
     @And({
             @Spec(path = "nome", spec = Like.class),
-            @Spec(path = "turno", spec = Equal.class)
+            @Spec(path = "turno", spec = Equal.class),
+            @Spec(path = "turma", spec = Equal.class)
     })
     public interface SerieSpec extends Specification<Serie>{}
 

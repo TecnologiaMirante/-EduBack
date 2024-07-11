@@ -19,5 +19,6 @@ public class AvaliacaoDTO {
     private char tipo;
     private Conteudo conteudo;
     private Professor professor;
+    private Boolean progresso;
     //IMG
 }

@@ -16,15 +16,21 @@ public class MaterialComplementar {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(name = "nome", nullable = false, length = 150)
+    private String nome;
+
+    @Column(name = "titulo", nullable = false, length = 150)
     private String titulo;
 
+    @Column(name = "material", nullable = false, length = 150)
     private String material; //url de links, arquivos
+
+    @Column(name = "progresso")
+    private Boolean progresso;
 
     @ManyToOne
     @JoinColumn(name = "Id_conteudo")
     private Conteudo conteudosComplementares;
-
-
 
     @PrePersist
     public void generateUUID() {
