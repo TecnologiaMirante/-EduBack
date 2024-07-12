@@ -10,6 +10,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BimestreDTO {
-    private UUID id;
     private String data;
+    private UUID id_media;
 }

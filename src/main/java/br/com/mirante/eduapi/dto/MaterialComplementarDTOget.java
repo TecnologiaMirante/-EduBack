@@ -10,9 +10,10 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MaterialComplementarDTO {
+public class MaterialComplementarDTOget {
+    private UUID id;
     private String titulo;
     private String material; // MUDAR ARQUIVO
+    private Conteudo conteudo;
     private Boolean progresso;
-    private UUID id_conteudo;
 }

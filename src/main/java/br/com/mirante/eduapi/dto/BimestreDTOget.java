@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.Media;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SerieDTO {
-    private String nome;
-    private String turno;
-    private String turma;
+public class BimestreDTOget {
+    private UUID id;
+    private String data;
+    private Media media;
 }

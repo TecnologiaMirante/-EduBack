@@ -12,8 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MediaDTO {
-    private UUID id;
     private String nota;
-    private Disciplina disciplina;
-    private Aluno aluno;
+    private UUID id_aluno;
+    private UUID disciplina_id;
 }

@@ -9,8 +9,9 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SerieDTO {
+public class DisciplinaDTOget {
+    private UUID id;
     private String nome;
-    private String turno;
-    private String turma;
+    private String codigo;
+    private Boolean status;
 }

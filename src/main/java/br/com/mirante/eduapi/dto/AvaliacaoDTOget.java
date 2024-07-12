@@ -11,12 +11,14 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AvaliacaoDTO {
+public class AvaliacaoDTOget {
+    private UUID id;
     private String nota;
     private String data;
     private String descricao;
     private char tipo;
-    private UUID id_conteudo;
-    private UUID id_professor;
+    private Conteudo conteudo;
+    private Professor professor;
+    private Boolean progresso;
     //IMG
 }

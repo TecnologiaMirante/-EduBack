@@ -9,7 +9,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SerieDTO {
+public class SerieDTOget{
+    private UUID id;
     private String nome;
     private String turno;
     private String turma;

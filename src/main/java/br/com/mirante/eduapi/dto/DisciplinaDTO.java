@@ -10,7 +10,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DisciplinaDTO {
-    private UUID id;
+
     private String nome;
     private String codigo;
     private Boolean status;
