@@ -35,5 +35,6 @@ public class UsuarioDTOPost {
     private String cep;
     private String referencia;
     private Permissoes permissoes;
+    private UUID escolaId;
 
 }

@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service;
 
 import br.com.mirante.eduapi.dto.UsuarioDTO;
+import br.com.mirante.eduapi.dto.UsuarioDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.models.Usuario;
 import org.springframework.data.domain.Page;
@@ -14,7 +15,7 @@ public interface UsuarioService {
 
     Page<Usuario> findAll(Specification<Usuario> spec, Pageable page);
 
-    UsuarioDTO save(UsuarioDTO usuarioDTO) throws BusinessException;
+    UsuarioDTOPost save(UsuarioDTOPost usuarioDTO) throws BusinessException;
 
     Optional<UsuarioDTO> findById(UUID id);
 

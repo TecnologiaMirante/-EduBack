@@ -20,15 +20,19 @@ public class AlunoDTO extends UsuarioDTOPost {
 
     private UUID usuarioId;
 
+    private UUID turmaId;
+
 
     private List<AulaDTO> aulas;
     private List<RankAlunoDTO> rankAlunoDTOS;
 
     public AlunoDTO(Aluno entity) {
         Usuario usuario = new Usuario();
-        usuarioId = entity.getId();
-        usuario.setNome(entity.getNome());
+        usuarioId = entity.getUsuarioAluno().getId();
+        turmaId = entity.getTurmaAluno().getId();
 
+
+        entity.setUsuarioAluno(usuario);
 
     }
 

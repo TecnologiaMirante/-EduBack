@@ -8,6 +8,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface EscolaMapper {
     EscolaMapper INSTANCE = Mappers.getMapper(EscolaMapper.class);
+
     EscolaDTO escolaToEscolaDTO(Escola escola);
     Escola escolaDTOToEscola(EscolaDTO escolaDTO);
 }

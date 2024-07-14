@@ -1,7 +1,7 @@
 package br.com.mirante.eduapi.service.impl;
 
-import br.com.mirante.eduapi.dto.AlunoDTOGet;
 import br.com.mirante.eduapi.dto.UsuarioDTO;
+import br.com.mirante.eduapi.dto.UsuarioDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.UsuarioMapper;
 import br.com.mirante.eduapi.models.Usuario;
@@ -27,18 +27,20 @@ public class UsuarioServiceimpl implements UsuarioService {
     @Override
     public Page<Usuario> findAll(Specification<Usuario> spec, Pageable page) {
         Page<Usuario> usuarios = usuarioRepository.findAll(spec, page);
-        List<AlunoDTOGet> alunos =  new ArrayList<>();
+        List<UsuarioDTO> usuarioDTOS =  new ArrayList<>();
 
-        usuarios.forEach(usuario -> alunos.add(new AlunoDTOGet()));
-
+ /*       for (Usuario usuario : usuarios) {
+            UsuarioDTO usuarioDTO = UsuarioMapper.INSTANCE.usuarioToUsuarioDTO(usuario);
+            usuarioDTOS.add(usuarioDTO);
+        }*/
 
 
         return usuarios;
     }
 
     @Override
-    public UsuarioDTO save(UsuarioDTO usuarioDTO) throws BusinessException {
-        Usuario usuario = UsuarioMapper.INSTANCE.usuarioDTOToUsuario(usuarioDTO);
+    public UsuarioDTOPost save(UsuarioDTOPost usuarioDTO) throws BusinessException {
+        Usuario usuario = UsuarioMapper.INSTANCE.usuarioDTOPostToUsuario(usuarioDTO);
 
         if (usuarioRepository.findByMatricula(usuarioDTO.getMatricula()) != null){
             throw new BusinessException("Usuario Ja existe com essa matricula");
@@ -50,7 +52,7 @@ public class UsuarioServiceimpl implements UsuarioService {
 
         usuario = usuarioRepository.save(usuario);
 
-        return UsuarioMapper.INSTANCE.usuarioToUsuarioDTO(usuario);
+        return UsuarioMapper.INSTANCE.usuarioToUsuarioDTOPost(usuario);
     }
 
     @Override

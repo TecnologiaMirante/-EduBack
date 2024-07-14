@@ -8,10 +8,13 @@ import br.com.mirante.eduapi.repository.AlunoRepository;
 import br.com.mirante.eduapi.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -25,7 +28,16 @@ public class AlunoServiceImpl implements AlunoService {
 
     @Override
     public Page<Aluno> findAll(Specification<Aluno> spec, Pageable page) {
-        return alunoRepository.findAll(spec, page);
+        List<AlunoDTO> alunoDTOS = new ArrayList<>();
+
+        Page<Aluno> alunos = alunoRepository.findAll(spec, page);
+
+
+        for (Aluno aluno : alunos) {
+            alunoDTOS.add(new AlunoDTO(aluno));
+        }
+
+        return alunos;
     }
 
     @Override

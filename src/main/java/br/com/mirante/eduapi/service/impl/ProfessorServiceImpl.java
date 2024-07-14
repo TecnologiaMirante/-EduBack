@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -25,7 +27,15 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     @Override
     public Page<Professor> findAll(Specification<Professor> spec, Pageable pageable) {
-        return professorRepository.findAll(spec, pageable);
+        List<ProfessorDTO> professores = new ArrayList<>();
+
+        Page<Professor> professoresPage = professorRepository.findAll(spec, pageable);
+
+        for (Professor professor : professoresPage) {
+            professores.add(new ProfessorDTO(professor));
+        }
+
+        return professoresPage;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.Professor;
+import br.com.mirante.eduapi.models.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,6 +23,12 @@ public class ProfessorDTO extends UsuarioDTOPost {
     private UUID disciplinaId;
 
     //private List<Turma> turmas = new ArrayList<>();
+
+    public ProfessorDTO(Professor entity) {
+        Usuario usuario = new Usuario();
+        usuarioId = entity.getUsuarioProfessor().getId();
+
+    }
 
 
     //role do keyclock
