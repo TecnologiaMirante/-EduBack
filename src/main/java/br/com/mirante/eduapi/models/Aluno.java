@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Aluno extends Usuario {
 
     @Enumerated(EnumType.STRING)
-    private Permissoes permissoes;
+    private Permissoes permissoes = Permissoes.ALUNO;
 
     @ManyToOne
     @JoinColumn(name = "id_turma")
@@ -31,7 +31,7 @@ public class Aluno extends Usuario {
 
     @ManyToOne
     @JoinColumn(name = "id_RankAluno")
-    private RankAluno rankAluno ;
+    private RankAluno rankAluno;
 
     @ManyToOne
     @JoinColumn(name = "Id_responsavel")

@@ -1,10 +1,7 @@
 package br.com.mirante.eduapi.mappers;
 
-import br.com.mirante.eduapi.dto.EscolaDTOGet;
-import br.com.mirante.eduapi.dto.EscolaUsuarioDTO;
 import br.com.mirante.eduapi.dto.UsuarioDTO;
 import br.com.mirante.eduapi.dto.UsuarioDTOPost;
-import br.com.mirante.eduapi.models.Escola;
 import br.com.mirante.eduapi.models.Usuario;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

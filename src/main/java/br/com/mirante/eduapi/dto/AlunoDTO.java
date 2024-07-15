@@ -1,13 +1,12 @@
 package br.com.mirante.eduapi.dto;
 
-import br.com.mirante.eduapi.models.Aluno;
-import br.com.mirante.eduapi.models.Usuario;
+import br.com.mirante.eduapi.models.Permissoes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -16,26 +15,16 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AlunoDTO extends UsuarioDTOPost {
-
-
     private UUID usuarioId;
+    //private UUID turmaId;
+    //private UUID responsavelId;
 
-    private UUID turmaId;
+
 
 
    /* private List<AulaDTO> aulas;
     private List<RankAlunoDTO> rankAlunoDTOS;
-
-    public AlunoDTO(Aluno entity) {
-        Usuario usuario = new Usuario();
-        usuarioId = entity.getUsuarioAluno().getId();
-        turmaId = entity.getTurmaAluno().getId();
-
-
-        entity.setUsuarioAluno(usuario);
-
-    }*/
-
+    */
 
     //objeto turma
 
