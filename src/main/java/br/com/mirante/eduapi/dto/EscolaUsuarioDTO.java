@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EscolaDTOGet {
+public class EscolaUsuarioDTO {
     private UUID id;
     private String nome;
     private String email;
@@ -18,5 +17,4 @@ public class EscolaDTOGet {
     private String estado;
     private String telefone;
     private String cpfCnpj;
-    private List<UsuarioDTOGet> usuarios;
 }

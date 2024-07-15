@@ -1,7 +1,10 @@
 package br.com.mirante.eduapi.mappers;
 
+import br.com.mirante.eduapi.dto.EscolaDTOGet;
+import br.com.mirante.eduapi.dto.EscolaUsuarioDTO;
 import br.com.mirante.eduapi.dto.UsuarioDTO;
 import br.com.mirante.eduapi.dto.UsuarioDTOPost;
+import br.com.mirante.eduapi.models.Escola;
 import br.com.mirante.eduapi.models.Usuario;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,11 +17,13 @@ public interface UsuarioMapper {
 
     @Mapping(source = "usuarioEscola.id", target = "escola.id")
     UsuarioDTO usuarioToUsuarioDTO(Usuario usuario);
+
     @Mapping(source = "escola.id", target = "usuarioEscola.id")
     Usuario usuarioDTOToUsuario(UsuarioDTO usuarioDTO);
 
     @Mapping(source = "usuarioEscola.id", target = "escolaId")
     UsuarioDTOPost usuarioToUsuarioDTOPost(Usuario usuario);
-    //@Mapping(source = "escolaId", target = "usuarioEscola.id")
+
+    @Mapping(source = "escolaId", target = "usuarioEscola.id")
     Usuario usuarioDTOPostToUsuario(UsuarioDTOPost usuarioDTOPost);
 }

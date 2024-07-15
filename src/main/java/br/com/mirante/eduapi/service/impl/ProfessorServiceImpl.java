@@ -31,9 +31,9 @@ public class ProfessorServiceImpl implements ProfessorService {
 
         Page<Professor> professoresPage = professorRepository.findAll(spec, pageable);
 
-        for (Professor professor : professoresPage) {
-            professores.add(new ProfessorDTO(professor));
-        }
+  /*      for (Professor professor : professoresPage) {
+            professores.add(new ProfessorDTO());
+        }*/
 
         return professoresPage;
     }

@@ -24,11 +24,11 @@ public class ProfessorDTO extends UsuarioDTOPost {
 
     //private List<Turma> turmas = new ArrayList<>();
 
-    public ProfessorDTO(Professor entity) {
+/*    public ProfessorDTO(Professor entity) {
         Usuario usuario = new Usuario();
         usuarioId = entity.getUsuarioProfessor().getId();
 
-    }
+    }*/
 
 
     //role do keyclock

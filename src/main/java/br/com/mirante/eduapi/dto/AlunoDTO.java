@@ -16,14 +16,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AlunoDTO extends UsuarioDTOPost {
-    //a fazer
+
 
     private UUID usuarioId;
 
     private UUID turmaId;
 
 
-    private List<AulaDTO> aulas;
+   /* private List<AulaDTO> aulas;
     private List<RankAlunoDTO> rankAlunoDTOS;
 
     public AlunoDTO(Aluno entity) {
@@ -34,7 +34,7 @@ public class AlunoDTO extends UsuarioDTOPost {
 
         entity.setUsuarioAluno(usuario);
 
-    }
+    }*/
 
 
     //objeto turma

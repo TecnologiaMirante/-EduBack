@@ -33,9 +33,9 @@ public class AlunoServiceImpl implements AlunoService {
         Page<Aluno> alunos = alunoRepository.findAll(spec, page);
 
 
-        for (Aluno aluno : alunos) {
+   /*     for (Aluno aluno : alunos) {
             alunoDTOS.add(new AlunoDTO(aluno));
-        }
+        }*/
 
         return alunos;
     }

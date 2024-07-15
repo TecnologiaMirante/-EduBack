@@ -29,10 +29,10 @@ public class UsuarioServiceimpl implements UsuarioService {
         Page<Usuario> usuarios = usuarioRepository.findAll(spec, page);
         List<UsuarioDTO> usuarioDTOS =  new ArrayList<>();
 
- /*       for (Usuario usuario : usuarios) {
+        for (Usuario usuario : usuarios) {
             UsuarioDTO usuarioDTO = UsuarioMapper.INSTANCE.usuarioToUsuarioDTO(usuario);
             usuarioDTOS.add(usuarioDTO);
-        }*/
+        }
 
 
         return usuarios;

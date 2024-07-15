@@ -15,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table
 public class Aluno extends Usuario {
 
     @Enumerated(EnumType.STRING)

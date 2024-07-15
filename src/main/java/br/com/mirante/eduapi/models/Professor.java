@@ -14,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table
 public class Professor extends Usuario {
 
     @Column(name = "materias", nullable = false, length = 100)
