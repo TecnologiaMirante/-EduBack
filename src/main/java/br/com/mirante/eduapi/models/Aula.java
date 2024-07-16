@@ -50,8 +50,6 @@ public class Aula {
     @Column(name = "conteudo_realizado", nullable = false)
     private Boolean conteudoRealizado;
 
-    @Column(name = "progresso")
-    private boolean progresso;
 
     @ManyToOne
     @JoinColumn(name = "id_aluno")
