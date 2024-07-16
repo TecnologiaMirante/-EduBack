@@ -18,18 +18,11 @@ public class ProfessorDTO extends UsuarioDTOPost {
     private String formacao;
     private String experiencia;
     private UUID usuarioId;
-    private UUID turmaId;
+    //private UUID turmaId;
 
-    private UUID disciplinaId;
+    //private UUID disciplinaId;
 
     //private List<Turma> turmas = new ArrayList<>();
-
-/*    public ProfessorDTO(Professor entity) {
-        Usuario usuario = new Usuario();
-        usuarioId = entity.getUsuarioProfessor().getId();
-
-    }*/
-
 
     //role do keyclock
 }
