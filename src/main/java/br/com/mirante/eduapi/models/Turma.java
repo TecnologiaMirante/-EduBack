@@ -44,7 +44,7 @@ public class Turma {
             joinColumns = @JoinColumn(name = "id_turma"),
             inverseJoinColumns = @JoinColumn(name = "id_Rank")
     )
-    private  List<RankTurma> RankTurmaList = new ArrayList<>();
+    private List<RankAluno> rankAlunos ;
 
     //RELACIONAMENTO TURMA SERIE
     @ManyToOne

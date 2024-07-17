@@ -16,5 +16,5 @@ public class RankAlunoDTO {
     private UUID id;
     private String points;
     private String img;
-    private List<AlunoDTO> alunoDTOS;
+    private UUID IdAluno;
 }

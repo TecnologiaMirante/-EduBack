@@ -24,8 +24,21 @@ public class RankAluno {
     @Column(name = "img")
     private String img;
 
-    @OneToMany(mappedBy = "rankAluno",cascade = CascadeType.ALL)
-    private List<Aluno> alunoList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "rankAluno", nullable = false)
+    private Aluno aluno;
+
+    @ManyToOne
+    @JoinColumn(name = "rankEscola", nullable = false)
+    private Escola escola;
+
+
+
+    @ManyToMany(mappedBy = "RankTurmaList")
+    private List<Turma> TurmasList = new ArrayList<>();
+
+//    @OneToMany(mappedBy = "rankEscola")
+//    private List<Escola> escolasRank = new ArrayList<>();
 
     @PrePersist
     public void generateUUID() {

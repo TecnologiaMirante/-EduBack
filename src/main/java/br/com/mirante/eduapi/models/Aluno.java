@@ -29,9 +29,8 @@ public class Aluno extends Usuario {
     @JoinColumn(name = "Id_usuario")
     private Usuario usuarioAluno;
 
-    @ManyToOne
-    @JoinColumn(name = "id_RankAluno")
-    private RankAluno rankAluno ;
+    @OneToMany(mappedBy = "aluno",cascade = CascadeType.ALL)
+    private List<RankAluno> rankAluno =  new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "Id_responsavel")

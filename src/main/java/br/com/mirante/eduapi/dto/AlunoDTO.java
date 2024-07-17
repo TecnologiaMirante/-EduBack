@@ -20,7 +20,9 @@ public class AlunoDTO extends UsuarioDTOPost {
 
 
     private List<AulaDTO> aulas;
-    private List<RankAlunoDTO> rankAlunoDTOS;
+
+    private List<RankAlunoDTO> rankAlunos;
+
 
     //objeto turma
 
