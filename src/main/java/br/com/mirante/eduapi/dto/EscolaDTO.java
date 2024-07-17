@@ -24,5 +24,6 @@ public class EscolaDTO {
     private String cep;
     private String referencia;
     private String cpfCnpj;
+    private List<UsuarioDTOGet> usuarioList;
     private List<RankGeralDTO> rankGeralDTOS;
 }

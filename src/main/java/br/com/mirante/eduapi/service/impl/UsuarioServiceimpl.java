@@ -27,13 +27,6 @@ public class UsuarioServiceimpl implements UsuarioService {
     @Override
     public Page<Usuario> findAll(Specification<Usuario> spec, Pageable page) {
         Page<Usuario> usuarios = usuarioRepository.findAll(spec, page);
-        List<UsuarioDTO> usuarioDTOS =  new ArrayList<>();
-
-        for (Usuario usuario : usuarios) {
-            UsuarioDTO usuarioDTO = UsuarioMapper.INSTANCE.usuarioToUsuarioDTO(usuario);
-            usuarioDTOS.add(usuarioDTO);
-        }
-
 
         return usuarios;
     }
