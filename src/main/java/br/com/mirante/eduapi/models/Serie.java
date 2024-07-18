@@ -40,6 +40,14 @@ public class Serie {
             inverseJoinColumns = @JoinColumn(name = "id_RankSerie"))
     private List<RankSerie> RankSerieList;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "Serie_RankAluno",
+            joinColumns = @JoinColumn(name = "id_Serie"),
+            inverseJoinColumns = @JoinColumn(name = "id_RankAluno")
+    )
+    private List<RankAluno> RankAlunoSerieList;
+
 
     @PrePersist
     public void generateUUID() {
