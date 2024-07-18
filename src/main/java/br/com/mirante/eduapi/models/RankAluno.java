@@ -34,8 +34,8 @@ public class RankAluno {
 
 
 
-    @ManyToMany(mappedBy = "RankTurmaList")
-    private List<Turma> TurmasList = new ArrayList<>();
+    @ManyToMany(mappedBy = "rankAlunos")
+    private List<Turma> rankAlunos = new ArrayList<>();
 
 //    @OneToMany(mappedBy = "rankEscola")
 //    private List<Escola> escolasRank = new ArrayList<>();

@@ -40,11 +40,11 @@ public class Turma {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "Turma_Rank",
+            name = "Turma",
             joinColumns = @JoinColumn(name = "id_turma"),
-            inverseJoinColumns = @JoinColumn(name = "id_Rank")
+            inverseJoinColumns = @JoinColumn(name = "id_Ranck")
     )
-    private List<RankAluno> rankAlunos ;
+    private List<RankAluno>rankAlunos;
 
     //RELACIONAMENTO TURMA SERIE
     @ManyToOne
