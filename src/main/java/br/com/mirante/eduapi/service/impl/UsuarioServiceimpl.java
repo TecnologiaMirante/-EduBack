@@ -26,9 +26,7 @@ public class UsuarioServiceimpl implements UsuarioService {
 
     @Override
     public Page<Usuario> findAll(Specification<Usuario> spec, Pageable page) {
-        Page<Usuario> usuarios = usuarioRepository.findAll(spec, page);
-
-        return usuarios;
+        return usuarioRepository.findAll(spec, page);
     }
 
     @Override

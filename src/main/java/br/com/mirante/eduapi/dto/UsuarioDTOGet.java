@@ -16,5 +16,5 @@ public class UsuarioDTOGet {
     private String sexo;
     private String cpf;
     private String matricula;
-    private Permissoes permissoes;
+    private Permissoes permissoes = getPermissoes();
 }

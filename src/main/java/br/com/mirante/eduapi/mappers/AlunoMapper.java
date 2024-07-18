@@ -14,15 +14,12 @@ public interface AlunoMapper {
 
     @Mapping(source = "usuarioAluno.id", target = "usuarioId")
     @Mapping(source = "usuarioAluno.usuarioEscola.id", target = "escolaId")
+    @Mapping(source = "usuarioAluno.usuarioEscola", target = "escola")
     AlunoDTO alunoToAlunoDTO(Aluno aluno);
 
     @Mapping(source = "usuarioId", target = "usuarioAluno.id")
     @Mapping(source = "escolaId", target = "usuarioAluno.usuarioEscola.id")
+    @Mapping(source = "escola", target = "usuarioAluno.usuarioEscola")
     Aluno alunoDTOToAluno(AlunoDTO aluno);
 
-
-    AlunoDTOGet alunoToAlunoDTOGet(Aluno aluno);
-
-
-    Aluno alunoDTOGetToAluno(AlunoDTO aluno);
 }
