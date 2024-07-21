@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service.impl;
 
 import br.com.mirante.eduapi.dto.AlunoDTO;
+import br.com.mirante.eduapi.dto.AlunoDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.AlunoMapper;
 import br.com.mirante.eduapi.models.Aluno;
@@ -28,21 +29,14 @@ public class AlunoServiceImpl implements AlunoService {
 
     @Override
     public Page<Aluno> findAll(Specification<Aluno> spec, Pageable page) {
-        List<AlunoDTO> alunoDTOS = new ArrayList<>();
-
         Page<Aluno> alunos = alunoRepository.findAll(spec, page);
-
-
-   /*     for (Aluno aluno : alunos) {
-            alunoDTOS.add(new AlunoDTO(aluno));
-        }*/
 
         return alunos;
     }
 
     @Override
-    public AlunoDTO save(AlunoDTO alunoDTO) throws BusinessException {
-        Aluno aluno = AlunoMapper.INSTANCE.alunoDTOToAluno(alunoDTO);
+    public AlunoDTOPost save(AlunoDTOPost alunoDTO) throws BusinessException {
+        Aluno aluno = AlunoMapper.INSTANCE.alunoDTOPostToAluno(alunoDTO);
 
         if (alunoRepository.findByCpf(aluno.getCpf()) != null){
             throw new BusinessException("Aluno já cadastrado com esse cpf");
@@ -52,7 +46,7 @@ public class AlunoServiceImpl implements AlunoService {
 
         aluno = alunoRepository.save(aluno);
 
-        return AlunoMapper.INSTANCE.alunoToAlunoDTO(aluno);
+        return AlunoMapper.INSTANCE.alunoToAlunoPost(aluno);
     }
 
     @Override

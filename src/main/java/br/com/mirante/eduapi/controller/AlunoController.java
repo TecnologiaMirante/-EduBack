@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.controller;
 
 import br.com.mirante.eduapi.dto.AlunoDTO;
+import br.com.mirante.eduapi.dto.AlunoDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.AlunoMapper;
 import br.com.mirante.eduapi.models.Aluno;
@@ -45,8 +46,8 @@ public class AlunoController {
     @PostMapping("/")
     @Operation(summary = "Cadastrar Aluno.", description = "Endpoint para cadastrar Alunos.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<AlunoDTO> create(@Valid @RequestBody AlunoDTO alunoDTO) throws BusinessException {
-        AlunoDTO aluno = alunoService.save(alunoDTO);
+    public ResponseEntity<AlunoDTOPost> create(@Valid @RequestBody AlunoDTOPost alunoDTO) throws BusinessException {
+        AlunoDTOPost aluno = alunoService.save(alunoDTO);
 
         return ResponseEntity.ok(aluno);
     }

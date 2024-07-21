@@ -3,6 +3,7 @@ package br.com.mirante.eduapi.dto;
 import br.com.mirante.eduapi.models.Escola;
 import br.com.mirante.eduapi.models.Permissoes;
 import br.com.mirante.eduapi.models.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,10 +1,10 @@
 package br.com.mirante.eduapi.dto;
 
-import br.com.mirante.eduapi.models.Escola;
 import br.com.mirante.eduapi.models.Permissoes;
+import br.com.mirante.eduapi.models.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -36,10 +36,9 @@ public class AlunoDTO {
     private String complemento;
     private String cep;
     private String referencia;
-    private Permissoes permissoes;
-    private UUID escolaId;
-    private UUID usuarioId;
+    private Permissoes permissoes = Permissoes.ALUNO;
     private EscolaUsuarioDTO escola;
+
     //private UUID turmaId;
     //private UUID responsavelId;
 
