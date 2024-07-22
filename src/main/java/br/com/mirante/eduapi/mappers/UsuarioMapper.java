@@ -1,9 +1,6 @@
 package br.com.mirante.eduapi.mappers;
 
-import br.com.mirante.eduapi.dto.AlunoDTO;
-import br.com.mirante.eduapi.dto.ProfessorDTOGet;
-import br.com.mirante.eduapi.dto.UsuarioDTO;
-import br.com.mirante.eduapi.dto.UsuarioDTOPost;
+import br.com.mirante.eduapi.dto.*;
 import br.com.mirante.eduapi.models.Aluno;
 import br.com.mirante.eduapi.models.Professor;
 import br.com.mirante.eduapi.models.Usuario;
@@ -24,23 +21,20 @@ public interface UsuarioMapper {
             @Mapping(source = "usuarioEscola.id", target = "escola.id"),
             @Mapping(source = "usuarioEscola", target = "escola")
     })
-  /*  @Mapping(source = "professorList", target = "professores")
-    @Mapping(source = "alunoList", target = "alunos")*/
     UsuarioDTO usuarioToUsuarioDTO(Usuario usuario);
 
     List<UsuarioDTO> map(List<Usuario> usuarios);
 
-    @Mappings({
-            @Mapping(source = "AlunoDTO.class", target = "Aluno.class"),
-    })
-    Usuario map(UsuarioDTO usuarioDTO);
+    @Mapping(source = "usuarioAluno.usuarioEscola", target = "escola")
+    AlunoDTO map(Aluno aluno);
+
+   /* @Mapping(source = "")
+    ProfessorDTO map(Professor professor);*/
 
     @Mappings({
             @Mapping(source = "escola.id", target = "usuarioEscola.id"),
             @Mapping(source = "escola", target = "usuarioEscola")
     })
- /*   @Mapping(source = "professores", target = "professorList")
-    @Mapping(source = "alunos", target = "alunoList")*/
     Usuario usuarioDTOToUsuario(UsuarioDTO usuarioDTO);
 
     @Mapping(source = "usuarioEscola.id", target = "escolaId")

@@ -18,7 +18,7 @@ public class AlunoDTOGet {
     private String cpf;
     private String matricula;
     private String sexo;
-    private Permissoes permissoes = getPermissoes();
+    private Permissoes permissoes = Permissoes.ALUNO;
     private UsuarioResponsavelDTO responsavel;
 
 
