@@ -40,12 +40,7 @@ public class Serie {
             inverseJoinColumns = @JoinColumn(name = "id_RankSerie"))
     private List<RankSerie> RankSerieList;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "Serie_RankAluno",
-            joinColumns = @JoinColumn(name = "id_Serie"),
-            inverseJoinColumns = @JoinColumn(name = "id_RankAluno")
-    )
+    @OneToMany(mappedBy = "SerieListSerie")
     private List<RankAluno> RankAlunoSerieList;
 
 

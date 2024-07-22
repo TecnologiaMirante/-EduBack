@@ -18,8 +18,13 @@ public class RankAluno {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(name = "Apelido")
+    private String apelido;
+
     @Column(name = "points")
     private String points;
+
+
 
     @Column(name = "img")
     private String img;
@@ -33,11 +38,13 @@ public class RankAluno {
     private Escola escola;
 
 
-    @ManyToMany(mappedBy = "RankAlunoSerieList")
-    private  List<Serie> SerieListSerie = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "RankAlunoSerieList")
+    private  Serie SerieListSerie ;
 
-    @ManyToMany(mappedBy = "rankAlunos")
-    private List<Turma> rankAlunos = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "rankAlunos")
+    private Turma rankAlunos ;
 
 //    @OneToMany(mappedBy = "rankEscola")
 //    private List<Escola> escolasRank = new ArrayList<>();

@@ -34,6 +34,9 @@ public class RankAlunoServiceimpl implements RankAlunoService {
     @Override
     public RankAlunoDTO save(RankAlunoDTO rankAlunoDTO) throws BusinessException {
         RankAluno rankAluno = RankAlunoMapper.INSTANCE.rankAlunoDTORankAluno(rankAlunoDTO);
+        if (rankAlunoRepository.findByApelido(rankAlunoDTO.getApelido()) != null){
+            throw new BusinessException("Este apelido já existe");
+        }
         rankAluno = rankAlunoRepository.save(rankAluno);
         return RankAlunoMapper.INSTANCE.rankAlunoToRankAlunoDTO(rankAluno);
     }
