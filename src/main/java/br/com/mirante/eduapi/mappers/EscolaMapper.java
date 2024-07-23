@@ -25,17 +25,4 @@ public interface EscolaMapper {
 
     @Mapping(source = "usuarioList", target = "usuarioList")
     Escola escolaDTOToEscola(EscolaDTO escolaDTO);
-
-    default Aluno map(AlunoDTO alunoDTO, @Context Escola escola) {
-        Aluno aluno = new Aluno();
-        aluno.setId(alunoDTO.getId());
-        aluno.setNome(alunoDTO.getNome());
-        aluno.setEmail(alunoDTO.getEmail());
-        aluno.setCpf(alunoDTO.getCpf());
-
-        escola.getUsuarioList().add(aluno);
-
-        return aluno;
-
-    }
 }

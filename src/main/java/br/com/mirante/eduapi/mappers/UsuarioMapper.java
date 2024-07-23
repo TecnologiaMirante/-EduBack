@@ -4,6 +4,7 @@ import br.com.mirante.eduapi.dto.*;
 import br.com.mirante.eduapi.models.Aluno;
 import br.com.mirante.eduapi.models.Professor;
 import br.com.mirante.eduapi.models.Usuario;
+import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -17,19 +18,30 @@ public interface UsuarioMapper {
 
     UsuarioMapper INSTANCE = Mappers.getMapper(UsuarioMapper.class);
 
+    List<UsuarioDTO> usuariosToUsuarioDTOs(List<Usuario> usuarios);
+
     @Mappings({
             @Mapping(source = "usuarioEscola.id", target = "escola.id"),
-            @Mapping(source = "usuarioEscola", target = "escola")
+            @Mapping(source = "usuarioEscola", target = "escola"),
     })
     UsuarioDTO usuarioToUsuarioDTO(Usuario usuario);
 
-    List<UsuarioDTO> map(List<Usuario> usuarios);
+   /* @Mapping(source = "usuarioAluno.usuarioEscola", target = "escola")
+    AlunoDTO map(Aluno aluno);]
 
-    @Mapping(source = "usuarioAluno.usuarioEscola", target = "escola")
-    AlunoDTO map(Aluno aluno);
+    @Mappings({
+            @Mapping(source = "alunoList" , target = "usuarioAluno.alunoList"),
+    })
+    Aluno map(Usuario usuario);
 
-   /* @Mapping(source = "")
-    ProfessorDTO map(Professor professor);*/
+    default Aluno map(AlunoDTO alunoDTO, @Context Usuario usuario) {
+        Aluno aluno = AlunoMapper.INSTANCE.alunoDTOToAluno(alunoDTO);
+
+        usuario.addAluno(aluno);
+
+        return aluno;
+
+    }*/
 
     @Mappings({
             @Mapping(source = "escola.id", target = "usuarioEscola.id"),
