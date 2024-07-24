@@ -12,7 +12,7 @@ public interface AdminMapper {
     AdminMapper INSTANCE = Mappers.getMapper(AdminMapper.class);
 
     @Mappings({
-            @Mapping(source = "usuarioEscola.id", target = "escolaId"),
+            @Mapping(source = "usuarioAdmin.usuarioEscola.id", target = "escolaId"),
     })
     AdminDTO adminToAdminDTO(Admin admin);
 

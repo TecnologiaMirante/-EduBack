@@ -8,14 +8,15 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table
-public class Admin extends Usuario {
-
+public class Admin {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Enumerated(EnumType.STRING)
     private Permissoes permissoes;
@@ -24,5 +25,11 @@ public class Admin extends Usuario {
     @JoinColumn(name = "Id_usuario")
     private Usuario usuarioAdmin;
 
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }

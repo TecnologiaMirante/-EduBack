@@ -9,16 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@EqualsAndHashCode(callSuper = true)
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table
-public class Professor extends Usuario {
+public class Professor  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name = "materias", nullable = false, length = 100)
     private String materias;
+   @Embedded
+   private UserInfo userInfo;
 
     @Column(name = "formacao", nullable = false, length = 100)
     private String formacao;
@@ -45,5 +50,12 @@ public class Professor extends Usuario {
 
     @ManyToMany(mappedBy = "professorTurma")
     private List<Turma>turmasProfessor = new ArrayList<>();
+
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 }

@@ -18,30 +18,13 @@ public interface UsuarioMapper {
 
     UsuarioMapper INSTANCE = Mappers.getMapper(UsuarioMapper.class);
 
-    List<UsuarioDTO> usuariosToUsuarioDTOs(List<Usuario> usuarios);
+    //List<UsuarioDTO> usuariosToUsuarioDTOs(List<Usuario> usuarios);
 
     @Mappings({
             @Mapping(source = "usuarioEscola.id", target = "escola.id"),
             @Mapping(source = "usuarioEscola", target = "escola"),
     })
     UsuarioDTO usuarioToUsuarioDTO(Usuario usuario);
-
-   /* @Mapping(source = "usuarioAluno.usuarioEscola", target = "escola")
-    AlunoDTO map(Aluno aluno);]
-
-    @Mappings({
-            @Mapping(source = "alunoList" , target = "usuarioAluno.alunoList"),
-    })
-    Aluno map(Usuario usuario);
-
-    default Aluno map(AlunoDTO alunoDTO, @Context Usuario usuario) {
-        Aluno aluno = AlunoMapper.INSTANCE.alunoDTOToAluno(alunoDTO);
-
-        usuario.addAluno(aluno);
-
-        return aluno;
-
-    }*/
 
     @Mappings({
             @Mapping(source = "escola.id", target = "usuarioEscola.id"),

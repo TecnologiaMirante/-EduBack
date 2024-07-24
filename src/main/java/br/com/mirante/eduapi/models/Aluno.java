@@ -10,13 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@EqualsAndHashCode(callSuper = true)
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table
-public class Aluno extends Usuario {
+public class Aluno  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    @Embedded
+    private UserInfo userInfo;
 
     @Enumerated(EnumType.STRING)
     private Permissoes permissoes = Permissoes.ALUNO;
@@ -56,6 +62,12 @@ public class Aluno extends Usuario {
     @JoinColumn(name = "Id_serie")
     private Serie alunoSerie;
 
+    @PrePersist
+    public void generateUUID() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
 
  /*   @OneToMany(mappedBy = "aluno")

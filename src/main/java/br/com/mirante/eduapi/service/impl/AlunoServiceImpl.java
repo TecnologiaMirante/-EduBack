@@ -38,9 +38,9 @@ public class AlunoServiceImpl implements AlunoService {
     public AlunoDTOPost save(AlunoDTOPost alunoDTO) throws BusinessException {
         Aluno aluno = AlunoMapper.INSTANCE.alunoDTOPostToAluno(alunoDTO);
 
-        if (alunoRepository.findByCpf(aluno.getCpf()) != null){
+        if (alunoRepository.findByUserInfoCpf(aluno.getUserInfo().getCpf()) != null){
             throw new BusinessException("Aluno já cadastrado com esse cpf");
-        } else if (alunoRepository.findByMatricula(aluno.getMatricula()) != null) {
+        } else if (alunoRepository.findByUserInfoMatricula(aluno.getUserInfo().getMatricula()) != null) {
             throw new BusinessException("Aluno já cadastrado com essa matricula");
         }
 

@@ -27,13 +27,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     @Override
     public Page<Professor> findAll(Specification<Professor> spec, Pageable pageable) {
-        List<ProfessorDTO> professores = new ArrayList<>();
-
         Page<Professor> professoresPage = professorRepository.findAll(spec, pageable);
-
-  /*      for (Professor professor : professoresPage) {
-            professores.add(new ProfessorDTO());
-        }*/
 
         return professoresPage;
     }
@@ -44,10 +38,12 @@ public class ProfessorServiceImpl implements ProfessorService {
         Professor professor = ProfessorMapper.INSTANCE.professorDTOToProfessor(professorDTO);
 
 
-        if (professorRepository.findByCpf(professor.getCpf()) != null){
+        if (professorRepository.findByUserInfoCpf(professor.getUserInfo().getCpf()) != null){
             throw new BusinessException("Usuario Ja existe com este cpf");
-        } else if (professorRepository.findByEmail(professor.getEmail()) != null){
+        } else if (professorRepository.findByUserInfoEmail(professor.getUserInfo().getEmail()) != null){
             throw new BusinessException("Usuario Ja existe com este email");
+        } else if (professorRepository.findByUserInfoMatricula(professor.getUserInfo().getMatricula()) != null) {
+            throw new BusinessException("Usuario Ja existe com esta matricula");
         }
 
         professor = professorRepository.save(professor);

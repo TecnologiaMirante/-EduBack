@@ -33,11 +33,11 @@ public class UsuarioServiceimpl implements UsuarioService {
     public UsuarioDTOPost save(UsuarioDTOPost usuarioDTO) throws BusinessException {
         Usuario usuario = UsuarioMapper.INSTANCE.usuarioDTOPostToUsuario(usuarioDTO);
 
-        if (usuarioRepository.findByMatricula(usuarioDTO.getMatricula()) != null){
+        if (usuarioRepository.findByUserInfoMatricula(usuarioDTO.getMatricula()) != null){
             throw new BusinessException("Usuario Ja existe com essa matricula");
-        } else if (usuarioRepository.findByCpf(usuarioDTO.getCpf()) != null) {
+        } else if (usuarioRepository.findByUserInfoCpf(usuarioDTO.getCpf()) != null) {
             throw new BusinessException("Usuario Ja existe com este cpf");
-        } else if (usuarioRepository.findByEmail(usuarioDTO.getEmail()) != null) {
+        } else if (usuarioRepository.findByUserInfoEmail(usuarioDTO.getEmail()) != null) {
             throw new BusinessException("Usuario Ja existe com este email");
         }
 

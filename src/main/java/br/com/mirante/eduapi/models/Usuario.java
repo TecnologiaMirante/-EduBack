@@ -15,71 +15,36 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "nome", nullable = false, length = 150)
-    private String nome;
-
-    @Column(name = "email", nullable = false, length = 100)
-    private String email;
-
-    @Column(name = "telefone", nullable = false, length = 15)
-    private String telefone;
-
-    @Column(name = "sexo", nullable = false, length = 10)
-    private String sexo;
-
-    @Column(name = "cpf", nullable = false, length = 15)
-    private String cpf;
-
-    @Column(name = "matricula", nullable = false, length = 50)
-    private String matricula;
-
-    @Column(name = "avatarUrl", nullable = false, length = 100)
-    private String avatar;
-
-    @Column(name = "data_de_nascimento", nullable = false)
-    private LocalDateTime dataDeNascimento;
-
-    @Column(name = "status", nullable = false, length = 10)
-    private String status;
-
-    @Column(name = "instagram_url", nullable = false, length = 100)
-    private String instagram;
-
-    @Column(name = "facebook_url", nullable = false, length = 100)
-    private String facebook;
-
-    @Column(name = "whatssapp_url", nullable = false, length = 100)
-    private String whatsApp;
-
-    @Column(name = "twitter_url", nullable = false, length = 100)
-    private String twitter;
-
-    @Column(name = "estado", nullable = false, length = 50)
-    private String estado;
-
-    @Column(name = "cidade", nullable = false, length = 100)
-    private String cidade;
-
-    @Column(name = "bairro", nullable = false, length = 100)
-    private String bairro;
-
-    @Column(name = "numero_endereco", nullable = false, length = 10)
-    private String numeroEndereco;
-
-    @Column(name = "complemento", nullable = false, length = 100)
-    private String complemento;
-
-    @Column(name = "cep", nullable = false, length = 15)
-    private String cep;
-
-    @Column(name = "referencia", nullable = false, length = 100)
-    private String referencia;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "nome", column = @Column(name = "nome", nullable = false, length = 150)),
+            @AttributeOverride(name = "email", column = @Column(name = "email", nullable = false, length = 100)),
+            @AttributeOverride(name = "telefone", column = @Column(name = "telefone", nullable = false, length = 15)),
+            @AttributeOverride(name = "sexo", column =  @Column(name = "sexo", nullable = false, length = 10)),
+            @AttributeOverride(name = "cpf", column = @Column(name = "cpf", nullable = false, length = 15)),
+            @AttributeOverride(name = "matricula", column = @Column(name = "matricula", nullable = false, length = 50)),
+            @AttributeOverride(name = "avatar", column =  @Column(name = "avatarUrl", nullable = false, length = 100)),
+            @AttributeOverride(name = "dataDeNascimento", column = @Column(name = "data_de_nascimento", nullable = false)),
+            @AttributeOverride(name = "status", column = @Column(name = "status", nullable = false, length = 10)),
+            @AttributeOverride(name = "instagram", column = @Column(name = "instagram_url", nullable = false, length = 100)),
+            @AttributeOverride(name = "facebook", column =  @Column(name = "facebook_url", nullable = false, length = 100)),
+            @AttributeOverride(name = "whatsApp", column = @Column(name = "whatssapp_url", nullable = false, length = 100)),
+            @AttributeOverride(name = "twitter", column =  @Column(name = "twitter_url", nullable = false, length = 100)),
+            @AttributeOverride(name = "estado", column =  @Column(name = "estado", nullable = false, length = 50)),
+            @AttributeOverride(name = "cidade", column = @Column(name = "cidade", nullable = false, length = 100)),
+            @AttributeOverride(name = "bairro", column =  @Column(name = "bairro", nullable = false, length = 100)),
+            @AttributeOverride(name = "numeroEndereco", column =  @Column(name = "numero_endereco", nullable = false, length = 10)),
+            @AttributeOverride(name = "complemento", column =  @Column(name = "complemento", nullable = false, length = 100)),
+            @AttributeOverride(name = "cep", column =  @Column(name = "cep", nullable = false, length = 15)),
+            @AttributeOverride(name = "referencia", column = @Column(name = "referencia", nullable = false, length = 100))
+    })
+    private UserInfo userInfo;
 
     private Permissoes permissoes;
 

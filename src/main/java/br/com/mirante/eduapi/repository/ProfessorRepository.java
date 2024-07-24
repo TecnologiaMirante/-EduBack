@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface ProfessorRepository extends JpaRepository<Professor, UUID>, JpaSpecificationExecutor<Professor> {
 
-    Professor findByCpf(String cpf);
-    Professor findByEmail(String email);
-    Professor findByMatricula(String matricula);
+    Professor findByUserInfoCpf(String cpf);
+    Professor findByUserInfoEmail(String email);
+    Professor findByUserInfoMatricula(String matricula);
 }
