@@ -21,6 +21,11 @@ public interface AlunoMapper {
     })
     AlunoDTO alunoToAlunoDTO(Aluno aluno);
 
+    //@Mapping(source = "usuarioAluno.email", target = "email")
+    UsuarioDTO alunoToUsuarioDTO(Aluno aluno);
+
+    List<UsuarioDTO> alunoToUsuarioDTO(List<Aluno> alunos);
+
 
     @Mappings({
             @Mapping(source = "escola", target = "usuarioAluno.usuarioEscola")
@@ -28,13 +33,14 @@ public interface AlunoMapper {
     Aluno alunoDTOToAluno(AlunoDTO aluno);
 
     @Mappings({
-            @Mapping(source = "usuarioAluno.id", target = "usuarioId"),
-            @Mapping(source = "usuarioAluno.usuarioEscola.id", target = "escolaId")
+            //@Mapping(source = "usuarioAluno.id", target = "usuarioId"),
+            @Mapping(source = "usuarioAluno.usuarioEscola.id", target = "escolaId"),
+            @Mapping(source = "userInfo", target = "userInfo")
     })
     AlunoDTOPost alunoToAlunoPost(Aluno aluno);
 
     @Mappings({
-            @Mapping(source = "usuarioId", target = "usuarioAluno.id"),
+            //@Mapping(source = "usuarioId", target = "usuarioAluno.id"),
             @Mapping(source = "escolaId", target = "usuarioAluno.usuarioEscola.id")
     })
     Aluno alunoDTOPostToAluno(AlunoDTOPost aluno);

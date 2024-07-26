@@ -16,25 +16,7 @@ public class UsuarioDTOPost {
     private UUID id;
     private String nome;
     private String email;
-    private String telefone;
-    private String sexo;
-    private String cpf;
-    private String matricula;
-    private String avatar;
-    private LocalDateTime dataDeNascimento;
-    private String status;
-    private String instagram;
-    private String facebook;
-    private String twitter;
-    private String whatsApp;
-    private String estado;
-    private String cidade;
-    private String bairro;
-    private String numeroEndereco;
-    private String complemento;
-    private String cep;
-    private String referencia;
-    private Permissoes permissoes;
+    private String senha;
     private UUID escolaId;
 
 }

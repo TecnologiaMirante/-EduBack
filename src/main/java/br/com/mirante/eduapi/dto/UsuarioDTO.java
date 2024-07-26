@@ -10,12 +10,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UsuarioDTO {
     private UUID id;
-    private UserInfoDTO userInfo;
+    private String nome;
+    private String email;
+    private String senha;
     private Permissoes permissoes;
     private EscolaUsuarioDTO escola;
-
-   /* private List<ProfessorDTOGet> professores;
-
-    private List<AlunoDTOGet> alunos;*/
-
 }

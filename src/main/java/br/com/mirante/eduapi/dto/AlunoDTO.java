@@ -1,8 +1,6 @@
 package br.com.mirante.eduapi.dto;
 
 import br.com.mirante.eduapi.models.Permissoes;
-import br.com.mirante.eduapi.models.Usuario;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,9 +20,6 @@ public class AlunoDTO {
 
     //private UUID turmaId;
     //private UUID responsavelId;
-
-
-
 
    /* private List<AulaDTO> aulas;
     private List<RankAlunoDTO> rankAlunoDTOS;
