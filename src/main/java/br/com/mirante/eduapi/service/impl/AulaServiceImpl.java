@@ -20,10 +20,10 @@ public class AulaServiceImpl implements AulaService {
     @Autowired
     private AulaRepository aulaRepository;
 
-  @Override
-  public Page<Aula> findAll(Specification<Aula> spec , Pageable page){
-      return aulaRepository.findAll(spec, page);
-  }
+    @Override
+    public Page<Aula> findAll(Specification<Aula> spec , Pageable page){
+        return aulaRepository.findAll(spec, page);
+    }
 
     @Override
     public Optional<AulaDTO> findById(UUID id) {
@@ -32,34 +32,34 @@ public class AulaServiceImpl implements AulaService {
     }
 
     @Override
-  public AulaDTO save(AulaDTO aulaDTO) throws BusinessException {
-      Aula aula = AulaMapper.INSTANCE.aulaDTOToAula(aulaDTO);
+    public AulaDTO save(AulaDTO aulaDTO) throws BusinessException {
+        Aula aula = AulaMapper.INSTANCE.aulaDTOToAula(aulaDTO);
 
-      if(aulaRepository.findByTitulo(aulaDTO.getTitulo()) != null){
-        throw new BusinessException("Titulo ja existente");
-      }
-      aulaRepository.save(aula);
-      return AulaMapper.INSTANCE.aulaToAulaDTO(aula);
-  }
+        if(aulaRepository.findByTitulo(aulaDTO.getTitulo()) != null){
+            throw new BusinessException("Titulo ja existente");
+        }
+        aulaRepository.save(aula);
+        return AulaMapper.INSTANCE.aulaToAulaDTO(aula);
+    }
 
-  @Override
-  public Optional<AulaDTO> update(UUID id, AulaDTO aulaDTO){
-      if (aulaRepository.existsById(id)){
-          Aula aula = AulaMapper.INSTANCE.aulaDTOToAula(aulaDTO);
-          aula.setId(id);
-          aula = aulaRepository.save(aula);
-          return Optional.of(AulaMapper.INSTANCE.aulaToAulaDTO(aula));
-      }
-      return Optional.empty();
-  }
+    @Override
+    public Optional<AulaDTO> update(UUID id, AulaDTO aulaDTO){
+        if (aulaRepository.existsById(id)){
+            Aula aula = AulaMapper.INSTANCE.aulaDTOToAula(aulaDTO);
+            aula.setId(id);
+            aula = aulaRepository.save(aula);
+            return Optional.of(AulaMapper.INSTANCE.aulaToAulaDTO(aula));
+        }
+        return Optional.empty();
+    }
 
-  @Override
-  public  boolean deleteById(UUID id){
-      if(aulaRepository.existsById(id)){
-          aulaRepository.deleteById(id);
-          return true;
-      }
-      return false;
-  }
+    @Override
+    public  boolean deleteById(UUID id){
+        if(aulaRepository.existsById(id)){
+            aulaRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 
 }

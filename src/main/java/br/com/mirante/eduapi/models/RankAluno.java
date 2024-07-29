@@ -24,8 +24,6 @@ public class RankAluno {
     @Column(name = "points")
     private String points;
 
-
-
     @Column(name = "img")
     private String img;
 
@@ -45,9 +43,6 @@ public class RankAluno {
     @ManyToOne
     @JoinColumn(name = "rankAlunos")
     private Turma rankAlunos ;
-
-//    @OneToMany(mappedBy = "rankEscola")
-//    private List<Escola> escolasRank = new ArrayList<>();
 
     @PrePersist
     public void generateUUID() {
