@@ -21,7 +21,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-
     @Column(nullable = false, length = 50, name = "nome_usuario")
     private String nome;
 

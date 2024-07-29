@@ -15,5 +15,5 @@ public class AlunoDTOPost {
     private UserInfoDTO userInfo;
     private Permissoes permissoes = Permissoes.ALUNO;
     private UUID escolaId;
-    //private UUID usuarioId;
+    private UUID usuarioId;
 }
