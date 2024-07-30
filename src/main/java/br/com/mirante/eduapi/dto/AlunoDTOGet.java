@@ -19,7 +19,7 @@ public class AlunoDTOGet {
     private String matricula;
     private String sexo;
     private Permissoes permissoes = Permissoes.ALUNO;
-    private UsuarioResponsavelDTO responsavel;
+    //private UsuarioResponsavelDTO responsavel;
 
 
 }

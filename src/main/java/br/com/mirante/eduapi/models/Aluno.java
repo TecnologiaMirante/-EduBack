@@ -36,6 +36,10 @@ public class Aluno  {
     private Usuario usuarioAluno;
 
     @ManyToOne
+    @JoinColumn(name = "id_escola")
+    private Escola alunoEscola;
+
+    @ManyToOne
     @JoinColumn(name = "id_RankAluno")
     private RankAluno rankAluno;
 

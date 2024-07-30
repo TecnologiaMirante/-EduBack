@@ -13,8 +13,5 @@ import java.util.UUID;
 public class UsuarioDTOGet {
     private UUID id;
     private String nome;
-    private String sexo;
-    private String cpf;
-    private String matricula;
-    private Permissoes permissoes = getPermissoes();
+    private String email;
 }
