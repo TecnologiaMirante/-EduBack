@@ -63,8 +63,8 @@ public class Escola {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunoEscola")
     private List<Aluno> alunos = new ArrayList<>();
 
-    @OneToMany(mappedBy = "escola", cascade = CascadeType.ALL)
-    private List<RankGeral> rankList = new ArrayList<>();
+    @OneToMany(mappedBy = "escola",cascade = CascadeType.ALL)
+    private List<RankAluno> rankAlunoList = new ArrayList<>();
 
 
 

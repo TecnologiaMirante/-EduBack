@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +21,6 @@ public class AulaDTO {
     private Date data;
     private Boolean favoritar;
     private Boolean conteudoRealizado;
-    private Boolean progresso;
     private UUID IdAluno;
     private List<AlunoInteracaoDTO> alunointeracoe;
 }

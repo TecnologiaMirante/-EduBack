@@ -13,4 +13,8 @@ import java.util.UUID;
 public class QuestoesDTO {
     private UUID id;
     private String titulo;
+    private String descricao;
+    private OpcoesDTO idOpcoes;
+    private String idAvaliacao;
+//    private List<ConteudoDTO> conteudo;
 }

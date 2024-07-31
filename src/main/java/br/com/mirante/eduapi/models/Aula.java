@@ -2,12 +2,8 @@ package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import java.util.ArrayList;
-import java.util.List;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +19,7 @@ public class Aula {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "titulo", nullable = false, insertable = false, updatable = false)
+    @Column(name = "titulo", nullable = false,insertable=false, updatable=false)
     private String titulo;
 
     @Column(name = "descricao", nullable = false)
@@ -51,7 +47,7 @@ public class Aula {
     private Boolean conteudoRealizado;
 
     @Column(name = "progresso")
-    private Boolean progresso;
+    private boolean progresso;
 
     @ManyToOne
     @JoinColumn(name = "id_aluno")

@@ -31,4 +31,5 @@ public class EscolaDTO {
     private List<RankGeralDTO> rankGeralDTOS;
 
 
+    private List<RankAlunoDTO> rankAlunoDTOS;
 }

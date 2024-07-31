@@ -44,6 +44,9 @@ public class Serie {
             inverseJoinColumns = @JoinColumn(name = "id_RankSerie"))
     private List<RankSerie> RankSerieList;
 
+    @OneToMany(mappedBy = "SerieListSerie")
+    private List<RankAluno> RankAlunoSerieList;
+
 
     @PrePersist
     public void generateUUID() {

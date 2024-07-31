@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -83,7 +82,7 @@ public class Aluno  {
     private  String referencia;
 
     @Enumerated(EnumType.STRING)
-    private Permissoes permissoes = Permissoes.ALUNO;
+    private Permissoes permissoes;
 
     @ManyToOne
     @JoinColumn(name = "id_turma")
@@ -97,9 +96,8 @@ public class Aluno  {
     @JoinColumn(name = "id_escola")
     private Escola alunoEscola;
 
-    @ManyToOne
-    @JoinColumn(name = "id_RankAluno")
-    private RankAluno rankAluno;
+    /*@OneToMany(mappedBy = "aluno",cascade = CascadeType.ALL)
+    private List<RankAluno> rankAluno =  new ArrayList<>();*/
 
     @ManyToOne
     @JoinColumn(name = "Id_responsavel")

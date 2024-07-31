@@ -38,13 +38,8 @@ public class Turma {
     @OneToMany(mappedBy = "turmaAluno")
     private List<Aluno> alunos = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "Turma_Rank",
-            joinColumns = @JoinColumn(name = "id_turma"),
-            inverseJoinColumns = @JoinColumn(name = "id_Rank")
-    )
-    private  List<RankTurma> RankTurmaList = new ArrayList<>();
+    @OneToMany(mappedBy = "rankAlunos")
+    private List<RankAluno>rankAlunos;
 
     //RELACIONAMENTO TURMA SERIE
     @ManyToOne

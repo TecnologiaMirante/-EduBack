@@ -28,9 +28,9 @@ public class RankGeral {
 
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_escola", nullable = false)
-    private Escola escola;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "Id_escola", nullable = false)
+//    private Escola escola;
 
 
     @PrePersist
