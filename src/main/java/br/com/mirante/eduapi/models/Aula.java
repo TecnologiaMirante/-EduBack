@@ -1,14 +1,16 @@
 package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -45,9 +47,6 @@ public class Aula {
 
     @Column(name = "conteudo_realizado", nullable = false)
     private Boolean conteudoRealizado;
-
-    @Column(name = "progresso")
-    private boolean progresso;
 
     @ManyToOne
     @JoinColumn(name = "id_aluno")
