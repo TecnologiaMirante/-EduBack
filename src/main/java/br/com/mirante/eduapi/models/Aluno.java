@@ -96,8 +96,8 @@ public class Aluno  {
     @JoinColumn(name = "id_escola")
     private Escola alunoEscola;
 
-    /*@OneToMany(mappedBy = "aluno",cascade = CascadeType.ALL)
-    private List<RankAluno> rankAluno =  new ArrayList<>();*/
+    @OneToMany(mappedBy = "aluno",cascade = CascadeType.ALL)
+    private List<RankAluno> rankAluno =  new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "Id_responsavel")
