@@ -124,4 +124,31 @@ public class SpecTemplate {
     })
     public interface AlunoEloSpec extends Specification<AlunosElo>{}
 
+    @And({
+            @Spec(path = "nome", spec = Like.class),
+            @Spec(path = "turno", spec = Equal.class),
+            @Spec(path = "turma", spec = Equal.class),
+            @Spec(path = "titulo",spec = Like.class)
+    })
+    public interface SerieSpec extends Specification<Serie>{}
+
+    public interface DisciplinaSpec extends Specification<Disciplina>{}
+
+    public interface TurmaSpec extends Specification<Turma>{}
+
+    public interface BimestreSpec extends Specification<Bimestre>{}
+
+    public interface MediaSpec extends Specification<Media>{}
+
+    public interface ConteudoSpec extends Specification<Conteudo>{}
+
+    public interface AvaliacaoSpec extends Specification<Avaliacao>{}
+
+    @And({
+            @Spec(path = "titulo", spec = Like.class),
+            @Spec(path = "material", spec = Like.class)
+
+    })
+    public interface MaterialComplementarSpec extends Specification<MaterialComplementar>{}
+
 }
