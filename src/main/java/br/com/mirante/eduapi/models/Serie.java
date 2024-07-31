@@ -25,6 +25,10 @@ public class Serie {
     @Column(name = "turno", nullable = false, length = 15)
     private String turno;
 
+    @Column(name = "turma", nullable = false, length = 15)
+    private String turma;
+
+
     //RELACIONAMENTO TURMA SERIE
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
     private List<Turma> turmaSerieList = new ArrayList<>();

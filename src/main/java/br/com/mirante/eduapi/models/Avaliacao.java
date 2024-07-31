@@ -36,6 +36,9 @@ public class Avaliacao {
     @Column(name = "img", nullable = false, length = 150)
     private String img;
 
+    @Column(name= "progresso")
+    private Boolean progresso;
+
     //RELACIONAMENTO AVALIACAO CONTEUDO
     @OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL)
     private List<Conteudo> avaliacaoConteudoList = new ArrayList<>();
