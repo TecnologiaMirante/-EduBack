@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, UUID>, JpaSpecificationExecutor<Aluno> {
 
-    Aluno findByUserInfoCpf(String cpf);
-    Aluno findByUserInfoMatricula(String matricula);
+    Aluno findByCpf(String cpf);
+    Aluno findByMatricula(String matricula);
 }

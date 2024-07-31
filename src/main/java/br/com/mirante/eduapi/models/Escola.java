@@ -58,7 +58,7 @@ public class Escola {
 
 
     @OneToMany(mappedBy = "usuarioEscola", cascade = CascadeType.ALL)
-    private List<Usuario> usuarioList = new ArrayList<>();
+    private List<Usuario> usuarios = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alunoEscola")
     private List<Aluno> alunos = new ArrayList<>();

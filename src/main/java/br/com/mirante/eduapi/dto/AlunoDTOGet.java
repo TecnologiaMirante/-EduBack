@@ -18,6 +18,7 @@ public class AlunoDTOGet {
     private String cpf;
     private String matricula;
     private String sexo;
+    private UUID usuarioId;
     private Permissoes permissoes = Permissoes.ALUNO;
     //private UsuarioResponsavelDTO responsavel;
 

@@ -1,5 +1,7 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.Aluno;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,4 +29,6 @@ public class EscolaDTO {
     private List<UsuarioDTOGet> usuarios;
     private List<AlunoDTOGet> alunos;
     private List<RankGeralDTO> rankGeralDTOS;
+
+
 }
