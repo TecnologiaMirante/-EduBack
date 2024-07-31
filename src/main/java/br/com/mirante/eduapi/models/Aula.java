@@ -1,4 +1,5 @@
 package br.com.mirante.eduapi.models;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +19,7 @@ public class Aula {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "titulo", nullable = false, insertable = false, updatable = false)
+    @Column(name = "titulo", nullable = false,insertable=false, updatable=false)
     private String titulo;
 
     @Column(name = "descricao", nullable = false)

@@ -1,7 +1,6 @@
 package br.com.mirante.eduapi.specifications;
 
 import br.com.mirante.eduapi.models.*;
-import br.com.mirante.eduapi.models.Aula;
 import br.com.mirante.eduapi.models.Escola;
 import br.com.mirante.eduapi.models.Questoes;
 import br.com.mirante.eduapi.models.Usuario;
