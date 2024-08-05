@@ -35,7 +35,7 @@ public class EscolaController {
     public ResponseEntity<Page<EscolaDTO>> findAll(SpecTemplate.EscolaSpec spec, Pageable page) {
         Page<Escola> consultaPage = escolaService.findAll(spec, page);
         if (consultaPage.isEmpty()) {
-            return new ResponseEntity<>(consultaPage.map(EscolaMapper.INSTANCE::escolaToEscolaDTO), HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(consultaPage.map(EscolaMapper.INSTANCE::escolaToEscolaDTO), HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(consultaPage.map(EscolaMapper.INSTANCE::escolaToEscolaDTO), HttpStatus.OK);
         }

@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface AvaliacaoMapper {
+public interface    AvaliacaoMapper {
     AvaliacaoMapper INSTANCE = Mappers.getMapper(AvaliacaoMapper.class);
     AvaliacaoDTO ToAvaliacaoDTO(Avaliacao avaliacao);
     Avaliacao ToAvaliacao(AvaliacaoDTO avaliacaoDTO);
