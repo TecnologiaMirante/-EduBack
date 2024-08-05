@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -22,7 +20,7 @@ public class RankAluno {
     private String apelido;
 
     @Column(name = "points")
-    private String points;
+    private Integer points;
 
     @Column(name = "img")
     private String img;

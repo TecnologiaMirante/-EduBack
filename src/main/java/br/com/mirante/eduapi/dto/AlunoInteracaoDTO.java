@@ -16,5 +16,5 @@ public class AlunoInteracaoDTO {
     private String anotacao;
     private String avaliar;
     private String comentario;
-    private List<AulaDTO> aulas;
+    private List<AulaDTO>  aula;
 }

@@ -37,6 +37,7 @@ public class RankAlunoServiceimpl implements RankAlunoService {
         if (rankAlunoRepository.findByApelido(rankAlunoDTO.getApelido()) != null){
             throw new BusinessException("Este apelido já existe");
         }
+
         rankAluno = rankAlunoRepository.save(rankAluno);
         return RankAlunoMapper.INSTANCE.rankAlunoToRankAlunoDTO(rankAluno);
     }

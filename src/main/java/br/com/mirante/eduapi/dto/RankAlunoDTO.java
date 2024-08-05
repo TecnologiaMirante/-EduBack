@@ -1,22 +1,19 @@
 package br.com.mirante.eduapi.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RankAlunoDTO {
-
     private UUID id;
-    private String points;
-    private String img;
     private String apelido;
+    private Integer points;
+    private String img;
     private UUID IdAluno;
     private UUID IdTurma;
     private UUID IdSerie;

@@ -2,6 +2,7 @@ package br.com.mirante.eduapi.controller;
 
 
 import br.com.mirante.eduapi.dto.RankAlunoDTO;
+import br.com.mirante.eduapi.dto.RankAlunoGetDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.RankAlunoMapper;
 import br.com.mirante.eduapi.models.RankAluno;
@@ -30,13 +31,13 @@ public class RankAlunoCotroller {
     @GetMapping("/findAll")
     @Operation(summary = "Consultar o ranking.", description = "Endpoint para consultar o ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<Page<RankAlunoDTO>> findAll(SpecTemplate.RankAlunoSpec spec, Pageable page) {
+    public ResponseEntity<Page<RankAlunoGetDTO>> findAll(SpecTemplate.RankAlunoSpec spec, Pageable page) {
         Page<RankAluno> consultaPage = rankAlunoService.findAll(spec, page);
         if (consultaPage.isEmpty()){
-            return new ResponseEntity<>(consultaPage.map(RankAlunoMapper.INSTANCE::rankAlunoToRankAlunoDTO),
+            return new ResponseEntity<>(consultaPage.map(RankAlunoMapper.INSTANCE::rankAlunoToRankAlunoGEt),
                     HttpStatus.NOT_FOUND);
         }else{
-            return  new ResponseEntity<>(consultaPage.map(RankAlunoMapper.INSTANCE::rankAlunoToRankAlunoDTO),HttpStatus.OK);
+            return  new ResponseEntity<>(consultaPage.map(RankAlunoMapper.INSTANCE::rankAlunoToRankAlunoGEt),HttpStatus.OK);
         }
     }
 

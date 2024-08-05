@@ -1,9 +1,7 @@
 package br.com.mirante.eduapi.service;
 
-import br.com.mirante.eduapi.dto.QuestoesDTO;
 import br.com.mirante.eduapi.dto.RankAlunoDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
-import br.com.mirante.eduapi.models.Questoes;
 import br.com.mirante.eduapi.models.RankAluno;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

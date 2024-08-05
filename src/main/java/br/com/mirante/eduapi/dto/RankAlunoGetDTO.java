@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class RankAlunoGetDTO {
     private UUID id;
-    private String points;
+    private Integer points;
     private String img;
     private String apelido;
 }
