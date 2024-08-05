@@ -17,7 +17,7 @@ public interface AulaService {
 
     Optional<AulaDTO> findById(UUID id);
 
-    Optional<AulaDTO> update(UUID id, AulaDTO aulaDTO);
+    Optional<AulaDTO> update(UUID id, AulaDTO aulaDTO) throws BusinessException;
 
     boolean deleteById(UUID id);
 

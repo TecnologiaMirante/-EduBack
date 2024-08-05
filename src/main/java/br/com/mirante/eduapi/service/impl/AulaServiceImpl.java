@@ -43,9 +43,13 @@ public class AulaServiceImpl implements AulaService {
     }
 
     @Override
-    public Optional<AulaDTO> update(UUID id, AulaDTO aulaDTO){
+    public Optional<AulaDTO> update(UUID id, AulaDTO aulaDTO) throws BusinessException{
+        Aula aula = AulaMapper.INSTANCE.aulaDTOToAula(aulaDTO);
+
         if (aulaRepository.existsById(id)){
-            Aula aula = AulaMapper.INSTANCE.aulaDTOToAula(aulaDTO);
+            if (aulaRepository.findByTitulo(aulaDTO.getTitulo()) != null){
+                throw new BusinessException("Esse titulo ja existe");
+            }
             aula.setId(id);
             aula = aulaRepository.save(aula);
             return Optional.of(AulaMapper.INSTANCE.aulaToAulaDTO(aula));

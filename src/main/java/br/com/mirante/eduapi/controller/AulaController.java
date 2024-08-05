@@ -2,6 +2,7 @@ package br.com.mirante.eduapi.controller;
 
 
 import br.com.mirante.eduapi.dto.AulaDTO;
+import br.com.mirante.eduapi.dto.AulaDTOGet;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.AulaMapper;
 import br.com.mirante.eduapi.models.Aula;
@@ -33,12 +34,12 @@ public class AulaController {
     @GetMapping("/findAll")
     @Operation(summary = "Consulta Aulas.", description = "Endpoint para Consulta Aulas.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<Page<AulaDTO>> findAll(SpecTemplate.AulaSpec spec, Pageable page) {
+    public ResponseEntity<Page<AulaDTOGet>> findAll(SpecTemplate.AulaSpec spec, Pageable page) {
         Page<Aula> consultaPage = aulaService.findAll(spec, page);
         if (consultaPage.isEmpty()) {
-            return new ResponseEntity<>(consultaPage.map(AulaMapper.INSTANCE::aulaToAulaDTO), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(consultaPage.map(AulaMapper.INSTANCE::aulaToAulaDTOGet), HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<>(consultaPage.map(AulaMapper.INSTANCE::aulaToAulaDTO), HttpStatus.OK);
+            return new ResponseEntity<>(consultaPage.map(AulaMapper.INSTANCE::aulaToAulaDTOGet), HttpStatus.OK);
         }
     }
 
@@ -62,7 +63,7 @@ public class AulaController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Aula.", description = "Endpoint para atualizar os dados das Aulas",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<AulaDTO> update(@PathVariable  UUID id, @RequestBody AulaDTO aulaDTO){
+    public ResponseEntity<AulaDTO> update(@PathVariable  UUID id, @RequestBody AulaDTO aulaDTO) throws BusinessException{
         return aulaService.update(id,aulaDTO)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

@@ -1,16 +1,14 @@
 package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
-import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +19,7 @@ public class Aula {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "titulo", nullable = false,insertable=false, updatable=false)
+    @Column(name = "titulo", nullable = false)
     private String titulo;
 
     @Column(name = "descricao", nullable = false)
@@ -33,7 +31,7 @@ public class Aula {
     @Column(name = "arquivo", nullable = false)
     private String arquivo;
 
-    @Column(name = "titulo", nullable = false)
+    @Column(name = "avaliacao", nullable = false)
     private String avaliacao;
 
     @Column(name = "img", nullable = false)
