@@ -1,8 +1,8 @@
 keycloak:
-  auth-server-url: link
-  realm: nome
-  ssl-required: external
-  resource: nome
+  auth-server-url: https://keycloak.afcoding.com.br/auth
+  realm: mirante
+  ssl-required: none
+  resource: app-educacao
   public-client: true
   confidential-port: 0
   bearer-only: true
@@ -16,17 +16,17 @@ spring:
       client:
         registration:
           keycloak:
-            client-id: nome
+            client-id: app-educacao
             authorization-grant-type: authorization_code
             scope: openid
         provider:
           keycloak:
-            issuer-uri: link
+            issuer-uri: https://keycloak.afcoding.com.br/realms/mirante
             user-name-attribute: preferred_username
 
       resourceserver:
         jwt:
-          issuer-uri: link
+          issuer-uri: https://keycloak.afcoding.com.br/realms/mirante
 
 
 logging:

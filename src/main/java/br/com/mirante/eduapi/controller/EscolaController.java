@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -29,6 +30,7 @@ public class EscolaController {
     @Autowired
     private EscolaService escolaService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ESCOLA_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Escolas.", description = "Endpoint para consultar Escolas.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -41,6 +43,7 @@ public class EscolaController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ESCOLA_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro de Escola.", description = "Endpoint para cadastrar Escolas.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -49,6 +52,7 @@ public class EscolaController {
         return ResponseEntity.ok(savedEscola);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ESCOLA_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Escola por ID.", description = "Endpoint para buscar a escolas pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -58,6 +62,7 @@ public class EscolaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ESCOLA_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Escola.", description = "Endpoint para atualizar os dados das escolas.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -68,6 +73,7 @@ public class EscolaController {
 
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ESCOLA_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Escola.", description = "Endpoint para remover uma escola.",
             security = {@SecurityRequirement(name = "bearer-key")})
