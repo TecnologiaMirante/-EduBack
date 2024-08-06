@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service.impl;
 
 import br.com.mirante.eduapi.dto.UsuarioResponsavelDTO;
+import br.com.mirante.eduapi.dto.UsuarioResponsavelDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.UsuarioResponsavelMapper;
 import br.com.mirante.eduapi.models.UsuarioResponsavel;
@@ -27,15 +28,15 @@ public class UsuarioResponsavelServiceImpl implements UsuarioResponsavelService 
     }
 
     @Override
-    public UsuarioResponsavelDTO save(UsuarioResponsavelDTO usuarioResponsavelDTO) throws BusinessException {
+    public UsuarioResponsavelDTOPost save(UsuarioResponsavelDTOPost usuarioResponsavelDTO) throws BusinessException {
         UsuarioResponsavel usuarioResponsavel = UsuarioResponsavelMapper.INSTANCE
-                .usuarioResponsavelDTOToUsuarioResponsavel(usuarioResponsavelDTO);
+                .usuarioResponsavelDTOPostToUsuarioResponsavel(usuarioResponsavelDTO);
         if (usuarioResponsavelRepository.findByCpf(usuarioResponsavel.getCpf()) != null){
             throw new BusinessException("O usuario responsavel ja existe com este cpf");
         }
        usuarioResponsavel = usuarioResponsavelRepository.save(usuarioResponsavel);
 
-        return UsuarioResponsavelMapper.INSTANCE.usuarioResponsavelToUsuarioResponsavelDTO(usuarioResponsavel);
+        return UsuarioResponsavelMapper.INSTANCE.usuarioResponsavelToUsuarioResponsavelDTOPost(usuarioResponsavel);
     }
 
     @Override

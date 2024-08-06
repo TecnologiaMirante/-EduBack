@@ -35,10 +35,10 @@ public class AlunoDTO {
     private String cep;
     private String referencia;
     private Permissoes permissoes = Permissoes.ALUNO;
+    private ResponsavelAlunoDTO responsavel;
     private EscolaUsuarioDTO escola;
 
     //private UUID turmaId;
-    //private UUID responsavelId;
 
    /* private List<AulaDTO> aulas;
     private List<RankAlunoDTO> rankAlunoDTOS;

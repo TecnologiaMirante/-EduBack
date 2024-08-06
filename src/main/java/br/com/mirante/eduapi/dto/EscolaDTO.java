@@ -28,6 +28,7 @@ public class EscolaDTO {
     private String cpfCnpj;
     private List<UsuarioDTOGet> usuarios;
     private List<AlunoDTOGet> alunos;
+    private List<ProfessorDTOGet> professores;
     private List<RankGeralDTO> rankGeralDTOS;
 
 

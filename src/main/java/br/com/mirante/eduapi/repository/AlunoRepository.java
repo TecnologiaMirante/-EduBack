@@ -1,7 +1,6 @@
 package br.com.mirante.eduapi.repository;
 
 import br.com.mirante.eduapi.models.Aluno;
-import br.com.mirante.eduapi.models.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

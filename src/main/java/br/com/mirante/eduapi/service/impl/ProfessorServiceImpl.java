@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service.impl;
 
 import br.com.mirante.eduapi.dto.ProfessorDTO;
+import br.com.mirante.eduapi.dto.ProfessorDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.ProfessorMapper;
 import br.com.mirante.eduapi.models.Professor;
@@ -33,22 +34,22 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
-    public ProfessorDTO save(ProfessorDTO professorDTO) throws BusinessException {
+    public ProfessorDTOPost save(ProfessorDTOPost professorDTO) throws BusinessException {
 
-        Professor professor = ProfessorMapper.INSTANCE.professorDTOToProfessor(professorDTO);
+        Professor professor = ProfessorMapper.INSTANCE.professorDTOPostToProfessor(professorDTO);
 
 
-        if (professorRepository.findByUserInfoCpf(professor.getUserInfo().getCpf()) != null){
+        if (professorRepository.findByCpf(professor.getCpf()) != null){
             throw new BusinessException("Usuario Ja existe com este cpf");
-        } else if (professorRepository.findByUserInfoEmail(professor.getUserInfo().getEmail()) != null){
+        } else if (professorRepository.findByEmail(professor.getEmail()) != null){
             throw new BusinessException("Usuario Ja existe com este email");
-        } else if (professorRepository.findByUserInfoMatricula(professor.getUserInfo().getMatricula()) != null) {
+        } else if (professorRepository.findByMatricula(professor.getMatricula()) != null) {
             throw new BusinessException("Usuario Ja existe com esta matricula");
         }
 
         professor = professorRepository.save(professor);
 
-        return ProfessorMapper.INSTANCE.professorToProfessorDTO(professor);
+        return ProfessorMapper.INSTANCE.professorToProfessorDTOPost(professor);
     }
 
     @Override

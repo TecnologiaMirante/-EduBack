@@ -40,11 +40,7 @@ public class ProfessorDTO {
     private String materias;
     private String formacao;
     private String experiencia;
-    private UUID usuarioId;
-    private UUID escolaId;
-    //private UUID turmaId;
-
-    //private UUID disciplinaId;
+    private EscolaUsuarioDTO escola;
 
     //private List<Turma> turmas = new ArrayList<>();
 

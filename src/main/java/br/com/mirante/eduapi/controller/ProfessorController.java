@@ -2,6 +2,7 @@ package br.com.mirante.eduapi.controller;
 
 
 import br.com.mirante.eduapi.dto.ProfessorDTO;
+import br.com.mirante.eduapi.dto.ProfessorDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.ProfessorMapper;
 import br.com.mirante.eduapi.models.Professor;
@@ -47,9 +48,9 @@ public class ProfessorController {
     @PostMapping("/")
     @Operation(summary = "Cadastro de Professores.", description = "Endpoint para cadastrar professor.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<ProfessorDTO> create(@RequestBody ProfessorDTO professorDTO) throws BusinessException {
+    public ResponseEntity<ProfessorDTOPost> create(@RequestBody ProfessorDTOPost professorDTO) throws BusinessException {
 
-        ProfessorDTO professorSaved = professorService.save(professorDTO);
+        ProfessorDTOPost professorSaved = professorService.save(professorDTO);
 
         return ResponseEntity.ok(professorSaved);
     }

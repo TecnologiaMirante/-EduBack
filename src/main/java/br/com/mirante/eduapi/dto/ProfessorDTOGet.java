@@ -17,5 +17,6 @@ public class ProfessorDTOGet {
     private String nome;
     private String matricula;
     private String email;
+    private UUID escolaId;
     private Permissoes permissoes = getPermissoes();
 }
