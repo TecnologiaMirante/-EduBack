@@ -22,13 +22,15 @@ public interface EscolaMapper {
 
     @Mappings({
             @Mapping(source = "usuarioAluno.id", target = "usuarioId"),
-            @Mapping(source = "id", target = "responsavel.id")
+            @Mapping(source = "id", target = "responsavel.id"),
+            @Mapping(source = "alunoEscola", target = "escola")
     })
     AlunoDTOGet alunoToAlunoDTOGet(Aluno aluno);
 
     @Mappings({
             @Mapping(source = "usuarioId", target = "usuarioAluno.id"),
-            @Mapping(source = "responsavel.id", target = "id")
+            @Mapping(source = "responsavel.id", target = "id"),
+            @Mapping(source = "escola", target = "alunoEscola")
     })
     Aluno alunoDTOGetToAluno(AlunoDTOGet aluno);
 
@@ -36,6 +38,7 @@ public interface EscolaMapper {
     ProfessorDTOGet professorToProfessorDTOGet(Professor professor);
 
     @Mapping(source = "escolaId", target = "professorEscola.id")
+    @Mapping(source = "tipoUsuario", target = "tipoUsuario")
     Professor professorDTOGetToProfessor(ProfessorDTOGet professor);
 
 }

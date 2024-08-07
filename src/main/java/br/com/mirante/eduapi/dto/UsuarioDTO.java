@@ -13,6 +13,6 @@ public class UsuarioDTO {
     private String nome;
     private String email;
     private String senha;
-    private TipoUsuario tipoUsuario;
+    //private TipoUsuario tipoUsuario;
     private EscolaUsuarioDTO escola;
 }

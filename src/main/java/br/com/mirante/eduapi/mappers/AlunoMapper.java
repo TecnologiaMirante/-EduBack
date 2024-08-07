@@ -31,6 +31,7 @@ public interface AlunoMapper {
     @Mappings({
             @Mapping(source = "usuarioId", target = "usuarioAluno.id"),
             @Mapping(source = "escolaId", target = "alunoEscola.id"),
+            @Mapping(source = "tipoUsuario", target = "tipoUsuario")
     })
     Aluno alunoDTOPostToAluno(AlunoDTOPost aluno);
 

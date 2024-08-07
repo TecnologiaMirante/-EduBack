@@ -28,7 +28,7 @@ public class Usuario {
     @Column(nullable = false, length = 20)
     private String senha;
 
-    private TipoUsuario tipoUsuario;
+    //private TipoUsuario tipoUsuario;
 
     @ManyToOne
     @JoinColumn(name = "id_escola")

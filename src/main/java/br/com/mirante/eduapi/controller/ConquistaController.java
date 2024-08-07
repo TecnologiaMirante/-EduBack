@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.controller;
 
+import br.com.mirante.eduapi.dto.ConquistaDTOPost;
 import br.com.mirante.eduapi.dto.ConquistasDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.ConquistaMapper;
@@ -43,8 +44,8 @@ public class ConquistaController {
     @PostMapping("/")
     @Operation(summary = "Cadastro de conquista.", description = "Endpoint para cadastrar conquista.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<ConquistasDTO> create(@RequestBody ConquistasDTO conquistasDTO) throws BusinessException {
-        ConquistasDTO savedConqusta = conquistaService.save(conquistasDTO);
+    public ResponseEntity<ConquistaDTOPost> create(@RequestBody ConquistaDTOPost conquistasDTO) throws BusinessException {
+        ConquistaDTOPost savedConqusta = conquistaService.save(conquistasDTO);
         return ResponseEntity.ok(savedConqusta);
     }
 
