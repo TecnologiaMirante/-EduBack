@@ -27,7 +27,8 @@ public interface ProfessorMapper {
 
     @Mappings({
             @Mapping(source = "escolaId", target = "professorEscola.id"),
-            @Mapping(source = "usuarioId", target = "usuarioProfessor.id")
+            @Mapping(source = "usuarioId", target = "usuarioProfessor.id"),
+            @Mapping(source = "tipoUsuario", target = "tipoUsuario")
     })
     Professor professorDTOPostToProfessor(ProfessorDTOPost professorDTO);
 

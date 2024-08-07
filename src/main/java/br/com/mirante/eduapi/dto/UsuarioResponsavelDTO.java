@@ -21,5 +21,5 @@ public class UsuarioResponsavelDTO {
     private String cpf;
     private String telefone;
     private LocalDateTime DataDeNascimento;
-    private List<UsuarioResponsavelDTOGet> alunos;
+    private List<AlunoResponsavelDTO> alunos;
 }

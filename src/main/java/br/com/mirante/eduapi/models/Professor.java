@@ -3,7 +3,6 @@ package br.com.mirante.eduapi.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -93,7 +92,7 @@ public class Professor  {
 
 
     @Enumerated(EnumType.STRING)
-    private Permissoes permissoes;
+    private TipoUsuario tipoUsuario;
 
     //RELACIONAMENTO PROFESSOR DISCIPLINA
     @ManyToMany(mappedBy = "professorDisciplinaList")

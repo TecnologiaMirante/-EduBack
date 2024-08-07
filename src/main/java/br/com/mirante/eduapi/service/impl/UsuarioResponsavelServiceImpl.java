@@ -4,7 +4,9 @@ import br.com.mirante.eduapi.dto.UsuarioResponsavelDTO;
 import br.com.mirante.eduapi.dto.UsuarioResponsavelDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.UsuarioResponsavelMapper;
+import br.com.mirante.eduapi.models.Aluno;
 import br.com.mirante.eduapi.models.UsuarioResponsavel;
+import br.com.mirante.eduapi.repository.AlunoRepository;
 import br.com.mirante.eduapi.repository.UsuarioResponsavelRepository;
 import br.com.mirante.eduapi.service.UsuarioResponsavelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class UsuarioResponsavelServiceImpl implements UsuarioResponsavelService 
 
     @Autowired
     private UsuarioResponsavelRepository usuarioResponsavelRepository;
+    @Autowired
+    private AlunoRepository alunoRepository;
 
     @Override
     public Page<UsuarioResponsavel> findAll(Specification<UsuarioResponsavel> spec, Pageable pageable) {
@@ -34,6 +38,11 @@ public class UsuarioResponsavelServiceImpl implements UsuarioResponsavelService 
         if (usuarioResponsavelRepository.findByCpf(usuarioResponsavel.getCpf()) != null){
             throw new BusinessException("O usuario responsavel ja existe com este cpf");
         }
+        Aluno aluno = alunoRepository.findById(usuarioResponsavelDTO.getAlunoId())
+                .orElseThrow(() -> new BusinessException("Aluno com este Id não foi encontrado"));
+        aluno.setResponsavelAluno(usuarioResponsavel);
+        usuarioResponsavel.getAlunos().add(aluno);
+
        usuarioResponsavel = usuarioResponsavelRepository.save(usuarioResponsavel);
 
         return UsuarioResponsavelMapper.INSTANCE.usuarioResponsavelToUsuarioResponsavelDTOPost(usuarioResponsavel);

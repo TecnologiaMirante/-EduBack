@@ -1,6 +1,6 @@
 package br.com.mirante.eduapi.dto;
 
-import br.com.mirante.eduapi.models.Permissoes;
+import br.com.mirante.eduapi.models.TipoUsuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,7 +34,7 @@ public class AlunoDTO {
     private String complemento;
     private String cep;
     private String referencia;
-    private Permissoes permissoes = Permissoes.ALUNO;
+    private TipoUsuario tipoUsuario = TipoUsuario.ALUNO;
     private ResponsavelAlunoDTO responsavel;
     private EscolaUsuarioDTO escola;
 
@@ -43,8 +43,4 @@ public class AlunoDTO {
    /* private List<AulaDTO> aulas;
     private List<RankAlunoDTO> rankAlunoDTOS;
     */
-
-    //objeto turma
-
-    //keyclock gerenciar as permissoes
 }

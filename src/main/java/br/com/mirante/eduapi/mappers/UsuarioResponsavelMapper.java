@@ -17,45 +17,24 @@ import java.util.stream.Collectors;
 public interface UsuarioResponsavelMapper {
     UsuarioResponsavelMapper INSTANCE = Mappers.getMapper(UsuarioResponsavelMapper.class);
 
-    @Mapping(target = "alunos", source = "alunos", qualifiedByName = "alunoListToUsuarioResponsavelDTOGetList")
+    @Mapping(target = "alunos", source = "alunos")
     UsuarioResponsavelDTO usuarioResponsavelToUsuarioResponsavelDTO(UsuarioResponsavel usuarioResponsavelDTO);
 
-    @Mapping(target = "alunos", source = "alunos", qualifiedByName = "usuarioResponsavelDTOGetListToAlunoList")
+    @Mapping(target = "alunos", source = "alunos")
     UsuarioResponsavel usuarioResponsavelDTOToUsuarioResponsavel(UsuarioResponsavelDTO usuarioResponsavel);
 
     @Mapping(source = "alunos", target = "alunoId", qualifiedByName = "alunoListToFirstId")
     UsuarioResponsavelDTOPost usuarioResponsavelToUsuarioResponsavelDTOPost(UsuarioResponsavel usuarioResponsavelDTO);
 
-    @Mapping(source = "alunoId", target = "alunos", qualifiedByName = "idToSingleAlunoList")
+    @Mapping(target = "alunos", ignore = true)
     UsuarioResponsavel usuarioResponsavelDTOPostToUsuarioResponsavel(UsuarioResponsavelDTOPost usuarioResponsavelDTOPost);
 
-    @Named("alunoListToUsuarioResponsavelDTOGetList")
-    static List<UsuarioResponsavelDTOGet> alunoListToUsuarioResponsavelDTOGetList(List<Aluno> alunos) {
-        return alunos.stream()
-                .map(aluno -> new UsuarioResponsavelDTOGet(aluno.getId()))
-                .collect(Collectors.toList());
-    }
+    List<AlunoDTO> alunoListToAlunoDTOList(List<Aluno> alunos);
 
-    @Named("usuarioResponsavelDTOGetListToAlunoList")
-    static List<Aluno> usuarioResponsavelDTOGetListToAlunoList(List<UsuarioResponsavelDTOGet> dtoGetList) {
-        return dtoGetList.stream()
-                .map(dto -> {
-                    Aluno aluno = new Aluno();
-                    aluno.setId(dto.getId());
-                    return aluno;
-                })
-                .collect(Collectors.toList());
-    }
+    List<Aluno> alunoDTOListToAlunoList(List<AlunoDTO> alunoDTOS);
 
     @Named("alunoListToFirstId")
     static UUID alunoListToFirstId(List<Aluno> alunos) {
         return alunos.isEmpty() ? null : alunos.get(0).getId();
-    }
-
-    @Named("idToSingleAlunoList")
-    static List<Aluno> idToSingleAlunoList(UUID id) {
-        Aluno aluno = new Aluno();
-        aluno.setId(id);
-        return List.of(aluno);
     }
 }
