@@ -13,6 +13,6 @@ public class UsuarioDTO {
     private String nome;
     private String email;
     private String senha;
-    private Permissoes permissoes;
+    private String idKeycloak;
     private EscolaUsuarioDTO escola;
 }

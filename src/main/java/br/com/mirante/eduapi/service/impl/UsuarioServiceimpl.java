@@ -1,5 +1,8 @@
 package br.com.mirante.eduapi.service.impl;
 
+import br.com.mirante.eduapi.client.AuthClient;
+import br.com.mirante.eduapi.dto.CredentialDTO;
+import br.com.mirante.eduapi.dto.UserDTO;
 import br.com.mirante.eduapi.dto.UsuarioDTO;
 import br.com.mirante.eduapi.dto.UsuarioDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +27,9 @@ public class UsuarioServiceimpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private AuthClient authClient;
 
     @Override
     public Page<Usuario> findAll(Specification<Usuario> spec, Pageable page) {
@@ -37,6 +44,34 @@ public class UsuarioServiceimpl implements UsuarioService {
             throw new BusinessException("Usuario Ja existe com este email");
         }
 
+       UserDTO userDTO = new UserDTO();
+       userDTO.setUsername(usuarioDTO.getUsername());
+       userDTO.setEnabled(true);
+       userDTO.setFirstName(usuarioDTO.getNome());
+       userDTO.setLastName(usuarioDTO.getNome());
+       userDTO.setEmail(usuarioDTO.getEmail());
+
+        CredentialDTO credentialDTO = new CredentialDTO();
+        credentialDTO.setType("password");
+        credentialDTO.setValue(usuarioDTO.getSenha());
+        credentialDTO.setTemporary(false);
+
+       List<CredentialDTO> credentialDTOList = new ArrayList<>();
+       credentialDTOList.add(credentialDTO);
+       userDTO.setCredentials(credentialDTOList);
+
+        ResponseEntity<Void> response = authClient.cadastrarUsuario(userDTO);
+
+        String locationHeader = response.getHeaders().getFirst("Location");
+
+        String idUsuarioKeyCloack = null;
+        if (locationHeader != null && !locationHeader.isEmpty()) {
+            idUsuarioKeyCloack = locationHeader.substring(locationHeader.lastIndexOf('/') + 1);
+        } else {
+            throw new RuntimeException("O cabeçalho 'Location' não foi encontrado na resposta.");
+        }
+
+        usuario.setIdKeycloak(idUsuarioKeyCloack);
         usuario = usuarioRepository.save(usuario);
 
         return UsuarioMapper.INSTANCE.usuarioToUsuarioDTOPost(usuario);

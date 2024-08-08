@@ -28,6 +28,8 @@ spring:
         jwt:
           issuer-uri: https://keycloak.afcoding.com.br/realms/mirante
 
+api:
+  auth: https://keycloak.afcoding.com.br/
 
 logging:
   level:

@@ -30,7 +30,8 @@ public class Usuario {
     @Column(nullable = false, length = 20)
     private String senha;
 
-    private Permissoes permissoes;
+    @Column(nullable = false, length = 36, unique = true)
+    private String idKeycloak;
 
     @ManyToOne
     @JoinColumn(name = "id_escola")

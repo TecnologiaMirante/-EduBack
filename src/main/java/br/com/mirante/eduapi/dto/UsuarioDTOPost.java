@@ -15,6 +15,7 @@ public class UsuarioDTOPost {
 
     private UUID id;
     private String nome;
+    private String username;
     private String email;
     private String senha;
     private UUID escolaId;
