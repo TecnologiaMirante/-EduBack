@@ -12,7 +12,6 @@ import java.util.UUID;
 public class AlunosEloDTO {
     private UUID id;
     private String pontuacaoDoAluno;
-
-    //id aluno
-    //id elo
+    private AlunoDTO aluno;
+    private EloDTO elo;
 }

@@ -17,5 +17,5 @@ public class ConquistasDTO {
     private String meta;
 
     //Alunos que possuem essa conquista
-    private List<AlunoDTOGet> alunos;
+    private List<AlunoConquistaDTO> alunos;
 }

@@ -37,8 +37,13 @@ public class ConquistasServiceImpl  implements ConquistaService {
     public ConquistaDTOPost save(ConquistaDTOPost conquistasDTO) throws BusinessException {
         Conquistas conquistas = ConquistaMapper.INSTANCE.conquistasDTOPostToConquistas(conquistasDTO);
 
-       //List<Aluno> alunos = alunoRepository.findById(conquistasDTO.getAlunoId());
+        Aluno aluno = alunoRepository.findById(conquistasDTO.getAlunoId())
+                .orElseThrow(() -> new BusinessException("Id do aluno não encontrado"));
+        List<Conquistas> conquistasList = conquistaRepository.findAll();
 
+        aluno.setConquistas(conquistasList);
+
+        conquistas.getAlunos().add(aluno);
 
         conquistas = conquistaRepository.save(conquistas);
 

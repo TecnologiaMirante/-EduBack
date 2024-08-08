@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,11 +10,9 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EloDTO {
+public class AlunoEloPost {
     private UUID id;
-    private String nomeDoElo;
-    private double pontuacao;
-
-
-    //alunoEloGetId
+    private String pontuacaoDoAluno;
+    private UUID alunoId;
+    private UUID eloId;
 }
