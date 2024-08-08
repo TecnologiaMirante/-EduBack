@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -30,6 +31,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.USUARIO_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar todos os usuarios", description = "Endpoint para consultar usuarios. ",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -43,6 +45,8 @@ public class UsuarioController {
             return new ResponseEntity<>(consultaPage.map(UsuarioMapper.INSTANCE::usuarioToUsuarioDTO), HttpStatus.OK);
         }
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.USUARIO_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastro de Usuarios.", description = "Endpoint para cadastrar Usuarios.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -53,6 +57,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioSaved);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.USUARIO_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Usuarios por ID.", description = "Endpoint para buscar o usuario pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -62,6 +67,7 @@ public class UsuarioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.USUARIO_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar Usuarios por ID.", description = "Endpoint para atualizar o usuario pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -71,6 +77,7 @@ public class UsuarioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.USUARIO_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remover Usuarios por ID.", description = "Endpoint para remover, o usuario pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
