@@ -9,12 +9,16 @@ import br.com.mirante.eduapi.repository.RankAlunoRepository;
 import br.com.mirante.eduapi.service.RankAlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class RankAlunoServiceimpl implements RankAlunoService {
@@ -23,7 +27,27 @@ public class RankAlunoServiceimpl implements RankAlunoService {
 
     @Override
     public Page<RankAluno> findAll(Specification<RankAluno> spec, Pageable page) {
-        return rankAlunoRepository.findAll(spec, page);
+        // Recuperar todos os registros ordenados por pontuação
+        List<RankAluno> allRankings = rankAlunoRepository.findAll(spec, Pageable.unpaged()).getContent();
+
+        // Ordenar os registros para garantir que todos com a mesma pontuação sejam agrupados
+        allRankings.sort(Comparator.comparing(RankAluno::getPoints).reversed());
+
+        // Encontrar a 5ª maior pontuação
+        int limit = Math.min(5, allRankings.size());
+        int fifthPlaceScore = allRankings.get(limit - 1).getPoints();
+
+        // Filtrar os registros para incluir todos que tenham pontuação maior ou igual à 5ª maior pontuação
+        List<RankAluno> topRankings = allRankings.stream()
+                .filter(rank -> rank.getPoints()>= fifthPlaceScore)
+                .collect(Collectors.toList());
+
+        // Paginar os resultados conforme solicitado
+        int start = Math.toIntExact(page.getOffset());
+        int end = Math.min((start + page.getPageSize()), topRankings.size());
+        List<RankAluno> paginatedList = topRankings.subList(start, end);
+
+        return new PageImpl<>(paginatedList, page, topRankings.size());
     }
 
     @Override
