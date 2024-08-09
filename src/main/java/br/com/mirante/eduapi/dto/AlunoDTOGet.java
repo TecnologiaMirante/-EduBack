@@ -1,8 +1,6 @@
 package br.com.mirante.eduapi.dto;
 
-import br.com.mirante.eduapi.models.Aluno;
-import br.com.mirante.eduapi.models.Permissoes;
-import br.com.mirante.eduapi.models.Usuario;
+import br.com.mirante.eduapi.models.TipoUsuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +17,8 @@ public class AlunoDTOGet {
     private String matricula;
     private String sexo;
     private UUID usuarioId;
-    private Permissoes permissoes = Permissoes.ALUNO;
-    //private UsuarioResponsavelDTO responsavel;
-
+    private TipoUsuario tipoUsuario = TipoUsuario.ALUNO;
+    private UsuarioResponsavelDTO responsavel;
+    private EscolaDTOGet escola;
 
 }

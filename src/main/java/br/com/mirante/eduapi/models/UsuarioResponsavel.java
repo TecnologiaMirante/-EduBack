@@ -35,7 +35,7 @@ public class UsuarioResponsavel {
     private LocalDateTime DataDeNascimento;
 
     @OneToMany(mappedBy = "responsavelAluno", cascade = CascadeType.ALL)
-    private List<Aluno> responsavel = new ArrayList<>();
+    private List<Aluno> alunos = new ArrayList<>();
 
 
     @PrePersist

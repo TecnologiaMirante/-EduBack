@@ -1,12 +1,10 @@
 package br.com.mirante.eduapi.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.OverridesAttribute;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -30,8 +28,7 @@ public class Usuario {
     @Column(nullable = false, length = 20)
     private String senha;
 
-    @Column(nullable = false, length = 36, unique = true)
-    private String idKeycloak;
+    //private TipoUsuario tipoUsuario;
 
     @ManyToOne
     @JoinColumn(name = "id_escola")

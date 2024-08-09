@@ -3,7 +3,6 @@ package br.com.mirante.eduapi.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
@@ -19,7 +18,7 @@ public class Admin {
     private UUID id;
 
     @Enumerated(EnumType.STRING)
-    private Permissoes permissoes;
+    private TipoUsuario tipoUsuario;
 
     @ManyToOne
     @JoinColumn(name = "Id_usuario")

@@ -1,5 +1,5 @@
 package br.com.mirante.eduapi.models;
 
-public enum Permissoes {
+public enum TipoUsuario {
     ADMIN, PROFESSOR, ALUNO, ALUNORESPONSAVEL
 }

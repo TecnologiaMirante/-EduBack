@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service;
 
 import br.com.mirante.eduapi.dto.ProfessorDTO;
+import br.com.mirante.eduapi.dto.ProfessorDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.models.Professor;
 import org.springframework.data.domain.Page;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public interface ProfessorService {
     Page<Professor> findAll(Specification<Professor>spec, Pageable pageable);
 
-    ProfessorDTO save(ProfessorDTO professorDTO) throws BusinessException;
+    ProfessorDTOPost save(ProfessorDTOPost professorDTO) throws BusinessException;
 
     Optional<ProfessorDTO> findById(UUID id);
 

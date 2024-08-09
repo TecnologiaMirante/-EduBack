@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -15,5 +16,6 @@ public class ConquistasDTO {
     private String descricao;
     private String meta;
 
-    //alunoGetId
+    //Alunos que possuem essa conquista
+    private List<AlunoConquistaDTO> alunos;
 }

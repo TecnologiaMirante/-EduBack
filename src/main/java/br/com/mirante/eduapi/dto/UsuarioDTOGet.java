@@ -1,6 +1,5 @@
 package br.com.mirante.eduapi.dto;
 
-import br.com.mirante.eduapi.models.Permissoes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

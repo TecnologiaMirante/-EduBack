@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.dto;
 
+import br.com.mirante.eduapi.models.TipoUsuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +9,10 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserInfoDTO {
+@AllArgsConstructor
+public class ProfessorDTOPost {
+    private UUID id;
     private String nome;
     private String email;
     private String telefone;
@@ -31,4 +33,12 @@ public class UserInfoDTO {
     private String complemento;
     private String cep;
     private String referencia;
+    private TipoUsuario tipoUsuario = TipoUsuario.PROFESSOR;
+    private String materias;
+    private String formacao;
+    private String experiencia;
+    private UUID usuarioId;
+    private UUID escolaId;
+    //private UUID turmaId;
+    //private UUID disciplinaId;
 }

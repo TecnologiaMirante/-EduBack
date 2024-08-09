@@ -18,8 +18,6 @@ public interface UsuarioMapper {
 
     UsuarioMapper INSTANCE = Mappers.getMapper(UsuarioMapper.class);
 
-    //List<UsuarioDTO> usuariosToUsuarioDTOs(List<Usuario> usuarios);
-
     @Mappings({
             @Mapping(source = "usuarioEscola.id", target = "escola.id"),
             @Mapping(source = "usuarioEscola", target = "escola"),

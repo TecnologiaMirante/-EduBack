@@ -9,11 +9,10 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EloDTO {
+public class ResponsavelAlunoDTO {
     private UUID id;
-    private String nomeDoElo;
-    private double pontuacao;
-
-
-    //alunoEloGetId
+    private String nome;
+    private String email;
+    private String cpf;
+    private String telefone;
 }

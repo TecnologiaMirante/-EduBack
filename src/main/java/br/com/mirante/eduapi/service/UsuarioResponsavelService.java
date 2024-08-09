@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service;
 
 import br.com.mirante.eduapi.dto.UsuarioResponsavelDTO;
+import br.com.mirante.eduapi.dto.UsuarioResponsavelDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.models.UsuarioResponsavel;
 import org.springframework.data.domain.Page;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public interface UsuarioResponsavelService {
     Page<UsuarioResponsavel> findAll(Specification<UsuarioResponsavel> spec, Pageable page);
 
-    UsuarioResponsavelDTO save(UsuarioResponsavelDTO usuarioResponsavelDTO) throws BusinessException;
+    UsuarioResponsavelDTOPost save(UsuarioResponsavelDTOPost usuarioResponsavelDTO) throws BusinessException;
 
     Optional<UsuarioResponsavelDTO> findById(UUID id);
 

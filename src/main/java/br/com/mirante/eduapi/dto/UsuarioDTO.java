@@ -1,5 +1,5 @@
 package br.com.mirante.eduapi.dto;
-import br.com.mirante.eduapi.models.Permissoes;
+import br.com.mirante.eduapi.models.TipoUsuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +14,6 @@ public class UsuarioDTO {
     private String email;
     private String senha;
     private String idKeycloak;
+    //private TipoUsuario tipoUsuario;
     private EscolaUsuarioDTO escola;
 }

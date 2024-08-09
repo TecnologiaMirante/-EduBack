@@ -3,6 +3,7 @@ package br.com.mirante.eduapi.controller;
 
 import br.com.mirante.eduapi.dto.EscolaDTO;
 import br.com.mirante.eduapi.dto.UsuarioResponsavelDTO;
+import br.com.mirante.eduapi.dto.UsuarioResponsavelDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.UsuarioResponsavelMapper;
 import br.com.mirante.eduapi.models.UsuarioResponsavel;
@@ -49,8 +50,9 @@ public class UsuarioResponsavelController {
     @PostMapping("/")
     @Operation(summary = "Cadastrar Usuarios Responsaveis.", description = "Endpoint para cardastrar usuarios responsaveis.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<UsuarioResponsavelDTO> create(@RequestBody UsuarioResponsavelDTO usuarioResponsavelDTO) throws BusinessException {
-        UsuarioResponsavelDTO usuarioResponsavelSaved = usuarioResponsavelService.save(usuarioResponsavelDTO);
+    public ResponseEntity<UsuarioResponsavelDTOPost> create(@RequestBody UsuarioResponsavelDTOPost usuarioResponsavelDTO) throws BusinessException {
+
+        UsuarioResponsavelDTOPost usuarioResponsavelSaved = usuarioResponsavelService.save(usuarioResponsavelDTO);
 
         return ResponseEntity.ok(usuarioResponsavelSaved);
     }

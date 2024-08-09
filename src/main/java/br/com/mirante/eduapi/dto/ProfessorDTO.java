@@ -1,11 +1,8 @@
 package br.com.mirante.eduapi.dto;
 
-import br.com.mirante.eduapi.models.Permissoes;
-import br.com.mirante.eduapi.models.Professor;
-import br.com.mirante.eduapi.models.Usuario;
+import br.com.mirante.eduapi.models.TipoUsuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -36,17 +33,13 @@ public class ProfessorDTO {
     private String complemento;
     private String cep;
     private String referencia;
-    private Permissoes permissoes = Permissoes.PROFESSOR;
+    private TipoUsuario tipoUsuario = TipoUsuario.PROFESSOR;
     private String materias;
     private String formacao;
     private String experiencia;
-    private UUID usuarioId;
-    private UUID escolaId;
-    //private UUID turmaId;
-
-    //private UUID disciplinaId;
+    private EscolaUsuarioDTO escola;
 
     //private List<Turma> turmas = new ArrayList<>();
 
-    //role do keyclock
+
 }

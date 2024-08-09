@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.service;
 
+import br.com.mirante.eduapi.dto.ConquistaDTOPost;
 import br.com.mirante.eduapi.dto.ConquistasDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.models.Conquistas;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public interface ConquistaService {
     Page<Conquistas> findAll(Specification<Conquistas> spec, Pageable page);
 
-    ConquistasDTO save(ConquistasDTO conquistasDTO) throws BusinessException;
+    ConquistaDTOPost save(ConquistaDTOPost conquistasDTO) throws BusinessException;
 
     Optional<ConquistasDTO> findById(UUID id);
 

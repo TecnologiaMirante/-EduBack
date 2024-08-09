@@ -1,9 +1,12 @@
 package br.com.mirante.eduapi.service.impl;
 
+import br.com.mirante.eduapi.dto.ConquistaDTOPost;
 import br.com.mirante.eduapi.dto.ConquistasDTO;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.ConquistaMapper;
+import br.com.mirante.eduapi.models.Aluno;
 import br.com.mirante.eduapi.models.Conquistas;
+import br.com.mirante.eduapi.repository.AlunoRepository;
 import br.com.mirante.eduapi.repository.ConquistaRepository;
 import br.com.mirante.eduapi.service.ConquistaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,6 +24,8 @@ public class ConquistasServiceImpl  implements ConquistaService {
 
     @Autowired
     private ConquistaRepository conquistaRepository;
+    @Autowired
+    private AlunoRepository alunoRepository;
 
 
     @Override
@@ -28,11 +34,20 @@ public class ConquistasServiceImpl  implements ConquistaService {
     }
 
     @Override
-    public ConquistasDTO save(ConquistasDTO conquistasDTO) throws BusinessException {
-        Conquistas conquistas = ConquistaMapper.INSTANCE.DTOtoConquistas(conquistasDTO);
+    public ConquistaDTOPost save(ConquistaDTOPost conquistasDTO) throws BusinessException {
+        Conquistas conquistas = ConquistaMapper.INSTANCE.conquistasDTOPostToConquistas(conquistasDTO);
+
+        Aluno aluno = alunoRepository.findById(conquistasDTO.getAlunoId())
+                .orElseThrow(() -> new BusinessException("Id do aluno não encontrado"));
+        List<Conquistas> conquistasList = conquistaRepository.findAll();
+
+        aluno.setConquistas(conquistasList);
+
+        conquistas.getAlunos().add(aluno);
+
         conquistas = conquistaRepository.save(conquistas);
 
-        return ConquistaMapper.INSTANCE.conquistasToDTO(conquistas);
+        return ConquistaMapper.INSTANCE.conquistasToDTOPost(conquistas);
     }
 
     @Override

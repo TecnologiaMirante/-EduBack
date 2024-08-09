@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.dto;
 
 import br.com.mirante.eduapi.models.Aluno;
+import br.com.mirante.eduapi.models.UsuarioResponsavel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class UsuarioResponsavelDTO {
     private String nome;
     private String email;
     private String cpf;
-    private LocalDateTime dataNascimento;
-
-    //private List<Aluno> reponsavelPorAlunos;
+    private String telefone;
+    private LocalDateTime DataDeNascimento;
+    private List<AlunoResponsavelDTO> alunos;
 }
