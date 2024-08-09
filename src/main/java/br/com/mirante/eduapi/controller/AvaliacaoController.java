@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class AvaliacaoController {
     @Autowired
     private AvaliacaoService avaliacaoService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AVALIACAO_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Avaliacoes.", description = "Endpoint para consultar avaliacoes.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Page<AvaliacaoDTO>> findAll(SpecTemplate.AvaliacaoSpec spec, Pageable page){
@@ -37,6 +39,7 @@ public class AvaliacaoController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AVALIACAO_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro de Avaliacao.", description = "Endpoint para cadastrar Avaliacao.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -45,6 +48,7 @@ public class AvaliacaoController {
         return ResponseEntity.ok(savedAvaliacao);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AVALIACAO_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Avaliacao por ID.", description = "Endpoint para buscar a Avaliacao pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -54,6 +58,7 @@ public class AvaliacaoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AVALIACAO_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Avaliacao.", description = "Endpoint para atualizar os dados das avaliacoes.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -63,6 +68,7 @@ public class AvaliacaoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AVALIACAO_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Avaliacao.", description = "Endpoint para remover uma Avaliacao.",
             security = {@SecurityRequirement(name = "bearer-key")})

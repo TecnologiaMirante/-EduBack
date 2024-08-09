@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service;
 
 import br.com.mirante.eduapi.dto.EscolaDTO;
+import br.com.mirante.eduapi.dto.EscolaDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.models.Escola;
 import org.springframework.data.domain.Page;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public interface EscolaService {
     Page<Escola> findAll(Specification<Escola> spec, Pageable page);
 
-    EscolaDTO save(EscolaDTO escolaDTO) throws BusinessException;
+    EscolaDTOPost save(EscolaDTOPost escolaDTO) throws BusinessException;
 
     Optional<EscolaDTO> findById(UUID id);
 

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -29,6 +30,7 @@ public class AlunoInteracaoController {
     @Autowired
     private AlunoInteracaoService alunoInteracaoService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOINTERACAO_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar as interações.", description = "Endpoint para consultar as interações.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -42,6 +44,7 @@ public class AlunoInteracaoController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOINTERACAO_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastro de interação.", description = "Endpoint para cadastrar uma interação.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -50,6 +53,7 @@ public class AlunoInteracaoController {
         return ResponseEntity.ok(savedInteracao);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOINTERACAO_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Interação por ID.", description = "Endpoint para buscar a interação pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -59,6 +63,7 @@ public class AlunoInteracaoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOINTERACAO_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização da interação.", description = "Endpoint para atualizar os dados das interações.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -68,6 +73,7 @@ public class AlunoInteracaoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOINTERACAO_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de interação.", description = "Endpoint para remover uma interação.",
             security = {@SecurityRequirement(name = "bearer-key")})

@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service.impl;
 
 import br.com.mirante.eduapi.dto.EscolaDTO;
+import br.com.mirante.eduapi.dto.EscolaDTOPost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.EscolaMapper;
 import br.com.mirante.eduapi.models.Escola;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 @Service
 public class EscolaServiceImpl implements EscolaService {
@@ -27,15 +29,19 @@ public class EscolaServiceImpl implements EscolaService {
     }
 
     @Override
-    public EscolaDTO save(EscolaDTO escolaDTO) throws BusinessException {
-        Escola escola = EscolaMapper.INSTANCE.escolaDTOToEscola(escolaDTO);
+    public EscolaDTOPost save(EscolaDTOPost escolaDTO) throws BusinessException {
+        Pattern patternCpf = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
+        Escola escola = EscolaMapper.INSTANCE.escolaDTOPostToEscola(escolaDTO);
+        if (!patternCpf.matcher(escola.getCpfCnpj()).matches()){
+            throw new BusinessException("CPF invalido, Tente novamente");
+        }
 
         if (escolaRepository.findByCpfCnpj(escolaDTO.getCpfCnpj()) != null) {
             throw new BusinessException("Escola já cadastrada");
         }
 
         escola = escolaRepository.save(escola);
-        return EscolaMapper.INSTANCE.escolaToEscolaDTO(escola);
+        return EscolaMapper.INSTANCE.escolaToEscolaDTOPost(escola);
     }
 
     @Override

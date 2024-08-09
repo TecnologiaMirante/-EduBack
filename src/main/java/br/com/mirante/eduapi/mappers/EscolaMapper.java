@@ -20,6 +20,10 @@ public interface EscolaMapper {
 
     Escola escolaDTOToEscola(EscolaDTO escolaDTO);
 
+    EscolaDTOPost escolaToEscolaDTOPost(Escola escola);
+
+    Escola escolaDTOPostToEscola(EscolaDTOPost escolaDTO);
+
     @Mappings({
             @Mapping(source = "usuarioAluno.id", target = "usuarioId"),
             @Mapping(source = "id", target = "responsavel.id"),

@@ -9,15 +9,14 @@ import br.com.mirante.eduapi.repository.AlunoRepository;
 import br.com.mirante.eduapi.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Optional;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 
 @Service
@@ -36,7 +35,12 @@ public class AlunoServiceImpl implements AlunoService {
 
     @Override
     public AlunoDTOPost save(AlunoDTOPost alunoDTO) throws BusinessException {
+        Pattern patternCpf = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
         Aluno aluno = AlunoMapper.INSTANCE.alunoDTOPostToAluno(alunoDTO);
+
+        if (!patternCpf.matcher(aluno.getCpf()).matches()){
+            throw new BusinessException("CPF invalido");
+        }
 
         if (alunoRepository.findByCpf(aluno.getCpf()) != null){
             throw new BusinessException("Aluno já cadastrado com esse cpf");

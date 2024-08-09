@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 
 @Service
@@ -35,9 +36,13 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     @Override
     public ProfessorDTOPost save(ProfessorDTOPost professorDTO) throws BusinessException {
+        Pattern patternCpf = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
 
         Professor professor = ProfessorMapper.INSTANCE.professorDTOPostToProfessor(professorDTO);
 
+        if (!patternCpf.matcher(professor.getCpf()).matches()){
+            throw new BusinessException("CPF invalido, Tente novamente, tente novamente");
+        }
 
         if (professorRepository.findByCpf(professor.getCpf()) != null){
             throw new BusinessException("Usuario Ja existe com este cpf");

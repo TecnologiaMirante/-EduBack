@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -31,6 +32,7 @@ public class AulaController {
     @Autowired
     private AulaService aulaService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AULA_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consulta Aulas.", description = "Endpoint para Consulta Aulas.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -43,6 +45,7 @@ public class AulaController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AULA_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Busca Aulas por Id.", description = "Endpoint para Busca Aulas pelo Id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -52,6 +55,7 @@ public class AulaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AULA_CADASTRAR)")
     @PostMapping
     @Operation(summary = "Cadastro de Aula.", description = "Endpoint para Cadastra Aulas.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -60,6 +64,7 @@ public class AulaController {
         return ResponseEntity.ok(savedAula);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AULA_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Aula.", description = "Endpoint para atualizar os dados das Aulas",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -69,6 +74,7 @@ public class AulaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.AULA_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Aula", description = "Endpoint para a remover uma Aula",
             security = {@SecurityRequirement(name = "bearer-key")})

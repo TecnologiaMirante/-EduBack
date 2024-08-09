@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -31,6 +32,7 @@ public class ProfessorController {
     @Autowired
     private ProfessorService professorService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.PROFESSOR_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar todos os professores", description = "Endpoint para consultar professores. ",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -45,6 +47,7 @@ public class ProfessorController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.PROFESSOR_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastro de Professores.", description = "Endpoint para cadastrar professor.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -55,6 +58,7 @@ public class ProfessorController {
         return ResponseEntity.ok(professorSaved);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.PROFESSOR_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Professor por ID.", description = "Endpoint para buscar o professor pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -64,6 +68,7 @@ public class ProfessorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.PROFESSOR_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar os Professores por ID.", description = "Endpoint para atualizar os professores pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -73,6 +78,7 @@ public class ProfessorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.PROFESSOR_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remover Professor por ID.", description = "Endpoint para remover, o professor pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})

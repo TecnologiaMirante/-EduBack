@@ -14,6 +14,5 @@ public class UsuarioDTO {
     private String email;
     private String senha;
     private String idKeycloak;
-    //private TipoUsuario tipoUsuario;
     private EscolaUsuarioDTO escola;
 }

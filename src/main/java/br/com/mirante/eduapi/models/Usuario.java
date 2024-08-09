@@ -28,7 +28,8 @@ public class Usuario {
     @Column(nullable = false, length = 20)
     private String senha;
 
-    //private TipoUsuario tipoUsuario;
+    @Column(nullable = false, length = 36, unique = true)
+    private String idKeycloak;
 
     @ManyToOne
     @JoinColumn(name = "id_escola")

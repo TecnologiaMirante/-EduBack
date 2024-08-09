@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -30,6 +31,7 @@ public class AlunoController {
     @Autowired
     private AlunoService alunoService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNO_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Alunos.", description = "Endpoint para consultar alunos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -43,6 +45,7 @@ public class AlunoController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNO_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastrar Aluno.", description = "Endpoint para cadastrar Alunos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -52,6 +55,7 @@ public class AlunoController {
         return ResponseEntity.ok(aluno);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNO_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar os Alunos pelo ID.", description = "Endpoint para buscar Alunos pelo ID.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -61,6 +65,7 @@ public class AlunoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNO_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar o aluno pelo ID.", description = "Endpoint para atualizar Alunos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -70,6 +75,7 @@ public class AlunoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNO_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Aluno.", description = "Endpoint para remover um aluno.",
             security = {@SecurityRequirement(name = "bearer-key")})

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -42,7 +43,7 @@ public class Aluno  {
     private String avatar;
 
     @Column(name = "data_de_nascimento", nullable = false)
-    private LocalDateTime dataDeNascimento;
+    private Date dataDeNascimento;
 
     @Column(name = "status", nullable = false, length = 10)
     private String status;
