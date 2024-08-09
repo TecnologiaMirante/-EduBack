@@ -51,9 +51,9 @@ public class SpecTemplate {
     public interface  OpcoesSpec extends Specification<Opcoes> {}
 
     @And({
-            @Spec(path = "formacao", spec = Like.class),
-            @Spec(path = "materias", spec = Equal.class),
-            @Spec(path = "experiencia", spec = Equal.class),
+            @Spec(path = "apelido", spec = Like.class),
+            @Spec(path = "points", spec = Equal.class),
+            @Spec(path = "img", spec = Equal.class),
     })
     public interface  RankAlunoSpec extends  Specification<RankAluno>{}
     @And({

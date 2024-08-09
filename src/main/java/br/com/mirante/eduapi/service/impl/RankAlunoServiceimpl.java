@@ -27,23 +27,16 @@ public class RankAlunoServiceimpl implements RankAlunoService {
 
     @Override
     public Page<RankAluno> findAll(Specification<RankAluno> spec, Pageable page) {
-        // Recuperar todos os registros ordenados por pontuação, sem paginação
         List<RankAluno> allRankings = rankAlunoRepository.findTop5();
-
-        // Filtrar os registros para garantir que todos com a mesma pontuação sejam agrupados
         int limit = Math.min(5, allRankings.size());
         int fifthPlaceScore = allRankings.get(limit - 1).getPoints();
 
         List<RankAluno> topRankings = allRankings.stream()
                 .filter(rank -> rank.getPoints() >= fifthPlaceScore)
                 .collect(Collectors.toList());
-
-        // Paginar os resultados conforme solicitado
         int start = Math.toIntExact(page.getOffset());
         int end = Math.min((start + page.getPageSize()), topRankings.size());
         List<RankAluno> paginatedList = topRankings.subList(start, end);
-
-        // Retornar a página contendo os resultados filtrados e paginados
         return new PageImpl<>(paginatedList, page, topRankings.size());
     }
 
