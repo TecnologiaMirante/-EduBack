@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Repository
 public interface RankAlunoRepository extends JpaRepository<RankAluno, UUID>, JpaSpecificationExecutor<RankAluno> {
-    @Query("SELECT p FROM RankAluno p ORDER BY p.points DESC, P.id ASC")
+    @Query("SELECT p FROM RankAluno p ORDER BY p.points DESC, p.id ASC")
     List<RankAluno>findTop5();
 
     RankAluno findByApelido (String apelido);
