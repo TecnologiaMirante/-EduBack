@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class TurmaController {
     @Autowired
     private TurmaService turmaService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.TURMA_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Turmas.", description = "Endpoint para consultar Turmas.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Page<TurmaDTO>> findAll(SpecTemplate.TurmaSpec spec, Pageable page){
@@ -37,6 +39,7 @@ public class TurmaController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.TURMA_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro de Turma.", description = "Endpoint para cadastrar Turma.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -45,6 +48,7 @@ public class TurmaController {
         return ResponseEntity.ok(savedTurma);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.TURMA_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Turma por ID.", description = "Endpoint para buscar a Turma pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -54,6 +58,7 @@ public class TurmaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.TURMA_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Turma.", description = "Endpoint para atualizar os dados das turmas.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -63,6 +68,7 @@ public class TurmaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.TURMA_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Turma.", description = "Endpoint para remover uma Turma.",
             security = {@SecurityRequirement(name = "bearer-key")})

@@ -58,4 +58,20 @@ public final class Authorities {
     public static final String ALUNOELO_DELETAR = "ALUNOELO_DELETAR";
     public static final String ALUNOELO_CADASTRAR = "ALUNOELO_CADASTRAR";
     public static final String ALUNOELO_ATUALIZAR = "ALUNOELO_ATUALIZAR";
+
+    public static final String SERIE_CONSULTAR = "SERIE_CONSULTAR";
+    public static final String SERIE_DELETAR = "SERIE_DELETAR";
+    public static final String SERIE_CADASTRAR = "SERIE_CADASTRAR";
+    public static final String SERIE_ATUALIZAR = "SERIE_ATUALIZAR";
+
+    public static final String TURMA_CONSULTAR = "TURMA_CONSULTAR";
+    public static final String TURMA_DELETAR = "TURMA_DELETAR";
+    public static final String TURMA_CADASTRAR = "TURMA_CADASTRAR";
+    public static final String TURMA_ATUALIZAR = "TURMA_ATUALIZAR";
+
+    public static final String DISCIPLINA_CONSULTAR = "DISCIPLINA_CONSULTAR";
+    public static final String DISCIPLINA_DELETAR = "DISCIPLINA_DELETAR";
+    public static final String DISCIPLINA_CADASTRAR = "DISCIPLINA_CADASTRAR";
+    public static final String DISCIPLINA_ATUALIZAR = "DISCIPLINA_ATUALIZAR";
+
 }

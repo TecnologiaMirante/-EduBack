@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -27,6 +28,7 @@ public class DisciplinaController {
     @Autowired
     private DisciplinaService disciplinaService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.DISCIPLINA_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Disciplinas.", description = "Endpoint para consultar disciplinas.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Page<DisciplinaDTO>> findAll(SpecTemplate.DisciplinaSpec spec, Pageable page){
@@ -38,6 +40,7 @@ public class DisciplinaController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.DISCIPLINA_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro de Disciplina.", description = "Endpoint para cadastrar Disciplina.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -46,6 +49,7 @@ public class DisciplinaController {
         return ResponseEntity.ok(savedDisciplina);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.DISCIPLINA_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Disciplina por ID.", description = "Endpoint para buscar a Disciplina pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -55,6 +59,7 @@ public class DisciplinaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.DISCIPLINA_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Disciplina.", description = "Endpoint para atualizar os dados das disciplinas.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -64,6 +69,7 @@ public class DisciplinaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.DISCIPLINA_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Disciplina.", description = "Endpoint para remover uma Disciplina.",
             security = {@SecurityRequirement(name = "bearer-key")})

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -27,6 +28,7 @@ public class SerieController {
     @Autowired
     private SerieService serieService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.SERIE_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar todas as series", description = "Endpoint para consultar series. ",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -41,6 +43,7 @@ public class SerieController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.SERIE_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastro Serie.", description = "Endpoint para cadastrar serie. ",
     security = {@SecurityRequirement(name = "bearer-key")})
@@ -51,6 +54,7 @@ public class SerieController {
         return ResponseEntity.ok(serieSaved);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.SERIE_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Serie por ID.", description = "Endpoint para buscar Serie pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -60,6 +64,7 @@ public class SerieController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.SERIE_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar as Series por ID.", description = "Endpoint para atualizar as Series pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -69,6 +74,7 @@ public class SerieController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.SERIE_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remover Serie por ID.", description = "Endpoint para remover serie pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
