@@ -5,6 +5,10 @@ import br.com.mirante.eduapi.models.Aluno;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Mapper
 public interface AlunoMapper {
     AlunoMapper INSTANCE = Mappers.getMapper(AlunoMapper.class);
@@ -12,26 +16,30 @@ public interface AlunoMapper {
 
     @Mappings({
             @Mapping(source = "alunoEscola", target = "escola"),
-            @Mapping(source = "responsavelAluno", target = "responsavel")
+            @Mapping(source = "responsavelAluno", target = "responsavel"),
+
     })
     AlunoDTO alunoToAlunoDTO(Aluno aluno);
 
     @Mappings({
             @Mapping(source = "escola", target = "alunoEscola"),
-            @Mapping(source = "responsavel", target = "responsavelAluno")
+            @Mapping(source = "responsavel", target = "responsavelAluno"),
+
     })
     Aluno alunoDTOToAluno(AlunoDTO aluno);
 
     @Mappings({
             @Mapping(source = "usuarioAluno.id", target = "usuarioId"),
             @Mapping(source = "alunoEscola.id", target = "escolaId"),
+            @Mapping(source = "dataDeNascimento", target = "dataDeNascimento", qualifiedByName = "dateToString")
     })
     AlunoDTOPost alunoToAlunoPost(Aluno aluno);
 
     @Mappings({
             @Mapping(source = "usuarioId", target = "usuarioAluno.id"),
             @Mapping(source = "escolaId", target = "alunoEscola.id"),
-            @Mapping(source = "tipoUsuario", target = "tipoUsuario")
+            @Mapping(source = "tipoUsuario", target = "tipoUsuario"),
+            @Mapping(source = "dataDeNascimento", target = "dataDeNascimento", qualifiedByName = "stringToDate")
     })
     Aluno alunoDTOPostToAluno(AlunoDTOPost aluno);
 
@@ -48,4 +56,27 @@ public interface AlunoMapper {
             @Mapping(source = "escola", target = "alunoEscola")
     })
     Aluno alunoDTOGetToAluno(AlunoDTOGet aluno);
+
+    @Named("dateToString")
+    default String dateToString(Date date) {
+        if (date != null) {
+            return new SimpleDateFormat("yyyy-MM-dd").format(date);
+        }
+        return null;
+    }
+
+    @Named("stringToDate")
+    default Date stringToDate(String date) {
+        try{
+            if (date != null){
+                return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            }
+            else {
+                return null;
+            }
+        }catch (ParseException e){
+            e.printStackTrace();
+            return  null;
+        }
+    }
 }

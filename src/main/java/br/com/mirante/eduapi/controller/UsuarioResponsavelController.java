@@ -18,6 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -32,6 +33,7 @@ public class UsuarioResponsavelController {
     @Autowired
     private UsuarioResponsavelService usuarioResponsavelService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RESPONSAVEL_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Usuarios Responsaveis.", description = "Endpoint para consultar usuarios responsaveis.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -47,6 +49,7 @@ public class UsuarioResponsavelController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RESPONSAVEL_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastrar Usuarios Responsaveis.", description = "Endpoint para cardastrar usuarios responsaveis.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -57,6 +60,7 @@ public class UsuarioResponsavelController {
         return ResponseEntity.ok(usuarioResponsavelSaved);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RESPONSAVEL_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Usuarios Responsaveis por ID.", description = "Endpoint para buscar usuarios responsaveis pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -66,8 +70,9 @@ public class UsuarioResponsavelController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RESPONSAVEL_ATUALIZAR)")
     @PutMapping("/{id}")
-    @Operation(summary = "Atualização de Escola.", description = "Endpoint para atualizar os dados das escolas.",
+    @Operation(summary = "Atualização de responsavel.", description = "Endpoint para atualizar os dados do responsavel.",
             security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<UsuarioResponsavelDTO> update(@PathVariable UUID id, @RequestBody UsuarioResponsavelDTO usuarioResponsavelDTO) {
         return usuarioResponsavelService.update(id, usuarioResponsavelDTO)
@@ -75,8 +80,9 @@ public class UsuarioResponsavelController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RESPONSAVEL_DELETAR)")
     @DeleteMapping("/{id}")
-    @Operation(summary = "Remoção de Escola.", description = "Endpoint para remover uma escola.",
+    @Operation(summary = "Remoção de responsavel.", description = "Endpoint para remover uma responsavel.",
             security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         if (usuarioResponsavelService.deleteById(id)) {

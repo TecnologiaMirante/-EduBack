@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -28,6 +29,7 @@ public class EloController {
     @Autowired
     private EloService eloService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ELO_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar os elos.", description = "Endpoint para consultar os elos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -40,6 +42,7 @@ public class EloController {
 
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ELO_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastro de elos.", description = "Endpoint para cadastrar elos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -48,6 +51,7 @@ public class EloController {
         return ResponseEntity.ok(savedElo);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ELO_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar elo por ID.", description = "Endpoint para buscar o elo pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -57,6 +61,7 @@ public class EloController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ELO_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de elo.", description = "Endpoint para atualizar os dados dos elos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -66,6 +71,7 @@ public class EloController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ELO_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de elos.", description = "Endpoint para remover um elo.",
             security = {@SecurityRequirement(name = "bearer-key")})

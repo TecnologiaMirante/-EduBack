@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -29,6 +30,7 @@ public class AlunoEloController {
     @Autowired
     private AlunoEloService alunoEloService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOELO_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar os Elos dos  alunos.", description = "Endpoint para consultar os elos dos alunos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -42,6 +44,7 @@ public class AlunoEloController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOELO_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastro de elos para os alunos.", description = "Endpoint para cadastrar um elo para aluno.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -51,6 +54,7 @@ public class AlunoEloController {
         return ResponseEntity.ok(alunoSaved);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOELO_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar o elo do aluno por ID.", description = "Endpoint para buscar o elo do aluno pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -60,6 +64,7 @@ public class AlunoEloController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOELO_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização do elo do aluno.", description = "Endpoint para atualizar os dados do elo dos alunos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -69,6 +74,7 @@ public class AlunoEloController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.ALUNOELO_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de elo do aluno.", description = "Endpoint para remover um elo de aluno.",
             security = {@SecurityRequirement(name = "bearer-key")})

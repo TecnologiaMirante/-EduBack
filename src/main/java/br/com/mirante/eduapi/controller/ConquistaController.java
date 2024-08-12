@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -29,6 +30,7 @@ public class ConquistaController {
     @Autowired
     private ConquistaService conquistaService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONQUISTA_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar as Conquistas.", description = "Endpoint para consultar as Conquistas.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -41,6 +43,7 @@ public class ConquistaController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONQUISTA_CADASTRAR)")
     @PostMapping("/")
     @Operation(summary = "Cadastro de conquista.", description = "Endpoint para cadastrar conquista.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -49,6 +52,7 @@ public class ConquistaController {
         return ResponseEntity.ok(savedConqusta);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONQUISTA_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar conquista por ID.", description = "Endpoint para buscar a conquista pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -58,6 +62,7 @@ public class ConquistaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONQUISTA_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de conquista.", description = "Endpoint para atualizar os dados das conquista.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -67,6 +72,7 @@ public class ConquistaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONQUISTA_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de conquista.", description = "Endpoint para remover uma conquista.",
             security = {@SecurityRequirement(name = "bearer-key")})

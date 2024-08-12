@@ -26,7 +26,6 @@ public interface UsuarioMapper {
 
     @Mappings({
             @Mapping(source = "escola.id", target = "usuarioEscola.id"),
-            @Mapping(source = "escola", target = "usuarioEscola")
     })
     Usuario usuarioDTOToUsuario(UsuarioDTO usuarioDTO);
 
