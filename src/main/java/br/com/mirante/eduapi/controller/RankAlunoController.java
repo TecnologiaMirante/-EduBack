@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -25,9 +26,10 @@ import java.util.UUID;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Tag(description = "Retorna os dados do ranking dos alunos.", name = "Rank_Aluno")
 @RequestMapping("/rankAluno")
-public class RankAlunoCotroller {
+public class RankAlunoController {
     private RankAlunoService rankAlunoService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKALUNO_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar o ranking.", description = "Endpoint para consultar o ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -41,6 +43,7 @@ public class RankAlunoCotroller {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKALUNO_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar o ranking por ID.", description = "Endpoint para buscar o ranking pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -50,6 +53,7 @@ public class RankAlunoCotroller {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKALUNO_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro no ranking.", description = "Endpoint para cadastrar no  ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -58,6 +62,7 @@ public class RankAlunoCotroller {
         return ResponseEntity.ok(savedRankAluno);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKALUNO_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização do Ranking.", description = "Endpoint para atualizar os dados do ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -67,6 +72,7 @@ public class RankAlunoCotroller {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKALUNO_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de ranking.", description = "Endpoint para remover uma pessoa do ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})

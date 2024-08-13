@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -28,6 +29,7 @@ public class QuestoesController {
     @Autowired
     private QuestoesService questoesService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.QUESTOES_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar as Questões.", description = "Endpoint para consultar as Questões.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -39,6 +41,8 @@ public class QuestoesController {
             return new ResponseEntity<>(consultaPage.map(QuestoesMapper.INSTANCE::questoesToQuestoesDTO),HttpStatus.OK);
         }
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.QUESTOES_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Questão por ID.", description = "Endpoint para buscar as Questões pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -47,6 +51,8 @@ public class QuestoesController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.QUESTOES_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro de Questões.", description = "Endpoint para cadastrar as Questões.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -54,6 +60,8 @@ public class QuestoesController {
         QuestoesDTO savedQuestao = questoesService.save(questoesDTO);
         return ResponseEntity.ok(savedQuestao);
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.QUESTOES_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização das Questões.", description = "Endpoint para atualizar os dados das Questões.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -63,6 +71,7 @@ public class QuestoesController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.QUESTOES_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Questão.", description = "Endpoint para remover uma Questão.",
             security = {@SecurityRequirement(name = "bearer-key")})

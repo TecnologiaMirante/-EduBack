@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -27,6 +28,7 @@ public class ConteudoController {
     @Autowired
     private ConteudoService conteudoService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONTEUDO_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Conteudos.", description = "Endpoint para consultar Conteudos.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Page<ConteudoDTO>> findAll(SpecTemplate.ConteudoSpec spec, Pageable page){
@@ -38,6 +40,7 @@ public class ConteudoController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONTEUDO_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro de Conteudo.", description = "Endpoint para cadastrar Conteudo.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -46,6 +49,7 @@ public class ConteudoController {
         return ResponseEntity.ok(savedConteudo);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONTEUDO_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Conteudo por ID.", description = "Endpoint para buscar a Conteudo pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -55,6 +59,7 @@ public class ConteudoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONTEUDO_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Conteudo.", description = "Endpoint para atualizar os dados das Conteudos.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -64,6 +69,7 @@ public class ConteudoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.CONTEUDO_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Conteudo.", description = "Endpoint para remover uma Conteudo.",
             security = {@SecurityRequirement(name = "bearer-key")})

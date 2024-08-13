@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class MediaController {
     @Autowired
     private MediaService mediaService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MEDIA_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Media.", description = "Endpoint para consultar Media.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Page<MediaDTO>> findAll(SpecTemplate.MediaSpec spec, Pageable page){
@@ -37,6 +39,7 @@ public class MediaController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MEDIA_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro de Media.", description = "Endpoint para cadastrar Media.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -45,6 +48,7 @@ public class MediaController {
         return ResponseEntity.ok(savedMedia);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MEDIA_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Media por ID.", description = "Endpoint para buscar a Media pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -54,6 +58,7 @@ public class MediaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MEDIA_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Media.", description = "Endpoint para atualizar os dados das Media.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -63,6 +68,7 @@ public class MediaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MEDIA_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Media.", description = "Endpoint para remover uma Media.",
             security = {@SecurityRequirement(name = "bearer-key")})

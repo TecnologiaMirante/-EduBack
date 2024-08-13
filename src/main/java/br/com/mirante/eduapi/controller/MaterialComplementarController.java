@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class MaterialComplementarController {
     @Autowired
     private MaterialComplementarService materialComplementarService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MATERIALCOMPLMENTAR_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Material Complementares.", description = "Endpoint para consultar Material Complementares.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Page<MaterialComplementarDTO>> findAll(SpecTemplate.MaterialComplementarSpec spec, Pageable page){
@@ -37,32 +39,33 @@ public class MaterialComplementarController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MATERIALCOMPLMENTAR_CADASTRAR)")
     @PostMapping()
-    @Operation(summary = "Cadastro de Material Complementar.", description = "Endpoint para cadastrar Material Complementar.",
-            security = {@SecurityRequirement(name = "bearer-key")})
+    @Operation(summary = "Cadastro de Material Complementar.", description = "Endpoint para cadastrar Material Complementar.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<MaterialComplementarDTO> create(@RequestBody MaterialComplementarDTO materialComplementarDTO) throws BusinessException {
         MaterialComplementarDTO savedMatComplementar = materialComplementarService.save(materialComplementarDTO);
         return ResponseEntity.ok(savedMatComplementar);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MATERIALCOMPLMENTAR_CONSULTAR)")
     @GetMapping("/{id}")
-    @Operation(summary = "Buscar MaterialComplementar por ID.", description = "Endpoint para buscar a MaterialComplementar pelo id.",
-            security = {@SecurityRequirement(name = "bearer-key")})
+    @Operation(summary = "Buscar Material Complementar por ID.", description = "Endpoint para buscar a Material Complementar pelo id.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<MaterialComplementarDTO> getById(@PathVariable UUID id) {
         return materialComplementarService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MATERIALCOMPLMENTAR_ATUALIZAR)")
     @PutMapping("/{id}")
-    @Operation(summary = "Atualização de MaterialComplementar.", description = "Endpoint para atualizar os dados do Material Complementar.",
-            security = {@SecurityRequirement(name = "bearer-key")})
+    @Operation(summary = "Atualização de Material Complementar.", description = "Endpoint para atualizar os dados do Material Complementar.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<MaterialComplementarDTO> update(@PathVariable UUID id, @RequestBody MaterialComplementarDTO materialComplementarDTO) {
         return materialComplementarService.update(id, materialComplementarDTO)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.MATERIALCOMPLMENTAR_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de MaterialComplementar.", description = "Endpoint para remover uma MaterialComplementar.",
             security = {@SecurityRequirement(name = "bearer-key")})

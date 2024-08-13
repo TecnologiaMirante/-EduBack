@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class BimestreController {
     @Autowired
     private BimestreService bimestreService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.BIMESTRE_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Bimestre.", description = "Endpoint para consultar Bimestre.", security = {@SecurityRequirement(name = "bearer-key")})
     public ResponseEntity<Page<BimestreDTO>> findAll(SpecTemplate.BimestreSpec spec, Pageable page){
@@ -37,6 +39,7 @@ public class BimestreController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.BIMESTRE_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro de Bimestre.", description = "Endpoint para cadastrar Bimestre.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -45,6 +48,7 @@ public class BimestreController {
         return ResponseEntity.ok(savedBimestre);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.BIMESTRE_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Bimestre por ID.", description = "Endpoint para buscar a Bimestre pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -54,6 +58,7 @@ public class BimestreController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.BIMESTRE_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Bimestre.", description = "Endpoint para atualizar os dados das Bimestre.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -63,6 +68,7 @@ public class BimestreController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.BIMESTRE_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de Bimestre.", description = "Endpoint para remover uma Bimestre.",
             security = {@SecurityRequirement(name = "bearer-key")})

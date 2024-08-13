@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -29,6 +30,7 @@ public class RankSerieController {
     @Autowired
     private RankSerieService rankSerieService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKSERIE_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar o ranking.", description = "Endpoint para consultar o ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -40,6 +42,8 @@ public class RankSerieController {
             return new ResponseEntity<>(consultaPage.map(RankSerieMapper.INSTANCE::rankSerieToRankSerieDTO),HttpStatus.OK);
         }
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKSERIE_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar o ranking por ID.", description = "Endpoint para buscar o ranking pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -48,6 +52,8 @@ public class RankSerieController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKSERIE_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro no ranking.", description = "Endpoint para cadastrar no  ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -55,6 +61,8 @@ public class RankSerieController {
         RankSerieDTO savedRankSerie = rankSerieService.save(rankSerieDTO);
         return ResponseEntity.ok(savedRankSerie);
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKSERIE_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização do Ranking.", description = "Endpoint para atualizar os dados do ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -64,6 +72,7 @@ public class RankSerieController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKSERIE_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de ranking.", description = "Endpoint para remover uma pessoa do ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})

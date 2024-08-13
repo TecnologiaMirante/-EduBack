@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -28,6 +29,7 @@ public class OpcoesController {
 
     private OpcoesService opcoesService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.OPCOES_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar Questão.", description = "Endpoint para consultar as Questões.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -41,6 +43,7 @@ public class OpcoesController {
         }
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.OPCOES_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Questão por ID.", description = "Endpoint para buscar as Questões pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -50,6 +53,7 @@ public class OpcoesController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.OPCOES_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro da Questão.", description = "Endpoint para cadastrar as Questões.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -58,6 +62,7 @@ public class OpcoesController {
         return ResponseEntity.ok(savedOpcoes);
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.OPCOES_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização das Questões.", description = "Endpoint para atualizar os dados das Questões.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -67,6 +72,7 @@ public class OpcoesController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.OPCOES_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção da questão.", description = "Endpoint para remover uma Questão.",
             security = {@SecurityRequirement(name = "bearer-key")})

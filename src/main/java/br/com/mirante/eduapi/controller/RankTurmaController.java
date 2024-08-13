@@ -19,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -32,6 +33,7 @@ public class RankTurmaController {
     @Autowired
     private RankTurmaService rankTurmaService;
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKTURMA_CONSULTAR)")
     @GetMapping("/findAll")
     @Operation(summary = "Consultar o ranking.", description = "Endpoint para consultar o ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -43,6 +45,8 @@ public class RankTurmaController {
             return new ResponseEntity<>(consultaPage.map(RankTurmaMapper.INSTANCE::rankTurmaToRankTurmaDTO),HttpStatus.OK);
         }
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKTURMA_CONSULTAR)")
     @GetMapping("/{id}")
     @Operation(summary = "Buscar o ranking por ID.", description = "Endpoint para buscar o ranking pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -51,6 +55,8 @@ public class RankTurmaController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKTURMA_CADASTRAR)")
     @PostMapping()
     @Operation(summary = "Cadastro no ranking.", description = "Endpoint para cadastrar no  ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -58,6 +64,8 @@ public class RankTurmaController {
         RankTurmaDTO savedRankTurma = rankTurmaService.save(rankTurmaDTO);
         return ResponseEntity.ok(savedRankTurma);
     }
+
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKTURMA_ATUALIZAR)")
     @PutMapping("/{id}")
     @Operation(summary = "Atualização do Ranking.", description = "Endpoint para atualizar os dados do ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})
@@ -67,6 +75,7 @@ public class RankTurmaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority(@AUTHORITIES.RANKTURMA_DELETAR)")
     @DeleteMapping("/{id}")
     @Operation(summary = "Remoção de ranking.", description = "Endpoint para remover uma pessoa do ranking.",
             security = {@SecurityRequirement(name = "bearer-key")})

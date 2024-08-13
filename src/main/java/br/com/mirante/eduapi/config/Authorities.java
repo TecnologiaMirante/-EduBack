@@ -74,4 +74,53 @@ public final class Authorities {
     public static final String DISCIPLINA_CADASTRAR = "DISCIPLINA_CADASTRAR";
     public static final String DISCIPLINA_ATUALIZAR = "DISCIPLINA_ATUALIZAR";
 
+    public static final String BIMESTRE_CONSULTAR = "BIMESTRE_CONSULTAR";
+    public static final String BIMESTRE_DELETAR = "BIMESTRE_DELETAR";
+    public static final String BIMESTRE_CADASTRAR = "BIMESTRE_CADASTRAR";
+    public static final String BIMESTRE_ATUALIZAR = "BIMESTRE_ATUALIZAR";
+
+    public static final String MEDIA_CONSULTAR = "MEDIA_CONSULTAR";
+    public static final String MEDIA_DELETAR = "MEDIA_DELETAR";
+    public static final String MEDIA_CADASTRAR = "MEDIA_CADASTRAR";
+    public static final String MEDIA_ATUALIZAR = "MEDIA_ATUALIZAR";
+
+    public static final String CONTEUDO_CONSULTAR = "CONTEUDO_CONSULTAR";
+    public static final String CONTEUDO_DELETAR = "CONTEUDO_DELETAR";
+    public static final String CONTEUDO_CADASTRAR = "CONTEUDO_CADASTRAR";
+    public static final String CONTEUDO_ATUALIZAR = "CONTEUDO_ATUALIZAR";
+
+    public static final String MATERIALCOMPLMENTAR_CONSULTAR = "MATERIALCOMPLMENTAR_CONSULTAR";
+    public static final String MATERIALCOMPLMENTAR_DELETAR = "MATERIALCOMPLMENTAR_DELETAR";
+    public static final String MATERIALCOMPLMENTAR_CADASTRAR = "MATERIALCOMPLMENTAR_CADASTRAR";
+    public static final String MATERIALCOMPLMENTAR_ATUALIZAR = "MATERIALCOMPLMENTAR_ATUALIZAR";
+
+    public static final String RANKALUNO_CONSULTAR = "RANKALUNO_CONSULTAR";
+    public static final String RANKALUNO_DELETAR = "RANKALUNO_DELETAR";
+    public static final String RANKALUNO_CADASTRAR = "RANKALUNO_CADASTRAR";
+    public static final String RANKALUNO_ATUALIZAR = "RANKALUNO_ATUALIZAR";
+
+    public static final String RANKGERAL_CONSULTAR = "RANKGERAL_CONSULTAR";
+    public static final String RANKGERAL_DELETAR = "RANKGERAL_DELETAR";
+    public static final String RANKGERAL_CADASTRAR = "RANKGERAL_CADASTRAR";
+    public static final String RANKGERAL_ATUALIZAR = "RANKGERAL_ATUALIZAR";
+
+    public static final String QUESTOES_CONSULTAR = "QUESTOES_CONSULTAR";
+    public static final String QUESTOES_DELETAR = "QUESTOES_DELETAR";
+    public static final String QUESTOES_CADASTRAR = "QUESTOES_CADASTRAR";
+    public static final String QUESTOES_ATUALIZAR = "QUESTOES_ATUALIZAR";
+
+    public static final String OPCOES_CONSULTAR = "OPCOES_CONSULTAR";
+    public static final String OPCOES_DELETAR = "OPCOES_DELETAR";
+    public static final String OPCOES_CADASTRAR = "OPCOES_CADASTRAR";
+    public static final String OPCOES_ATUALIZAR = "OPCOES_ATUALIZAR";
+
+    public static final String RANKSERIE_CONSULTAR = "RANKSERIE_CONSULTAR";
+    public static final String RANKSERIE_DELETAR = "RANKSERIE_DELETAR";
+    public static final String RANKSERIE_CADASTRAR = "RANKSERIE_CADASTRAR";
+    public static final String RANKSERIE_ATUALIZAR = "RANKSERIE_ATUALIZAR";
+
+    public static final String RANKTURMA_CONSULTAR = "RANKTURMA_CONSULTAR";
+    public static final String RANKTURMA_DELETAR = "RANKTURMA_DELETAR";
+    public static final String RANKTURMA_CADASTRAR = "RANKTURMA_CADASTRAR";
+    public static final String RANKTURMA_ATUALIZAR = "RANKTURMA_ATUALIZAR";
 }
