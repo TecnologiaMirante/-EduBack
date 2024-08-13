@@ -15,5 +15,5 @@ public class OpcoesDTO {
     private UUID id;
     private String nota;
     private Boolean correto;
-    private List<QuestoesDTOGet> questoesDTOS;
+    private UUID questoesDTOS;
 }

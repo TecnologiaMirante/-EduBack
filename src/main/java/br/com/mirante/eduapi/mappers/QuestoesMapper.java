@@ -12,5 +12,5 @@ public interface QuestoesMapper {
     QuestoesDTO questoesToQuestoesDTO(Questoes questoes);
     Questoes questoesDTOToQuestoes(QuestoesDTO questoesDTO);
 
-    QuestoesDTOGet questoesToQuestoesDTOGet(Questoes questoes);
+
 }

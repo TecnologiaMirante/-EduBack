@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -14,7 +15,7 @@ public class QuestoesDTO {
     private UUID id;
     private String titulo;
     private String descricao;
-    private OpcoesDTO idOpcoes;
+    private List<OpcoesDTO> idOpcoes;
     private String idAvaliacao;
 //    private List<ConteudoDTO> conteudo;
 }
