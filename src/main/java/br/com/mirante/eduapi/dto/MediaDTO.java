@@ -14,5 +14,6 @@ import java.util.UUID;
 public class MediaDTO {
     private String nota;
     private UUID id_aluno;
-    private UUID disciplina_id;
+    private UUID id_disciplina;
+    private UUID id_bimestre;
 }

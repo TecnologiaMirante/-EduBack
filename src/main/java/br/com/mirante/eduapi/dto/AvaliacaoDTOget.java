@@ -18,7 +18,6 @@ public class AvaliacaoDTOget {
     private String descricao;
     private char tipo;
     private Conteudo conteudo;
-    private Professor professor;
     private Boolean progresso;
     //IMG
 }

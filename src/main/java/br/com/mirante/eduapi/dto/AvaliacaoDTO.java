@@ -17,6 +17,7 @@ public class AvaliacaoDTO {
     private String descricao;
     private char tipo;
     private UUID id_conteudo;
-    private UUID id_professor;
+    private UUID id_questoes;
+    private UUID id_nota;
     //IMG
 }

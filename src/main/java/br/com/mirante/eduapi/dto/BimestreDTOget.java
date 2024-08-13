@@ -13,5 +13,6 @@ import java.util.UUID;
 public class BimestreDTOget {
     private UUID id;
     private String data;
-    private Media media;
+    private UUID media_id;
+    private UUID conteudo_id;
 }

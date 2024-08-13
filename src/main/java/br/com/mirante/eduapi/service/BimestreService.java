@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service;
 
 import br.com.mirante.eduapi.dto.BimestreDTO;
+import br.com.mirante.eduapi.dto.BimestreDTOpost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.models.Bimestre;
 import org.springframework.data.domain.Page;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public interface BimestreService {
     Page<Bimestre> findAll(Specification<Bimestre> spec, Pageable page);
 
-    BimestreDTO save(BimestreDTO bimestreDTO) throws BusinessException;
+    BimestreDTOpost save(BimestreDTOpost bimestreDTOpost) throws BusinessException;
 
     Optional<BimestreDTO> findById(UUID id);
 
