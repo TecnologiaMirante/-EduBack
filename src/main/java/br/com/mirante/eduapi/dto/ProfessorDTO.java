@@ -20,7 +20,7 @@ public class ProfessorDTO {
     private String cpf;
     private String matricula;
     private String avatar;
-    private LocalDateTime dataDeNascimento;
+    private String dataDeNascimento;
     private String status;
     private String instagram;
     private String facebook;

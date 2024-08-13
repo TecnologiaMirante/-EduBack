@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,8 +36,15 @@ public class UsuarioResponsavelServiceImpl implements UsuarioResponsavelService 
 
     @Override
     public UsuarioResponsavelDTOPost save(UsuarioResponsavelDTOPost usuarioResponsavelDTO) throws BusinessException {
+        Pattern patternCpf = Pattern.compile("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}");
         UsuarioResponsavel usuarioResponsavel = UsuarioResponsavelMapper.INSTANCE
                 .usuarioResponsavelDTOPostToUsuarioResponsavel(usuarioResponsavelDTO);
+
+
+        if (!patternCpf.matcher(usuarioResponsavel.getCpf()).matches()){
+            throw new BusinessException("CPF invalido");
+        }
+
         if (usuarioResponsavelRepository.findByCpf(usuarioResponsavel.getCpf()) != null){
             throw new BusinessException("O usuario responsavel ja existe com este cpf");
         }

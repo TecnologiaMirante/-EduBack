@@ -16,6 +16,6 @@ public class UsuarioResponsavelDTOPost {
     private String email;
     private String cpf;
     private String telefone;
-    private LocalDateTime DataDeNascimento;
+    private String DataDeNascimento;
     private UUID alunoId;
 }
