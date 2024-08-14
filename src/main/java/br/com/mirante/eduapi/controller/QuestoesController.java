@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.controller;
 
 import br.com.mirante.eduapi.dto.QuestoesDTO;
+import br.com.mirante.eduapi.dto.QuestoesDTOGet;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.QuestoesMapper;
 import br.com.mirante.eduapi.models.Questoes;
@@ -31,12 +32,12 @@ public class QuestoesController {
     @GetMapping("/findAll")
     @Operation(summary = "Consultar as Questões.", description = "Endpoint para consultar as Questões.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<Page<QuestoesDTO>> findAll(SpecTemplate.QuestoesSpac spac, Pageable page){
+    public ResponseEntity<Page<QuestoesDTOGet>> findAll(SpecTemplate.QuestoesSpac spac, Pageable page){
         Page<Questoes> consultaPage = questoesService.findAll(spac,page);
         if (consultaPage.isEmpty()){
-            return new ResponseEntity<>(consultaPage.map(QuestoesMapper.INSTANCE::questoesToQuestoesDTO), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(consultaPage.map(QuestoesMapper.INSTANCE::questoesToQuestoesDTOGet), HttpStatus.NOT_FOUND);
         }else{
-            return new ResponseEntity<>(consultaPage.map(QuestoesMapper.INSTANCE::questoesToQuestoesDTO),HttpStatus.OK);
+            return new ResponseEntity<>(consultaPage.map(QuestoesMapper.INSTANCE::questoesToQuestoesDTOGet),HttpStatus.OK);
         }
     }
     @GetMapping("/{id}")

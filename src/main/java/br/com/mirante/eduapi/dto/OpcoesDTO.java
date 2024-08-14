@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class OpcoesDTO {
     private UUID id;
-    private String nota;
+    private String descricao;
     private Boolean correto;
     private UUID questoesDTOS;
 }
