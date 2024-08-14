@@ -16,6 +16,6 @@ public class QuestoesDTO {
     private String titulo;
     private String descricao;
     private List<OpcoesDTO> idOpcoes;
-    private String idAvaliacao;
+    private UUID idAvaliacao;
 //    private List<ConteudoDTO> conteudo;
 }
