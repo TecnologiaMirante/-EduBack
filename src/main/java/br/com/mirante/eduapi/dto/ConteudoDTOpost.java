@@ -13,12 +13,13 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConteudoDTO {
+public class ConteudoDTOpost {
     private String titulo;
     private String descricao;
     private UUID id_bimestre;
     private UUID id_disciplina;
     private UUID id_professor;
-    private List<AulaDTOGet> aulas;
-    private List<MaterialComplementarDTOget> materiais;
+    private UUID id_aula;
+    private UUID id_materiais;
 }
+
