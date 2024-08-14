@@ -1,5 +1,6 @@
 package br.com.mirante.eduapi.service.impl;
 import br.com.mirante.eduapi.dto.DisciplinaDTO;
+import br.com.mirante.eduapi.dto.DisciplinaDTOpost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.DisciplinaMapper;
 import br.com.mirante.eduapi.models.Disciplina;
@@ -25,16 +26,16 @@ public class DisciplinaServiceImpl implements DisciplinaService {
     }
 
     @Override
-    public DisciplinaDTO save(DisciplinaDTO disciplinaDTO) throws BusinessException {
+    public DisciplinaDTOpost save(DisciplinaDTOpost disciplinaDTOpost) throws BusinessException {
 
-        Disciplina disciplina = DisciplinaMapper.INSTANCE.ToDisciplina(disciplinaDTO);
+        Disciplina disciplina = DisciplinaMapper.INSTANCE.postToDisciplina(disciplinaDTOpost);
 
         if (disciplinaRepository.findByCodigo(disciplina.getCodigo()) != null){
             throw new BusinessException("Disciplina já existe com esse codigo");
         }
         disciplina = disciplinaRepository.save(disciplina);
 
-        return DisciplinaMapper.INSTANCE.ToDisciplinaDTO(disciplina);
+        return DisciplinaMapper.INSTANCE.ToDisciplinaDTOpost(disciplina);
     }
 
     @Override

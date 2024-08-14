@@ -46,11 +46,6 @@ public interface ConteudoMapper{
         return aulas.isEmpty() ? null : aulas.get(0).getId();
     }
 
-    @Named("materialListToFirstId")
-    static UUID meaterialListToFirstId(List<MaterialComplementar> materialComplementars) {
-        return materialComplementars.isEmpty() ? null : materialComplementars.get(0).getId();
-    }
-
     @Named("uuidToAulaList")
     static List<Aula> uuidToAulaList(UUID uuid) {
         if (uuid == null) {
@@ -69,6 +64,11 @@ public interface ConteudoMapper{
         MaterialComplementar materialComplementar = new MaterialComplementar();
         materialComplementar.setId(uuid);
         return Collections.singletonList(materialComplementar);
+    }
+
+    @Named("materialListToFirstId")
+    static UUID meaterialListToFirstId(List<MaterialComplementar> materialComplementars) {
+        return materialComplementars.isEmpty() ? null : materialComplementars.get(0).getId();
     }
 }
 

@@ -18,7 +18,8 @@ public class DisciplinaDTO {
     private String nome;
     private String codigo;
     private Boolean status;
-    private ProfessorDTOGet profDisciplina;
-    private TurmaDTOget turmaDisciplina;
-    private ConteudoDTOget conteudoDisciplina;
+    private List<ProfessorDTOGet> profDisciplina;
+    private List<TurmaDTOget> turmaDisciplina;
+    private List<ConteudoDTOget> conteudoDisciplina;
+    private List<AlunoDTOGet> alunoDisciplina;
 }
