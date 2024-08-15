@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.controller;
 
 import br.com.mirante.eduapi.dto.SerieDTO;
+import br.com.mirante.eduapi.dto.SerieDTOpost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.SerieMapper;
 import br.com.mirante.eduapi.models.Serie;
@@ -47,9 +48,9 @@ public class SerieController {
     @PostMapping("/")
     @Operation(summary = "Cadastro Serie.", description = "Endpoint para cadastrar serie. ",
     security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<SerieDTO> create(@RequestBody SerieDTO serieDTO) throws BusinessException{
+    public ResponseEntity<SerieDTOpost> create(@RequestBody SerieDTOpost serieDTOpost) throws BusinessException{
 
-        SerieDTO serieSaved = serieService.save(serieDTO);
+        SerieDTOpost serieSaved = serieService.save(serieDTOpost);
 
         return ResponseEntity.ok(serieSaved);
     }
@@ -68,8 +69,8 @@ public class SerieController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar as Series por ID.", description = "Endpoint para atualizar as Series pelo id.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<SerieDTO> update(@RequestBody SerieDTO serieDTO, @PathVariable UUID id){
-        return serieService.update(id,serieDTO)
+    public ResponseEntity<SerieDTOpost> update(@RequestBody SerieDTOpost serieDTOpost, @PathVariable UUID id){
+        return serieService.update(id,serieDTOpost)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

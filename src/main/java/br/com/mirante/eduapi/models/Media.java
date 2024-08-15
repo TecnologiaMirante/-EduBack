@@ -33,9 +33,9 @@ public class Media {
     private Disciplina disciplinaMedia;
 
     //RELACIONAMENTO MEDIA ALUNO
-//    @ManyToOne
-//    @JoinColumn(name = "id_aluno", nullable = false)
-//    private Aluno aluno;
+   @ManyToOne
+   @JoinColumn(name = "id_aluno", nullable = false)
+    private Aluno aluno;
 
 
     @PrePersist

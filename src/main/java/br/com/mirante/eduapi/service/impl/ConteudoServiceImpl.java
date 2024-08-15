@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service.impl;
 
 import br.com.mirante.eduapi.dto.ConteudoDTO;
+import br.com.mirante.eduapi.dto.ConteudoDTOpost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.ConteudoMapper;
 import br.com.mirante.eduapi.models.Conteudo;
@@ -26,16 +27,16 @@ public class ConteudoServiceImpl implements ConteudoService{
     }
 
     @Override
-    public ConteudoDTO save(ConteudoDTO conteudoDTO) throws BusinessException {
+    public ConteudoDTOpost save(ConteudoDTOpost conteudoDTOpost) throws BusinessException {
 
-        Conteudo conteudo = ConteudoMapper.INSTANCE.ToConteudo(conteudoDTO);
+        Conteudo conteudo = ConteudoMapper.INSTANCE.PostToConteudo(conteudoDTOpost);
 
         if (conteudoRepository.findByTitulo(conteudo.getTitulo()) != null){
             throw new BusinessException("Conteudo já existe com esse Titulo");
         }
         conteudo = conteudoRepository.save(conteudo);
 
-        return ConteudoMapper.INSTANCE.ToConteudoDTO(conteudo);
+        return ConteudoMapper.INSTANCE.ToConteudoDTOpost(conteudo);
     }
 
     @Override
@@ -45,12 +46,12 @@ public class ConteudoServiceImpl implements ConteudoService{
     }
 
     @Override
-    public Optional<ConteudoDTO> update(UUID id, ConteudoDTO conteudoDTO) {
+    public Optional<ConteudoDTOpost> update(UUID id, ConteudoDTOpost conteudoDTOpost) {
         if (conteudoRepository.existsById(id)) {
-            Conteudo conteudo = ConteudoMapper.INSTANCE.ToConteudo(conteudoDTO);
+            Conteudo conteudo = ConteudoMapper.INSTANCE.PostToConteudo(conteudoDTOpost);
             conteudo.setId(id);
             conteudo = conteudoRepository.save(conteudo);
-            return Optional.of(ConteudoMapper.INSTANCE.ToConteudoDTO(conteudo));
+            return Optional.of(ConteudoMapper.INSTANCE.ToConteudoDTOpost(conteudo));
         }
         return Optional.empty();
     }

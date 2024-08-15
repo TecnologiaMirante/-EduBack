@@ -14,6 +14,5 @@ public class MaterialComplementarDTOget {
     private UUID id;
     private String titulo;
     private String material; // MUDAR ARQUIVO
-    private Conteudo conteudo;
     private Boolean progresso;
 }

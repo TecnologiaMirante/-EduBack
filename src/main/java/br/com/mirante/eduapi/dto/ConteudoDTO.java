@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -18,4 +19,6 @@ public class ConteudoDTO {
     private UUID id_bimestre;
     private UUID id_disciplina;
     private UUID id_professor;
+    private List<AulaDTOGet> aulas;
+    private List<MaterialComplementarDTOget> materiais;
 }

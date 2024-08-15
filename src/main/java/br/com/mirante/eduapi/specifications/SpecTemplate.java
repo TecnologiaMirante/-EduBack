@@ -132,16 +132,43 @@ public class SpecTemplate {
     })
     public interface SerieSpec extends Specification<Serie>{}
 
+    @And({
+            @Spec(path = "nome", spec = Like.class),
+            @Spec(path = "codigo", spec = Equal.class),
+            @Spec(path = "status",spec = Equal.class)
+    })
     public interface DisciplinaSpec extends Specification<Disciplina>{}
 
+    @And({
+            @Spec(path = "nome", spec = Like.class),
+            @Spec(path = "turno", spec = Equal.class),
+            @Spec(path = "codigo", spec = Equal.class),
+            @Spec(path = "status",spec = Equal.class)
+    })
     public interface TurmaSpec extends Specification<Turma>{}
 
+    @And({
+            @Spec(path = "data", spec = Equal.class)
+    })
     public interface BimestreSpec extends Specification<Bimestre>{}
 
+    @And({
+            @Spec(path = "nota", spec = Like.class)
+    })
     public interface MediaSpec extends Specification<Media>{}
 
+    @And({
+            @Spec(path = "titulo", spec = Like.class),
+            @Spec(path = "descricao",spec = Like.class)
+    })
     public interface ConteudoSpec extends Specification<Conteudo>{}
 
+    @And({
+            @Spec(path = "nota", spec = Like.class),
+            @Spec(path = "data", spec = Equal.class),
+            @Spec(path = "descricao", spec = Like.class),
+            @Spec(path = "tipo",spec = Equal.class)
+    })
     public interface AvaliacaoSpec extends Specification<Avaliacao>{}
 
     @And({
@@ -150,5 +177,4 @@ public class SpecTemplate {
 
     })
     public interface MaterialComplementarSpec extends Specification<MaterialComplementar>{}
-
 }

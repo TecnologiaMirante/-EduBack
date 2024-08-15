@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.controller;
 
 import br.com.mirante.eduapi.dto.BimestreDTO;
+import br.com.mirante.eduapi.dto.BimestreDTOpost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.BimestreMapper;
 import br.com.mirante.eduapi.models.Bimestre;
@@ -43,8 +44,8 @@ public class BimestreController {
     @PostMapping()
     @Operation(summary = "Cadastro de Bimestre.", description = "Endpoint para cadastrar Bimestre.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<BimestreDTO> create(@RequestBody BimestreDTO bimestreDTO) throws BusinessException {
-        BimestreDTO savedBimestre = bimestreService.save(bimestreDTO);
+    public ResponseEntity<BimestreDTOpost> create(@RequestBody BimestreDTOpost bimestreDTOpost) throws BusinessException {
+        BimestreDTOpost savedBimestre = bimestreService.save(bimestreDTOpost);
         return ResponseEntity.ok(savedBimestre);
     }
 
@@ -62,8 +63,8 @@ public class BimestreController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Bimestre.", description = "Endpoint para atualizar os dados das Bimestre.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<BimestreDTO> update(@PathVariable UUID id, @RequestBody BimestreDTO bimestreDTO) {
-        return bimestreService.update(id, bimestreDTO)
+    public ResponseEntity<BimestreDTOpost> update(@PathVariable UUID id, @RequestBody BimestreDTOpost bimestreDTOpost) {
+        return bimestreService.update(id, bimestreDTOpost)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

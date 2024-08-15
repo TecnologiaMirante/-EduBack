@@ -2,6 +2,7 @@ package br.com.mirante.eduapi.controller;
 
 
 import br.com.mirante.eduapi.dto.ConteudoDTO;
+import br.com.mirante.eduapi.dto.ConteudoDTOpost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.ConteudoMapper;
 import br.com.mirante.eduapi.models.Conteudo;
@@ -44,8 +45,8 @@ public class ConteudoController {
     @PostMapping()
     @Operation(summary = "Cadastro de Conteudo.", description = "Endpoint para cadastrar Conteudo.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<ConteudoDTO> create(@RequestBody ConteudoDTO conteudoDTO) throws BusinessException {
-        ConteudoDTO savedConteudo = conteudoService.save(conteudoDTO);
+    public ResponseEntity<ConteudoDTOpost> create(@RequestBody ConteudoDTOpost conteudoDTOpost) throws BusinessException {
+        ConteudoDTOpost savedConteudo = conteudoService.save(conteudoDTOpost);
         return ResponseEntity.ok(savedConteudo);
     }
 
@@ -63,8 +64,8 @@ public class ConteudoController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Conteudo.", description = "Endpoint para atualizar os dados das Conteudos.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<ConteudoDTO> update(@PathVariable UUID id, @RequestBody ConteudoDTO conteudoDTO) {
-        return conteudoService.update(id, conteudoDTO)
+    public ResponseEntity<ConteudoDTOpost> update(@PathVariable UUID id, @RequestBody ConteudoDTOpost conteudoDTOpost) {
+        return conteudoService.update(id, conteudoDTOpost)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

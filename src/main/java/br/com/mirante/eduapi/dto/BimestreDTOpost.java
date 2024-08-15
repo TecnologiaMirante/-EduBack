@@ -10,10 +10,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BimestreDTOget {
+public class BimestreDTOpost {
     private UUID id;
-    private String data;
-    private MediaDTOget media;
     private UUID media_id;
     private UUID conteudo_id;
 }

@@ -7,16 +7,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConteudoDTOget {
-    private UUID id;
+public class ConteudoDTOpost {
     private String titulo;
     private String descricao;
-    private Disciplina disciplina;
-    private Professor professor;
-    private Bimestre bimestre;
+    private UUID id_bimestre;
+    private UUID id_disciplina;
+    private UUID id_professor;
+    private UUID id_aula;
+    private UUID id_materiais;
 }
+

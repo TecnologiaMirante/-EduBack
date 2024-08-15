@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.controller;
 
 import br.com.mirante.eduapi.dto.DisciplinaDTO;
+import br.com.mirante.eduapi.dto.DisciplinaDTOpost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.DisciplinaMapper;
 import br.com.mirante.eduapi.models.Disciplina;
@@ -44,8 +45,8 @@ public class DisciplinaController {
     @PostMapping()
     @Operation(summary = "Cadastro de Disciplina.", description = "Endpoint para cadastrar Disciplina.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<DisciplinaDTO> create(@RequestBody DisciplinaDTO disciplinaDTO) throws BusinessException {
-        DisciplinaDTO savedDisciplina = disciplinaService.save(disciplinaDTO);
+    public ResponseEntity<DisciplinaDTOpost> create(@RequestBody DisciplinaDTOpost disciplinaDTOpost) throws BusinessException {
+        DisciplinaDTOpost savedDisciplina = disciplinaService.save(disciplinaDTOpost);
         return ResponseEntity.ok(savedDisciplina);
     }
 
@@ -63,8 +64,8 @@ public class DisciplinaController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Disciplina.", description = "Endpoint para atualizar os dados das disciplinas.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<DisciplinaDTO> update(@PathVariable UUID id, @RequestBody DisciplinaDTO disciplinaDTO) {
-        return disciplinaService.update(id, disciplinaDTO)
+    public ResponseEntity<DisciplinaDTOpost> update(@PathVariable UUID id, @RequestBody DisciplinaDTOpost disciplinaDTOpost) {
+        return disciplinaService.update(id, disciplinaDTOpost)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
