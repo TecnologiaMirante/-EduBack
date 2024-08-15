@@ -17,7 +17,7 @@ public interface DisciplinaService {
 
     Optional<DisciplinaDTO> findById(UUID id);
 
-    Optional<DisciplinaDTO> update(UUID id, DisciplinaDTO disciplinaDTO);
+    Optional<DisciplinaDTOpost> update(UUID id, DisciplinaDTOpost disciplinaDTOpost);
 
     boolean delete(UUID id);
 }

@@ -45,12 +45,12 @@ public class BimestreServiceImpl implements BimestreService {
     }
 
     @Override
-    public Optional<BimestreDTO> update(UUID id, BimestreDTO bimestreDTO) {
+    public Optional<BimestreDTOpost> update(UUID id, BimestreDTOpost bimestreDTOpost) {
         if (bimestreRepository.existsById(id)) {
-            Bimestre bimestre = BimestreMapper.INSTANCE.ToBimestre(bimestreDTO);
+            Bimestre bimestre = BimestreMapper.INSTANCE.BimestreDTOpostToBimestre(bimestreDTOpost);
             bimestre.setId(id);
             bimestre = bimestreRepository.save(bimestre);
-            return Optional.of(BimestreMapper.INSTANCE.ToBimestreDTO(bimestre));
+            return Optional.of(BimestreMapper.INSTANCE.ToBimestreDTOpost(bimestre));
         }
         return Optional.empty();
     }

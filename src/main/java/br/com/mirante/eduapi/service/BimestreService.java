@@ -18,7 +18,7 @@ public interface BimestreService {
 
     Optional<BimestreDTO> findById(UUID id);
 
-    Optional<BimestreDTO> update(UUID id, BimestreDTO bimestreDTO);
+    Optional<BimestreDTOpost> update(UUID id, BimestreDTOpost bimestreDTOpost);
 
     boolean delete(UUID id);
 }

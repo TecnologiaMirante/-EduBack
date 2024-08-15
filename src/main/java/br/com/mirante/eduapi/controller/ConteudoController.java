@@ -59,8 +59,8 @@ public class ConteudoController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Conteudo.", description = "Endpoint para atualizar os dados das Conteudos.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<ConteudoDTO> update(@PathVariable UUID id, @RequestBody ConteudoDTO conteudoDTO) {
-        return conteudoService.update(id, conteudoDTO)
+    public ResponseEntity<ConteudoDTOpost> update(@PathVariable UUID id, @RequestBody ConteudoDTOpost conteudoDTOpost) {
+        return conteudoService.update(id, conteudoDTOpost)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

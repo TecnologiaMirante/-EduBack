@@ -46,12 +46,12 @@ public class ConteudoServiceImpl implements ConteudoService{
     }
 
     @Override
-    public Optional<ConteudoDTO> update(UUID id, ConteudoDTO conteudoDTO) {
+    public Optional<ConteudoDTOpost> update(UUID id, ConteudoDTOpost conteudoDTOpost) {
         if (conteudoRepository.existsById(id)) {
-            Conteudo conteudo = ConteudoMapper.INSTANCE.ToConteudo(conteudoDTO);
+            Conteudo conteudo = ConteudoMapper.INSTANCE.PostToConteudo(conteudoDTOpost);
             conteudo.setId(id);
             conteudo = conteudoRepository.save(conteudo);
-            return Optional.of(ConteudoMapper.INSTANCE.ToConteudoDTO(conteudo));
+            return Optional.of(ConteudoMapper.INSTANCE.ToConteudoDTOpost(conteudo));
         }
         return Optional.empty();
     }

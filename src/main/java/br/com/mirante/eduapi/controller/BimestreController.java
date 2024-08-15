@@ -58,8 +58,8 @@ public class BimestreController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Bimestre.", description = "Endpoint para atualizar os dados das Bimestre.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<BimestreDTO> update(@PathVariable UUID id, @RequestBody BimestreDTO bimestreDTO) {
-        return bimestreService.update(id, bimestreDTO)
+    public ResponseEntity<BimestreDTOpost> update(@PathVariable UUID id, @RequestBody BimestreDTOpost bimestreDTOpost) {
+        return bimestreService.update(id, bimestreDTOpost)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

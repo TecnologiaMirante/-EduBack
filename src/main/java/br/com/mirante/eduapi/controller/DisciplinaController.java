@@ -59,8 +59,8 @@ public class DisciplinaController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualização de Disciplina.", description = "Endpoint para atualizar os dados das disciplinas.",
             security = {@SecurityRequirement(name = "bearer-key")})
-    public ResponseEntity<DisciplinaDTO> update(@PathVariable UUID id, @RequestBody DisciplinaDTO disciplinaDTO) {
-        return disciplinaService.update(id, disciplinaDTO)
+    public ResponseEntity<DisciplinaDTOpost> update(@PathVariable UUID id, @RequestBody DisciplinaDTOpost disciplinaDTOpost) {
+        return disciplinaService.update(id, disciplinaDTOpost)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

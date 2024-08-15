@@ -45,12 +45,12 @@ public class DisciplinaServiceImpl implements DisciplinaService {
     }
 
     @Override
-    public Optional<DisciplinaDTO> update(UUID id, DisciplinaDTO disciplinaDTO) {
+    public Optional<DisciplinaDTOpost> update(UUID id, DisciplinaDTOpost disciplinaDTOpost) {
         if (disciplinaRepository.existsById(id)) {
-            Disciplina disciplina = DisciplinaMapper.INSTANCE.ToDisciplina(disciplinaDTO);
+            Disciplina disciplina = DisciplinaMapper.INSTANCE.postToDisciplina(disciplinaDTOpost);
             disciplina.setId(id);
             disciplina = disciplinaRepository.save(disciplina);
-            return Optional.of(DisciplinaMapper.INSTANCE.ToDisciplinaDTO(disciplina));
+            return Optional.of(DisciplinaMapper.INSTANCE.ToDisciplinaDTOpost(disciplina));
         }
         return Optional.empty();
     }

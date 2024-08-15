@@ -18,7 +18,7 @@ public interface ConteudoService {
 
     Optional<ConteudoDTO> findById(UUID id);
 
-    Optional<ConteudoDTO> update(UUID id, ConteudoDTO conteudoDTO);
+    Optional<ConteudoDTOpost> update(UUID id, ConteudoDTOpost conteudoDTOpost);
 
     boolean delete(UUID id);
 }
