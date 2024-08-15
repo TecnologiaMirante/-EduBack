@@ -17,14 +17,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Tag(description = "Retorna Dados das Opções", name = "Opção")
-@RequestMapping("/opção")
+@RequestMapping("/opcao")
 public class OpcoesController {
 
     private OpcoesService opcoesService;

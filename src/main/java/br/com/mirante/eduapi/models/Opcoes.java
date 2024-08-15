@@ -26,7 +26,6 @@ public class Opcoes {
     @Column(name = "correto", nullable = false, length = 150)
     private Boolean correto;
 
-    //RELACIONAMENTO QUESTOES OPCOES
     @ManyToOne
     @JoinColumn(name = "id_questoes", nullable = false)
     private Questoes questoes;
