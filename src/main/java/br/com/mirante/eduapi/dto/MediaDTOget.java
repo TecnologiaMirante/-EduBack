@@ -15,6 +15,6 @@ import java.util.UUID;
 public class MediaDTOget {
     private UUID id;
     private String nota;
-    private Disciplina disciplina;
-    private Aluno aluno;
+    private DisciplinaDTOget disciplina;
+    private AlunoDTOGet aluno;
 }

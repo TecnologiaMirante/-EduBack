@@ -17,14 +17,17 @@ public interface AlunoMapper {
     @Mappings({
             @Mapping(source = "alunoEscola", target = "escola"),
             @Mapping(source = "responsavelAluno", target = "responsavel"),
-
+            @Mapping(source = "turmaAluno", target = "turma"),
+            @Mapping(source = "disciplinasAlunos", target = "disciplinas")
     })
     AlunoDTO alunoToAlunoDTO(Aluno aluno);
 
     @Mappings({
             @Mapping(source = "escola", target = "alunoEscola"),
             @Mapping(source = "responsavel", target = "responsavelAluno"),
-
+            @Mapping(source = "turma", target = "turmaAluno"),
+            @Mapping(source = "disciplinas", target = "disciplinasAlunos"),
+            @Mapping(source = "conquistas", target = "conquistas")
     })
     Aluno alunoDTOToAluno(AlunoDTO aluno);
 

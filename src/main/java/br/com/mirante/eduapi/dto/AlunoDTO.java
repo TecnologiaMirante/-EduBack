@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -37,10 +38,8 @@ public class AlunoDTO {
     private TipoUsuario tipoUsuario = TipoUsuario.ALUNO;
     private ResponsavelAlunoDTO responsavel;
     private EscolaUsuarioDTO escola;
-
-    //private UUID turmaId;
-
-   /* private List<AulaDTO> aulas;
-    private List<RankAlunoDTO> rankAlunoDTOS;
-    */
+    private TurmaDTOget turma;
+    private List<RankAlunoGetDTO> rankAluno;
+    private List<DisciplinaDTOget> disciplinas;
+    private List<ConquistaDTOGet>conquistas;
 }

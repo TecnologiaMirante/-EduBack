@@ -19,9 +19,13 @@ public interface ProfessorMapper {
     ProfessorMapper INSTANCE = Mappers.getMapper(ProfessorMapper.class);
 
     @Mapping(source = "professorEscola", target = "escola")
-    ProfessorDTO professorToProfessorDTO(Professor professor);
+    @Mapping(source = "turmasProfessor", target = "turmas")
+    @Mapping(source = "professorConteudoList", target = "conteudos")
+        ProfessorDTO professorToProfessorDTO(Professor professor);
 
     @Mapping(source = "escola", target = "professorEscola")
+    @Mapping(source = "turmas", target = "turmasProfessor")
+    @Mapping(source = "conteudos", target = "professorConteudoList")
     Professor professorDTOToProfessor(ProfessorDTO professorDTO);
 
     @Mappings({

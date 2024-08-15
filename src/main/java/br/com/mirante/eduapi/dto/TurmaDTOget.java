@@ -16,7 +16,7 @@ public class TurmaDTOget {
     private String turno;
     private String codigo;
     private Boolean status;
-    private Serie serie;
+    private SerieDTOget serie;
 
     //mudar turma para ser um atributo de serie
     //Relacionamento Serie

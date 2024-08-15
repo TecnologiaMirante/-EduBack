@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -38,8 +39,6 @@ public class ProfessorDTO {
     private String formacao;
     private String experiencia;
     private EscolaUsuarioDTO escola;
-
-    //private List<Turma> turmas = new ArrayList<>();
-
-
+    private List<TurmaDTOget> turmas;
+    private List<ConteudoDTOget>conteudos;
 }

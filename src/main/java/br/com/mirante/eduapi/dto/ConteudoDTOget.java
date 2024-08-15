@@ -16,7 +16,7 @@ public class ConteudoDTOget {
     private UUID id;
     private String titulo;
     private String descricao;
-    private Disciplina disciplina;
-    private Professor professor;
-    private Bimestre bimestre;
+    private DisciplinaDTOget disciplina;
+    private ProfessorDTOGet professor;
+    private BimestreDTOget bimestre;
 }
