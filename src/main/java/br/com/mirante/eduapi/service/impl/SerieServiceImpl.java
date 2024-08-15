@@ -1,6 +1,7 @@
 package br.com.mirante.eduapi.service.impl;
 
 import br.com.mirante.eduapi.dto.SerieDTO;
+import br.com.mirante.eduapi.dto.SerieDTOpost;
 import br.com.mirante.eduapi.exceptions.BusinessException;
 import br.com.mirante.eduapi.mappers.SerieMapper;
 import br.com.mirante.eduapi.models.Serie;
@@ -27,16 +28,16 @@ public class SerieServiceImpl implements SerieService{
     }
 
     @Override
-    public SerieDTO save(SerieDTO serieDTO) throws BusinessException {
+    public SerieDTOpost save(SerieDTOpost serieDTOpost) throws BusinessException {
 
-        Serie serie = SerieMapper.INSTANCE.Toserie(serieDTO);
+        Serie serie = SerieMapper.INSTANCE.DTOtoSerie(serieDTOpost);
 
         if (serieRepository.findByNome(serie.getNome()) != null && serieRepository.findByTurno(serie.getTurno()) != null && serieRepository.findByTurma(serie.getTurma())!= null){
             throw new BusinessException("Série já existe com esse nome, turno e turma");
         }
         serie = serieRepository.save(serie);
 
-        return SerieMapper.INSTANCE.ToserieDTO(serie);
+        return SerieMapper.INSTANCE.ToSerieDTOpost(serie);
     }
 
     @Override
@@ -46,12 +47,12 @@ public class SerieServiceImpl implements SerieService{
     }
 
     @Override
-    public Optional<SerieDTO> update(UUID id, SerieDTO serieDTO) {
+    public Optional<SerieDTOpost> update(UUID id, SerieDTOpost serieDTOpost) {
         if (serieRepository.existsById(id)) {
-            Serie serie = SerieMapper.INSTANCE.Toserie(serieDTO);
+            Serie serie = SerieMapper.INSTANCE.DTOtoSerie(serieDTOpost);
             serie.setId(id);
             serie = serieRepository.save(serie);
-            return Optional.of(SerieMapper.INSTANCE.ToserieDTO(serie));
+            return Optional.of(SerieMapper.INSTANCE.ToSerieDTOpost(serie));
         }
         return Optional.empty();
     }

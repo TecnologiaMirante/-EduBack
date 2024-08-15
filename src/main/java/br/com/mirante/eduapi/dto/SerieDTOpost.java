@@ -1,6 +1,5 @@
 package br.com.mirante.eduapi.dto;
 
-import br.com.mirante.eduapi.models.Serie;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,10 +9,12 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TurmaDTOget {
+public class SerieDTOpost{
     private UUID id;
     private String nome;
     private String turno;
-    private String codigo;
-    private Boolean status;
+    private UUID id_turma;
+    private UUID id_aluno;
+    private UUID id_rankAluno;
+    //private UUID id_rankSerie;
 }
