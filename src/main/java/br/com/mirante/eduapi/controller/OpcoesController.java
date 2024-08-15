@@ -22,7 +22,7 @@ import java.util.UUID;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Tag(description = "Retorna Dados das Opções", name = "Opção")
-@RequestMapping("/opção")
+@RequestMapping("/opcao")
 public class OpcoesController {
 
     private OpcoesService opcoesService;
